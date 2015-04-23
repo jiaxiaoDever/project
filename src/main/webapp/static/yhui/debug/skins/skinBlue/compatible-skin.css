@@ -1,0 +1,38 @@
+@charset "utf-8";
+.header{ background:url(images/header_bg.png) no-repeat; }
+.header div.headerInner{ color:#E8F9FF; }
+.header div.headerInner div a{ color:white; text-decoration:none; }
+.header div.headerInner div a:hover{ text-decoration:underline; }
+.header div.headerInner div a.welcome{ background:url("images/other/admin_ico.png") no-repeat scroll 0 0 transparent; margin-right:0; }
+.header div.headerInner div a.passWordTip{ color:#fed482; }
+.header div.headerInner div a.passWordTip span{ background-color:#F7E0AF; color:black; }
+.header span.userRole{ background:url(images/other/icoRole.gif) no-repeat 60px 6px; }
+.header span.userRoleHover{ border:1px solid #026F94; border-bottom:none; color:#666; background:#EAF9FF url(images/other/icoRole.gif) no-repeat 60px -24px; }
+.header span.userRole ul.roleList{ border:1px solid #026F94; border-top:none; background:#C9EBF8 url(images/other/roleBg.gif) top repeat-x; }
+.header span.userRole ul.roleList li a{ color:#666; background:url(images/other/icoArrows.gif) no-repeat 3px center; }
+.header span.userRole ul.roleList li a:hover{ background:url(images/other/rolelihover.gif) no-repeat; }
+:root .header span.userRole ul.roleList li a:hover{ background:url(images/other/rolelihover.gif) no-repeat left -2px\9; }
+
+.navbar{ background: url("images/other/navbar_bg.png") repeat-x 0 0 transparent; }
+.navbar span{ background: url("images/other/navbar_ico.png") no-repeat 0 6px transparent; }
+.navbar a{ color:#333; text-decoration:none; }
+.navbar a:hover{ color:#CC3333; text-decoration:none; }
+
+.portlet{ border:1px solid #AAD9E9; -moz-box-shadow:2px 2px 3px #DDD; -moz-border-radius:3px; border-radius:3px; box-shadow:2px 2px 3px #DDD; background-color:#F7FDFF; }
+.portlet .title{ color:#666; border-bottom:#AAD9E9; background:url(images/titlebg/titleBg.gif) repeat-x; }
+.portlet .title a{ background:url(images/titlebg/more.gif); }
+.portlet .title a:hover{ background:url(images/titlebg/more.gif) no-repeat 0 -26px; }
+.showArrow{ background:url(images/titlebg/more.gif) no-repeat -11px -52px; }
+.hideArrow{ background:url(images/titlebg/more.gif) no-repeat 0px -52px; }
+.portlet ul.newList li a{ text-decoration:none; color:#666; background:url(images/other/icoArrows.gif) 7px 6px no-repeat; *background-position:7px 7px;  }
+.portlet ul.newList li a:hover { color:#cc3333; }
+.portlet ul.newList li span { color:#888; }
+
+.wrapDatePicker { border:1px solid #B9E3F1; background-color:#F7FDFF; width:150px; display:inline-block; cursor:text; *display:inline; *zoom:1; }
+.wrapDatePicker input[type=text] { padding: 0; margin: 0; margin-bottom: 2px; }
+.wrapDatePicker .datePicker { border:0; width:68px; width:66px\9; background-color:#F7FDFF; font:11px '微软雅黑'; text-align:center; vertical-align:middle\9; }
+.ui-datepicker .fixIE6 { display:block; width:100%; heigth:100%; border:none; text-decoration:none; }
+
+a.dropClickArrow { background:url(images/form/dropDownArrow.gif) no-repeat center top; }
+a.dropClickArrow:hover { background-position:center center; }
+a.dropClickArrow:active { background-position:center bottom; }

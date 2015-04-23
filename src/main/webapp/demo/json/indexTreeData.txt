@@ -1,0 +1,199 @@
+﻿[
+	{
+		"name":"展示"
+	,	"children":[
+				{
+					"name":"布局模版"
+				,	"children":[
+						{
+							"name": "整体架构"
+						,	"children": [
+									{
+										"name":"上下布局"
+									,	"link":"Components/Layout/templateOfUp-down.jsp"
+									,	"isNewWindow": true
+									}
+								,	{
+										"name":"上-左右布局"
+									,	"link":"Components/Layout/templateOfUp-leftRight.jsp"
+									,	"isNewWindow": true
+									}
+								,	{
+										"name":"上-左-上下布局"
+									,	"children":[
+											{
+												"name":"基本内容填充"
+											,	"link":"Components/Layout/templateOfUp-left-updown.jsp"
+											,	"isNewWindow": true
+											}
+										,	{
+												"name":"内嵌iframe"
+											,	"link":"Components/Layout/iframesTemp.jsp"
+											,	"isNewWindow": true
+											}
+										]
+									}
+							]	
+						}
+					,	{
+							"name":"常用内嵌",
+							"children": [
+								{
+									"name" : "上下"
+								,	"link" : "Components/Layout/upDown-inner.jsp"
+								}
+							,	{
+									"name" : "上中下"
+								,	"link" : "Components/Layout/upCenterDown-inner.jsp"
+								}
+							]
+						}
+					]
+				}
+			,	{
+					"name":"常用组件"
+				,	"children":[
+						{
+							"name":"手风琴面板(Accrodion)"
+						,	"link":"Components/base/accordion.jsp"
+						}
+					,	{
+							"name":"折合面板"
+						,	"link":"Components/base/yhSwitchPanel.jsp"
+						}
+					,	{
+							"name":"左右互选"
+						,	"link":"Components/base/yhSelector.jsp"
+						}	
+					,	{
+							"name":"搜索框"
+						,	"link":"Components/base/yhSearchBox.jsp"
+						}
+					,	{
+							"name":"工具栏与按钮"
+						,	"link":"Components/base/toolbar.jsp"
+						}	
+					,	{
+							"name":"弹窗(Dialog)"
+						,	"children":[
+								{
+									"name":"普通"
+								,	"link":"Components/base/dialog.jsp"
+								}
+							,	{
+									"name":"提示窗"
+								,	"link":"Components/base/yhDialogTip.jsp"
+								}
+							,	{
+									"name":"窗口"
+								,	"link":"Components/base/yhWindow.jsp"
+								}
+							]	
+						}
+					,	{
+							"name":"菜单(Menu)"
+						,	"link":"Components/base/yhMenu.jsp"
+						}
+					,	{
+                            "name":"右键菜单(yhContextMenu)"
+                        ,	"link":"Components/base/yhContextMenu.jsp"
+                        }
+					,	{
+							"name":"选项卡(Tabs)"
+						,	"children":[
+								{
+									"name":"普通选项卡"
+								,	"link":"Components/base/tabs.jsp"
+								}
+							,	{
+								    "name":"昱辉选项卡的一般使用"
+                                ,	"link":"Components/base/yhTabsPlain.jsp"
+								}
+							,	{
+									"name":"昱辉选项卡"
+								,	"link":"Components/base/yhTabs.jsp"
+								,	"isNewWindow": true
+								}
+							,	{
+									"name":"结合菜单Tabs"
+								,	"link":"Components/base/MenuAddTabs.jsp"
+								,	"isNewWindow": true
+								}
+							,	{
+									"name":"昱辉滚动选项卡"
+								,	"link":"Components/base/scrollTab.jsp"
+								}	
+							]
+						}
+					,	{
+							"name":"表格(jqGrid)"
+						,	"link":"jqGrid/index.jsp"
+						,	"isNewWindow":true
+						}
+					,	{
+							"name":"页面构件(portlet)"
+						,	"link":"Components/base/yhPortlet.jsp"
+						}
+					]	
+				}
+			,	{
+					"name":"表单"
+				,	"children":[
+						{
+							"name":"日期时间选择器"
+						,	"children":[
+								{
+									"name":"jQueryUI的"
+								,	"link":"Components/form/timePicker.jsp"
+								}
+							,	{
+									"name":"YHUI的(火)"
+								,	"link":"Components/form/yhDatePicker.jsp"
+								}
+							]
+						}
+					,	{
+							"name":"昱辉下拉框"
+						,	"link":"Components/form/yhDropDown.jsp"
+						}					
+					, 	{
+							"name":"数字微调"
+						,	"link":"Components/form/spinner.jsp"
+						}
+                    , 	{
+							"name":"验证那些事儿"
+						,	"children": [
+                                {
+									"name": "yhValidate(火)"
+								,	"link": "Components/form/yhValidate.jsp"
+								}	
+							]
+						}			
+					]
+				}
+			]
+	}
+,	{
+		"name":"应用实例"
+	,	"children":[
+			{
+				"name":"表单布局"
+			,	"link":"Components/form/fIndex.jsp"
+			}
+		,	{
+				"name":"菜单选项卡布局"
+			,	"link":"Components/MenuAddTabs.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"增删查改"
+			,	"children": [
+					{ 
+						"name" : "jqGrid自带" 
+					,	"link":"Layout/search.html"	
+					}
+				]
+			}
+		]	
+	}
+]

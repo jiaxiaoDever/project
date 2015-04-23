@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AppServer" default="compile" basedir=".">
+	<property name="webapp.name" value="AppServer"></property>
+	<property name="catalina.home" value="C:/apache-tomcat-6.0.24-BaseFrame-8088"/>
+    <property name="src.dir" value="${basedir}/src/main/java"/>
+    <property name="lib.dir" value="${basedir}/src/main/webapp/WEB-INF/lib"/>
+    <property name="class.dir" value="${basedir}/build/classes"/>
+    <property name="web.dir" value="${basedir}/src/main/webapp"/>
+    <property name="war.dir" value="${basedir}/war"/>
+    <property name="remote.dir" value="/home/test/software"/>
+    <property name="webapps.dir" value="${catalina.home}/webapps"/>
+    <!-- **********************************set classpath********************************** -->
+    <path id="compile.path">
+    	<fileset dir="${catalina.home}/lib">
+          <include name="*.jar"/>
+        </fileset>
+        <fileset dir="${lib.dir}">
+          <include name="*.jar"/>
+        </fileset>
+    </path>
+	
+	<!-- **********************************init********************************** -->
+    <target name="init">
+        <mkdir dir="${war.dir}"/>
+    </target>
+	
+	<!-- **********************************clean class********************************** -->
+    <target name="clean" description="Delete old build and dist directories" depends="init">
+        <delete dir="${class.dir}" includes="**/*.class"/>
+    </target>
+	
+	<!-- **********************************compile java********************************** -->
+    <target name="compile" description="Compile Java sources" depends="clean">
+        <mkdir dir="${class.dir}"/>
+        <javac debug="true" target="1.6" encoding="UTF-8" srcdir="${src.dir}" destdir="${class.dir}">
+            <classpath refid="compile.path"/>
+        </javac>
+        <copy todir="${class.dir}">
+          <fileset dir="${basedir}/src/main/resources" excludes="**/*.java"/> 
+        </copy>
+
+        <!--<copy todir="${class.dir}">
+          <fileset dir="${src.dir}" excludes="**/*.java"/>
+        </copy>-->
+    </target>
+	
+	<!-- **********************************war********************************** -->
+    <target name="war" description="Install application to servlet container" depends="compile">
+       <delete dir="${war.dir}/${webapp.name}.war"/>
+       <war destfile="${war.dir}/${webapp.name}.war" basedir="${web.dir}" webxml="${web.dir}/WEB-INF/web.xml">
+            <lib dir="${lib.dir}"/>
+            <classes dir="${class.dir}"/>
+        </war>
+    </target>
+	
+	
+	<!-- **********************************ftp********************************** -->
+	<target name="scp" depends="war">
+		<scp todir="test:123456@132.97.172.41:${remote.dir}" trust="true">
+			<fileset dir="${war.dir}" includes="*.war" />
+		</scp>
+	</target>
+	
+	 <!-- **********************************deploy   webapp********************************** -->
+	    <target name="deploy" description="Install application to servlet container" depends="compile">
+	       <delete dir="${webapps.dir}/${webapp.name}"/>
+	       <delete dir="${catalina.home}/work/Catalina"/>
+	       <delete dir="${war.dir}/${webapp.name}.war"/>
+	       <war destfile="${war.dir}/${webapp.name}.war" basedir="${web.dir}" webxml="${web.dir}/WEB-INF/web.xml">
+	            <lib dir="${lib.dir}"/>
+	            <classes dir="${class.dir}"/>
+	        </war>
+	    	<copy todir="${webapps.dir}">
+	    		<fileset file="${war.dir}/${webapp.name}.war"/>
+	    	</copy>
+	    </target>
+
+	    <!-- **********************************start web server********************************** -->
+
+	    <target name="startserver" description="Start web server" >
+	        <exec dir="${catalina.home}/bin" executable="cmd.exe">
+	            <env key="CATALINA_HOME" path="${catalina.home}"/>
+	            <arg value="/c startup.bat"/>
+	        </exec>
+	    </target>
+
+	    <!-- **********************************stop web server********************************** -->
+
+	    <target name="stopserver" description="Stop web server" >
+	        <exec dir="${catalina.home}/bin" executable="cmd.exe">
+	            <env key="CATALINA_HOME" path="${catalina.home}"/>
+	            <arg value="/c shutdown.bat"/>
+	        </exec>
+	    </target>
+
+	    <!-- **********************************start work********************************** -->
+	    <target name="start" description="Clean build and dist directories, then compile">
+	        <ant target="deploy"/>
+	        <ant target="startserver"/>
+	    </target>
+
+	    <!-- **********************************reload web server********************************** -->
+
+	    <target name="reload" description="reload web server">
+	        <ant target="stopserver"/>
+	        <sleep seconds="2"/>
+	        <ant target="start"/>
+	    </target>
+</project>

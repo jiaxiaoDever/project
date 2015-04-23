@@ -1,0 +1,6 @@
+/*!
+* yhui 1.3.0beta
+* jquery.yhLoading.js
+* 2013-04-23
+*/
+(function(t){var e=0;t.widget("yhui.yhLoading",{options:{opacity:.5,backgroundColor:"#FFF",duration:500,size:"middle",autoOpen:!0},_create:function(){this.id="yhui-loaing-"+(this.element.attr("id")||e++),this.options.autoOpen&&this.open()},_parseData:function(){this.info={width:this.element.outerWidth(),height:this.element.outerHeight()}},open:function(){this._parseData();var e=this.options.size;"middle"!==e&&-1===t.inArray(e,["small","big"])&&(e="middle");var i="<div class='yhui-loading-loader yhui-loading-{size}'></div>".replace(/\{size\}/,e);this.cover=t("<div></div>",{"class":"yhui-loading"}).css({opacity:this.options.opacity,backgroundColor:this.options.backgroundColor}).append(i).hide(),this.element.attr("hasloaing",this.id),this.cover.attr("id",this.id).css(this.info).appendTo(this.document[0].body).position({my:"top left",at:"top left",of:this.element}).show(),this.openFlag=!0},close:function(){this.element.removeAttr("hasloaing"),this.cover.fadeOut(this.options.duration,function(){t(this).remove()}),this.openFlag=!1},isOpen:function(){return this.openFlag},_destroy:function(){this.openFlag&&this.close()}})})(jQuery);

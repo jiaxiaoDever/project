@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC
+ "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    
+    
+    
+    <properties  resource="application.properties">  
+		
+		<property name="pageSqlId" value=".*Page$" />
+	</properties>
+    
+	<settings>
+		<!-- 是否使用 懒加载 关联对象 同 hibernate中的延迟加载 一样 default:true -->
+		<setting name="lazyLoadingEnabled" value="true" />
+		<!-- [是否 启用 数据中 A_column 自动映射 到 java类中驼峰命名的属性 default:fasle] -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+	<typeAliases>  
+    </typeAliases> 
+    
+	<!--  -->
+	<plugins>
+		<plugin interceptor="com.yuhui.core.utils.page.PageInterceptor">
+		</plugin>
+	</plugins>
+	
+
+</configuration> 

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+	default-lazy-init="true">
+	
+
+	<description>Spring公共配置 </description>
+	
+	
+	<!-- Spring直接获取bean的工具类 -->
+	<bean id="springContextUtil" class="com.yuhui.core.utils.SpringContextUtils" scope="singleton" lazy-init="false" />
+	
+	<!-- 项目初始化和结束释放的类 -->
+	<bean id="initLoader" lazy-init="false" class="com.yuhui.core.base.InitLoader" init-method="init" destroy-method="destory" />
+	
+	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+	<context:component-scan base-package="com.yuhui.core.*,com.jiaxiao.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+	<aop:aspectj-autoproxy />
+
+	<!-- 设置一些系统变量 -->
+	<bean id="sysinfo" class="com.yuhui.core.utils.SystemInfo">
+		<property name="noLogUrlRegx" value="${no_log_url_regx}" />
+		<property name="schema" value="${jdbc.schema}" />
+		<property name="dialect" value="${dialect}" />
+<!--		<property name="casUrl" value="http://${cas.ip}:${cas.port}/${cas.context}"/>
+		<property name="clientServiceUrl" value="${clientServiceUrl}"/>
+ 		<property name="rptFlatUrl" value="${report_flat_url}"/>
+		<property name="rptIrpUrl" value="${report_ireport_url}"/>
+		<property name="rptAhocUrl" value="${report_adhoc_url}"/>
+		<property name="rptOlapUrl" value="${report_olap_url}"/> -->
+	</bean>
+	
+	<!-- 设置mybatis 使用日志类型 -->
+	<bean id="mybatislog" lazy-init="false" init-method="setLog" class="com.yuhui.core.utils.MybatisSetting">  
+    </bean>
+    <!-- 启动日志上传功能 -->
+<!--     <bean id="logupload" lazy-init="false" init-method="start" class="com.yuhui.core.utils.ftp.FtpListener">  
+    </bean> -->
+		
+	<!-- MyBatis配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="com.yuhui.core.entity,com.jiaxiao.entity"></property>
+		<!-- 显式指定Mapper文件位置 -->
+		<property name="mapperLocations" value="classpath:/mybatis/**/*Mapper.xml" />
+		<property name="configLocation" value="classpath:mybatis-config.xml" />
+	</bean>
+
+	<!-- 扫描basePackage下所有以@MyBatisRepository标识的 接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.yuhui.core.repository,com.jiaxiao.repository" />
+		<property name="annotationClass" value="com.yuhui.core.repository.mybatis.MyBatisRepository" />
+	</bean>
+
+	<!-- 事务配置 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+
+	<!-- 配置Spring JDBC -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	
+	
+	<!-- production环境 -->
+	<beans profile="production">
+		<context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties" />
+
+		<!-- 数据源配置, 使用DBCP数据库连接池 -->
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+			<!-- Connection Info -->
+			<property name="driverClassName" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+
+			<!-- Connection Pooling Info -->
+			<property name="maxActive" value="${dbcp.maxActive}" />
+			<property name="maxIdle" value="${dbcp.maxIdle}" />
+			<property name="defaultAutoCommit" value="false" />
+			<!-- 连接Idle一个小时后超时 -->
+			<property name="timeBetweenEvictionRunsMillis" value="3600000" />
+			<property name="minEvictableIdleTimeMillis" value="3600000" />
+		</bean>
+
+		<!-- 数据源配置,使用应用服务器的数据库连接池 -->
+		<!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/ExampleDB" /> -->
+	</beans>
+
+	<!-- unit test环境 -->
+	<beans profile="test">
+		<context:property-placeholder ignore-resource-not-found="true" location="classpath*:/application.properties" />
+
+		<!-- Simple连接池 -->
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+			<property name="driverClass" value="${jdbc.driver}" />
+			<property name="url" value="${jdbc.url}" />
+			<property name="username" value="${jdbc.username}" />
+			<property name="password" value="${jdbc.password}" />
+		</bean>
+
+	</beans>
+</beans>

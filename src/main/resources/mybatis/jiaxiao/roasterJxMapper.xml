@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.RoasterJxDAO">
+	<resultMap type="TbRoasterJx" id="defaulfResultMap">
+		<id property="courseId" column="COURSE_ID"/>
+		<result property="branchId" column="BRANCH_ID"/>
+		<result property="branchName" column="BRANCH_NAME"/>
+		<result property="canSignNum" column="CAN_SIGN_NUM"/>
+		<result property="common" column="common"/>
+		<result property="courseHour" column="COURSE_HOUR"/>
+		<result property="courseInNum" column="COURSE_IN_NUM"/>
+		<result property="courseInfo" column="COURSE_INFO"/>
+		<result property="courseName" column="COURSE_NAME"/>
+		<result property="courseNoticBHour" column="COURSE_NOTIC_B_HOUR"/>
+		<result property="courseStat" column="COURSE_STAT"/>
+		<result property="courseStatCode" column="COURSE_STAT_CODE"/>
+		<result property="courseTimearea" column="COURSE_TIMEAREA"/>
+		<result property="courseTimeareaCode" column="COURSE_TIMEAREA_CODE"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="editEndTime" column="EDIT_END_TIME"/>
+		<result property="endTime" column="END_TIME"/>
+		<result property="isCourseNotic" column="IS_COURSE_NOTIC"/>
+		<result property="isRoastNotic" column="IS_ROAST_NOTIC"/>
+		<result property="jxId" column="JX_ID"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="offlineNum" column="OFFLINE_NUM"/>
+		<result property="roastNoticAHour" column="ROAST_NOTIC_A_HOUR"/>
+		<result property="signEndTime" column="SIGN_END_TIME"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="subjectId" column="SUBJECT_ID"/>
+		<result property="subjectName" column="SUBJECT_NAME"/>
+		<result property="teacherId" column="TEACHER_ID"/>
+		<result property="teacherName" column="TEACHER_NAME"/>
+	</resultMap>
+</mapper>

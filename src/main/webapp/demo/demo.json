@@ -1,0 +1,441 @@
+[ 
+{
+        "name": "页面布局",
+        "children": [
+            {
+                "name": "基础布局",
+                "children": [
+                    {
+                        "name": "tabsall",
+                        "link": "example/itemtest/taball.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "上下布局",
+                        "link": "components/layout/baselayout-ud.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "左右布局",
+                        "link": "components/layout/baselayout-lr.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "上中下布局",
+                        "link": "components/layout/baselayout-umd.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "左中右布局",
+                        "link": "components/layout/baselayout-lmr.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "上-左右布局",
+                        "link": "components/layout/baselayout-ulr.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "上-上下布局",
+                        "link": "components/layout/layout06-up-updown.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "上-左-上下布局",
+                        "link": "components/layout/layout07-up-left-updown.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name":"内容填充",
+                        "children": [
+                            {
+                                "name": "基本内容填充",
+                                "link": "components/layout/base-content.html",
+                                "isNewWindow": true
+                            },
+                            {
+                                "name": "内嵌iframe",
+                                "link": "components/layout/iframes-content.html",
+                                "isNewWindow": true
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "布局实例",
+                "children": [
+                    {
+                        "name": "jq布局",
+                        "link": "example/yh/layoutform-jq.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "1栏表单",
+                        "link": "example/yh/layoutform-01.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "2栏手风琴表单",
+                        "link": "example/yh/layoutform-02.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "2栏搜索表单",
+                        "link": "example/yh/layoutform-03.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "2栏上下伸缩",
+                        "link": "example/yh/layoutform-04.html",
+                        "isNewWindow": true
+                    },
+                    {
+                        "name": "iframe嵌套",
+                        "link": "example/yh/layout.html",
+                        "isNewWindow": true
+                    }                    
+                ]
+            }
+        ]
+},
+{
+    "name": "常用组件",
+    "children": [
+        {            
+            "name": "菜单",
+            "children":[
+            {   
+                "name":"多级菜单",
+                "link":"components/base/nav-menu.html"
+            },
+            {
+                "name": "右键菜单",
+                "link": "components/base/nav-context-menu.html"
+            },
+            {
+                "name": "树形菜单",
+                "link": "components/base/nav-treemenu.html"
+            }                
+            ]
+        },
+        {
+            "name": "面板",
+            "children": [
+                {
+                    "name": "手风琴",
+                    "link": "components/base/mb-accordion.html"
+                },
+                {
+                    "name": "折合面板",
+                    "link": "components/base/mb-switch-panel.html"
+                }
+            ]
+        },
+        {
+            "name": "选项卡",
+            "children": [
+                {
+                    "name": "普通选项卡",
+                    "link": "components/base/tabs.html"
+                },
+                {
+                    "name": "滚动选项卡",
+                    "link": "components/base/tabs-scroll.html"
+                },
+                {
+                    "name": "昱辉选项卡-全",
+                    "link": "components/base/tabs-yhtabs.html",
+                    "isNewWindow": true
+                },
+                {
+                    "name": "昱辉选项卡-简",
+                    "link": "components/base/tabs-yhtabs-plain.html"
+                }
+            ]
+        },
+        {
+            "name": "页面构件",
+            "link": "components/base/yhportlet.html"
+        },
+        {
+            "name": "弹窗",
+            "children": [
+                {
+                    "name": "普通对话框",
+                    "link": "components/base/dialog.html"
+                },
+                {
+                    "name": "状态对话框",
+                    "link": "components/base/dialog-tip.html"
+                },
+                {
+                    "name": "状态对话框2",
+                    "link": "components/base/dialog-tip2.html"
+                },
+                {
+                    "name": "窗口",
+                    "link": "components/base/yhwindow.html"
+                }
+            ]
+        },
+        {
+            "name": "加载效果",
+            "link": "components/base/yhloading.html"
+        }
+               
+    ]
+},
+{
+    "name": "表单增强",
+    "children": [
+        {
+            "name": "搜索框",
+            "link": "components/form/searchbox.html"
+        },
+        {
+            "name": "工具栏与按钮",
+            "link": "components/form/toolbar.html"
+        },
+        {
+            "name": "下拉框",
+            "children": [
+                {
+                    "name": "普通下拉框",
+                    "link": "components/form/selectmenu.html"
+                },
+                {
+                    "name": "昱辉下拉框",
+                    "link": "components/form/dropdown.html"
+                }
+            ]
+        },
+        {
+            "name": "数字微调",
+            "link": "components/form/spinner.html"
+        },
+        {
+            "name": "时间选择器",
+            "children": [
+                {
+                    "name": "jquery-ui 时间选择器",
+                    "link": "components/form/timepicker.html"
+                },
+                {
+                    "name": "yhui 时间选择器",
+                    "link": "components/form/datapicker.html"
+                }
+            ]
+        },
+        {
+            "name": "表单验证",
+            "link": "components/form/yhvalidate.html"
+        },
+        {
+            "name": "表单布局",
+            "children": [
+                {
+                    "name": "表单布局-2栏",
+                    "link": "components/form/layout2.html"
+                },
+                {
+                    "name": "表单布局-4栏",
+                    "link": "components/form/layout4.html"
+                },
+                {
+                    "name": "表单布局-6栏",
+                    "link": "components/form/layout6.html"
+                }
+                ]            
+        }
+    ]
+},
+{       
+    "name":"表格",
+    "children": [
+        { 
+        "name": "基本用法",
+        "children": [
+             {
+                "name": "本地数据",
+                "children": [
+                    {
+                        "name": "基本本地数据",
+                        "link": "components/jqgrid/base/data-1.html"
+                    },
+                    {
+                        "name": "本地数据2",
+                        "link": "components/jqgrid/base/data-2.html"
+                    },
+                    {
+                        "name": "手动远程获取 json 数据",
+                        "link": "components/jqgrid/base/data-hand.html"
+                    }
+                ]
+                },        
+                {
+                    "name": "远程操作",
+                    "children": [
+                        {
+                            "name": "基本 json 数据展示",
+                            "link": "components/jqgrid/base/jsondata.html"
+                        },
+                        {
+                            "name": "表头排序",
+                            "link": "components/jqgrid/base/headsort.html"
+                        },
+                        {
+                            "name": "导航栏之翻页",
+                            "link": "components/jqgrid/base/pager.html"
+                        },
+                        {
+                            "name": "导航栏之功能",
+                            "link": "components/jqgrid/base/navigator.html"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "增删改",
+            "children": [
+                {
+                    "name": "新增记录",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/create/local.html"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/cud/create/remote.html"
+                        },
+                        {
+                            "name": "自定义添加形式",
+                            "link": "components/jqgrid/cud/create/custom-remote.html"
+                        }
+
+                    ]
+                },
+                {
+                    "name": "删除记录",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/delete/local.html"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/cud/delete/remote.html"
+                        },
+                        {
+                            "name": "自定义删除形式",
+                            "link": "components/jqgrid/cud/delete/custom-del.html"
+                        },
+                        {
+                            "name": "一次性删除多行",
+                            "link": "components/jqgrid/cud/delete/multi.html"
+                        }
+                    ]
+                },
+                {
+                    "name": "编辑数据",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/edit/edit-local.html"
+                        },
+                        {
+                            "name": "单元格编辑",
+                            "link": "components/jqgrid/cud/edit/edit-cell.html"
+                        },
+                        {
+                            "name": "行内编辑",
+                            "link": "components/qgrid/cud/edit/edit-inline.html"
+                        },
+                        {
+                            "name": "表单编辑",
+                            "link": "components/jqgrid/cud/edit/edit-form.html"
+                        },
+                        {
+                            "name": "自定义编辑",
+                            "link": "components/jqgrid/cud/edit/edit-custom.html"
+                        }
+                    ]
+                }
+            ]
+
+        },
+        {
+            "name": "本地查询",
+            "children": [
+                {
+                    "name": "工具栏过滤",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/search/toolbar-local.html"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/search/toolbar-remote.html"
+                        }
+                    ]
+                },
+                {
+                    "name": "自定义查询",
+                    "link": "components/jqgrid/search/search-custom.html"
+                },
+                {
+                    "name": "单字段查询",
+                    "link": "components/qgrid/search/search-single.html"
+                },
+                {
+                    "name": "高阶查询",
+                    "link": "components/jqgrid/search/search-advanced.html"
+                }
+            ]
+        },
+        {
+            "name": "异步加载",
+            "children": [
+                {
+                    "name": "子表格",
+                    "link": "components/jqgrid/async/subgrid.html"
+                },
+                {
+                    "name": "树形表格",
+                    "link": "components/jqgrid/async/treegrid.html"
+                }
+            ]
+        },
+        {
+            "name": "其他功能",
+            "children": [
+                {
+                    "name": "冻结列",
+                    "link": "components/jqgrid/others/col-frozen.html"
+                },
+                {
+                    "name": "表头分组",
+                    "link": "components/jqgrid/others/col-group.html"
+                },
+                {
+                    "name": "表格联动",
+                    "link": "components/jqgrid/others/linkage.html"
+                },
+                {
+                    "name": "自定义单元格内容",
+                    "link": "components/jqgrid/others/formatter.html"
+                },
+                {
+                    "name": "右键菜单",
+                    "link": "components/jqgrid/others/contextmenu.html"
+                }
+            ]
+        }
+         
+        ]   
+    }
+]
+        

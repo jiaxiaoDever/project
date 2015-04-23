@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuhui.core.repository.system.UserBaseDAO">
+	<resultMap type="UserBase" id="defaulfResultMap">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="password" column="password" />
+		<result property="name" column="name" />
+		<result property="salt" column="salt" />
+		<result property="sex" column="sex" />
+		<result property="phoneNbr" column="phone_nbr" />
+		<result property="phsNbr" column="phs_nbr" />
+		<result property="mobileNbr" column="mobile_nbr" />
+		<result property="emailAddr" column="email_addr" />
+		<result property="channelId" column="channel_id" />
+		<result property="staffId" column="staff_id" />
+		<result property="isLogincode" column="is_logincode" />
+		<result property="corpId" column="corpId" />
+		<result property="regions" column="regions" />
+		<result property="state" column="state" />
+		<result property="stateDate" column="state_date" />
+		<result property="organizationId" column="organization_id" />
+		<collection property="roles" javaType="ArrayList" ofType="RoleBase"
+			select="com.yuhui.core.repository.system.RoleBaseDAO.getByUserId"
+			column="id" />
+	</resultMap>
+	<select id="findByUserName" parameterType="String" resultMap="defaulfResultMap">
+		select u.*
+		from ${jdbc.schema}.tb_sys_user u
+		where u.username = #{userName} order by u.state_date desc
+	</select>
+	<select id="getByPage" resultMap="defaulfResultMap">
+		select * from ${jdbc.schema}.tb_sys_user u where u.username = #{username}
+		order by u.state_date desc
+	</select>
+	<select id="queryUsersCount" resultType="Integer">
+		select count(distinct u.id) from ${jdbc.schema}.tb_sys_user u where
+		1=1
+		<if test="parameters.username != null and parameters.username != ''">
+			and u.username like #{parameters.username}
+		</if>
+		<if test="parameters.name != null and parameters.name != ''">
+			and u.name like #{parameters.name}
+		</if>
+		<if
+			test="parameters.organizationId != null and parameters.organizationId != ''">
+			and u.organization_id = #{parameters.organizationId}
+		</if>
+	</select>
+
+
+	<delete id="deleteUserRole">
+		delete from ${jdbc.schema}.tb_sys_role_user where
+		user_id = #{userId}
+	</delete>
+
+	<insert id="insertUserRole" parameterType="UserRole">
+		insert into ${jdbc.schema}.tb_sys_role_user(role_id,user_id) values
+		(#{roleId}, #{userId})
+	</insert>
+</mapper>

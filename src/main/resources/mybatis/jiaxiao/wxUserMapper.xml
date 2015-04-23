@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.WxUserDAO">
+
+	<select id="getUserByOpenId" resultType="TbWxUser">
+		select t.* from ${jdbc.schema}.tb_wx_user t where t.open_id = #{openId} 
+	</select>
+	<update id="updateWxUserStudentInfo">
+		update ${jdbc.schema}.tb_wx_user t set t.student_id = #{studentId} and is_binded=1 where t.open_id = #{openId}
+	</update>
+	<insert id="insertBandingUser" parameterType="TbWxUser">
+		insert into ${jdbc.schema}.tb_wx_user(user_id,is_binded,student_id,open_id) values (#{userId},1,#{studentId},#{openId})
+	</insert>
+</mapper>

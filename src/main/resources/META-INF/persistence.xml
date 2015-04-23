@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="AppServer">
+		<class>com.jiaxiao.entity.TbBaseJx</class>
+		<class>com.jiaxiao.entity.TbBranchesJx</class>
+		<class>com.jiaxiao.entity.TbCourseSt</class>
+		<class>com.jiaxiao.entity.TbKeyTm</class>
+		<class>com.jiaxiao.entity.TbLogActinfo</class>
+		<class>com.jiaxiao.entity.TbPublicInfo</class>
+		<class>com.jiaxiao.entity.TbRoasterJx</class>
+		<class>com.jiaxiao.entity.TbStudentJx</class>
+		<class>com.jiaxiao.entity.TbSubject</class>
+		<class>com.jiaxiao.entity.TbSysData</class>
+		<class>com.jiaxiao.entity.TbTeacherJx</class>
+		<class>com.jiaxiao.entity.TbWxGroup</class>
+		<class>com.jiaxiao.entity.TbWxUser</class>
+		<class>com.jiaxiao.entity.TbWxinfoTm</class>
+		<class>com.jiaxiao.entity.TbWxpublicJx</class>
+	</persistence-unit>
+</persistence>

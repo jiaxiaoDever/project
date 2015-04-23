@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.SubjectDAO">
+	<resultMap type="TbSubject" id="defaulfResultMap">
+		<id property="subjectId" column="SUBJECT_ID"/>
+		<result property="licenseType" column="LICENSE_TYPE"/>
+		<result property="licenseTypeCode" column="LICENSE_TYPE_CODE"/>
+		<result property="subjectName" column="SUBJECT_NAME"/>
+	</resultMap>
+</mapper>

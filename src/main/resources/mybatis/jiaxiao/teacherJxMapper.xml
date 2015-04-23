@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.TeacherJxDAO">
+	<resultMap type="TbTeacherJx" id="defaulfResultMap">
+		<id property="teacherId" column="TEACHER_ID"/>
+		<result property="birthDate" column="BIRTH_DATE"/>
+		<result property="branchId" column="BRANCH_ID"/>
+		<result property="branchName" column="BRANCH_NAME"/>
+		<result property="checkNum" column="CHECK_NUM"/>
+		<result property="city" column="city"/>
+		<result property="common" column="common"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="duteAge" column="DUTE_AGE"/>
+		<result property="duteDate" column="DUTE_DATE"/>
+		<result property="duteLevel" column="DUTE_LEVEL"/>
+		<result property="duteLevelCode" column="DUTE_LEVEL_CODE"/>
+		<result property="duteLevelNo" column="DUTE_LEVEL_NO"/>
+		<result property="duteLevelPic" column="DUTE_LEVEL_PIC"/>
+		<result property="duteStat" column="DUTE_STAT"/>
+		<result property="duteStatCode" column="DUTE_STAT_CODE"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="isCourseNotic" column="IS_COURSE_NOTIC"/>
+		<result property="isFullTime" column="IS_FULL_TIME"/>
+		<result property="isHot" column="IS_HOT"/>
+		<result property="isOnDute" column="IS_ON_DUTE"/>
+		<result property="isRoastNotic" column="IS_ROAST_NOTIC"/>
+		<result property="jxId" column="JX_ID"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="likeNum" column="LIKE_NUM"/>
+		<result property="nearDuteDate" column="NEAR_DUTE_DATE"/>
+		<result property="cardId" column="CARD_ID"/>
+		<result property="province" column="province"/>
+		<result property="score" column="score"/>
+		<result property="scoreNum" column="SCORE_NUM"/>
+		<result property="sex" column="sex"/>
+		<result property="studentNum" column="STUDENT_NUM"/>
+		<result property="subjectId" column="SUBJECT_ID"/>
+		<result property="subjectName" column="SUBJECT_NAME"/>
+		<result property="teaAddress" column="TEA_ADDRESS"/>
+		<result property="teaEthnic" column="TEA_ETHNIC"/>
+		<result property="teaLogo" column="TEA_LOGO"/>
+		<result property="teaNative" column="TEA_NATIVE"/>
+		<result property="teaPhone" column="TEA_PHONE"/>
+		<result property="teaQq" column="TEA_QQ"/>
+		<result property="teaTel" column="TEA_TEL"/>
+		<result property="teacherArea" column="TEACHER_AREA"/>
+		<result property="teacherName" column="TEACHER_NAME"/>
+	</resultMap>
+	<resultMap type="TeacherCourses" id="tcMap">
+		<id property="teacherId" column="TEACHER_ID"/>
+		<association property="tbTeacherJx" resultMap="defaulfResultMap" column="TEACHER_ID"></association>
+		<collection property="tbRoasterJxs" column="COURSE_ID" ofType="TbRoasterJx">
+			<id property="courseId" column="COURSE_ID"/>
+			<result property="branchId" column="BRANCH_ID"/>
+			<result property="branchName" column="BRANCH_NAME"/>
+			<result property="canSignNum" column="CAN_SIGN_NUM"/>
+			<result property="common" column="common"/>
+			<result property="courseHour" column="COURSE_HOUR"/>
+			<result property="courseInNum" column="COURSE_IN_NUM"/>
+			<result property="courseInfo" column="COURSE_INFO"/>
+			<result property="courseName" column="COURSE_NAME"/>
+			<result property="courseNoticBHour" column="COURSE_NOTIC_B_HOUR"/>
+			<result property="courseStat" column="COURSE_STAT"/>
+			<result property="courseStatCode" column="COURSE_STAT_CODE"/>
+			<result property="courseTimearea" column="COURSE_TIMEAREA"/>
+			<result property="courseTimeareaCode" column="COURSE_TIMEAREA_CODE"/>
+			<result property="createDate" column="CREATE_DATE"/>
+			<result property="editDate" column="EDIT_DATE"/>
+			<result property="editEndTime" column="EDIT_END_TIME"/>
+			<result property="endTime" column="END_TIME"/>
+			<result property="isCourseNotic" column="IS_COURSE_NOTIC"/>
+			<result property="isRoastNotic" column="IS_ROAST_NOTIC"/>
+			<result property="jxId" column="JX_ID"/>
+			<result property="jxName" column="JX_NAME"/>
+			<result property="offlineNum" column="OFFLINE_NUM"/>
+			<result property="roastNoticAHour" column="ROAST_NOTIC_A_HOUR"/>
+			<result property="signEndTime" column="SIGN_END_TIME"/>
+			<result property="startTime" column="START_TIME"/>
+			<result property="subjectId" column="SUBJECT_ID"/>
+			<result property="subjectName" column="SUBJECT_NAME"/>
+			<result property="teacherId" column="TEACHER_ID"/>
+			<result property="teacherName" column="TEACHER_NAME"/>
+		</collection>
+	</resultMap>
+	<select id="findTeacherCouresOnBranch" resultMap="tcMap">
+		select j.*,r.* from ${jdbc.schema}.tb_teacher_jx j left join ${jdbc.schema}.tb_roaster_jx r on j.TEACHER_ID=r.TEACHER_ID 
+		where j.BRANCH_ID= #{branchId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB'  
+		and r.START_TIME > CURDATE() and r.START_TIME &lt; date_add(now(), interval 3 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
+	</select>
+	<select id="findTeacherCouresDetail" resultMap="tcMap">
+		select j.*,r.* from ${jdbc.schema}.tb_teacher_jx j left join ${jdbc.schema}.tb_roaster_jx r on j.TEACHER_ID=r.TEACHER_ID 
+		where j.TEACHER_ID= #{teacherId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB' 
+		and r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
+	</select>
+	
+	<update id="bookingTeacherCourse">
+		update ${jdbc.schema}.tb_roaster_jx r set r.CAN_SIGN_NUM=r.CAN_SIGN_NUM-1 where r.START_TIME > now() and r.CAN_SIGN_NUM > 0 and r.COURSE_ID = #{courseId} 
+	</update>
+	
+	<insert id="addStudentCourse"  parameterType="TbCourseSt">
+    	insert into ${jdbc.schema}.tb_course_st(ST_COURSE_ID,STUDENT_ID,STUDENT_NAME,COURSE_ID,COURSE_NAME,BOOK_TIME,COURSE_STAT_CODE,COURSE_STAT) 
+    	values(#{stCourseId},#{studentId},#{studentName},#{courseId},#{courseName},now(),'DSK','待上课')
+    </insert>	
+    
+	<update id="reduceStudentCanSianNum">
+		update ${jdbc.schema}.tb_student_jx s set s.CAN_SIGN_COURSE_NUM = s.CAN_SIGN_COURSE_NUM-1 where s.CAN_SIGN_COURSE_NUM > 0 and s.STUDENT_ID = #{studentId}
+	</update>
+</mapper>

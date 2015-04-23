@@ -1,0 +1,72 @@
+<anychart>
+  <settings>
+    <animation enabled="true"/>
+  </settings>
+
+  <gauges>
+    <gauge>
+      <chart_settings>
+        <title>
+          <text>Multiple Axes and Pointers</text>
+        </title>
+      </chart_settings>
+      <circular>
+        <axis radius="50" start_angle="10" sweep_angle="160">
+          <scale minimum="0" maximum="100" major_interval="20" minor_interval="5"/>
+        </axis>
+        <extra_axes>
+          <axis name="ExtraAxis1" radius="50" start_angle="190" sweep_angle="160">
+            <scale minimum="0" maximum="1" major_interval="0.2" minor_interval="0.05" inverted="true"/>
+            <scale_bar enabled="true" shape="Bar" width="5">
+              <fill enabled="true" color="#70DD71"/>
+            </scale_bar>
+            <labels>
+              <format><![CDATA[{%Value}{numDecimals:1}]]></format>
+            </labels>
+          </axis>
+          <axis name="ExtraAxis2" radius="35" start_angle="15" sweep_angle="330">
+            <scale minimum="0" maximum="60" major_interval="5" inverted="true"/>
+            <scale_bar enabled="true" shape="Line">
+              <border enabled="true" color="#494949" opacity="0.2"/>
+            </scale_bar>
+            <major_tickmark enabled="true" shape="Circle" width="5" height="5">
+              <fill enabled="true" color="#494949"/>
+            </major_tickmark>
+            <minor_tickmark enabled="true" shape="Circle" width="2" height="2">
+              <fill enabled="true" color="#494949"/>
+            </minor_tickmark>
+            <labels enabled="true" rotate_circular="false" padding="6">
+              <format><![CDATA[{%Value}{numDecimals:0}]]></format>
+            </labels>
+          </axis>
+        </extra_axes>
+        <frame>
+          <inner_stroke thickness="2"/>
+          <effects enabled="true">
+            <drop_shadow enabled="true" opacity="0.5" blur_x="5" blur_y="5"/>
+          </effects>
+        </frame>
+        <pointers>
+          <pointer type="Needle" value="45">
+            <needle_pointer_style thickness="8" radius="105">
+              <cap enabled="false"/>
+            </needle_pointer_style>
+            <animation enabled="true" start_time="0" duration="0.3" interpolation_type="Cubic"/>
+          </pointer>
+          <pointer type="Needle" value="0.75" axis="ExtraAxis1">
+            <needle_pointer_style thickness="8" radius="105">
+              <cap enabled="false"/>
+            </needle_pointer_style>
+            <animation enabled="true" start_time="0" duration="0.3" interpolation_type="Cubic"/>
+          </pointer>
+          <pointer type="Needle" value="42" axis="ExtraAxis2">
+            <needle_pointer_style thickness="8" radius="110">
+              <cap radius="15"/>
+            </needle_pointer_style>
+            <animation enabled="true" start_time="0" duration="0.3" interpolation_type="Cubic"/>
+          </pointer>
+        </pointers>
+      </circular>
+    </gauge>
+  </gauges>
+</anychart>

@@ -1,0 +1,9 @@
+﻿@charset "utf-8";
+/* style of yhui structure all
+ * created by jiangyuan(qq:741967342) 20130308
+ */
+ @import "yhui-structure-reset.css";
+ @import "yhui-structure-jqueryui.css";
+ @import "yhui-structure-jqgrid.css";
+ @import "yhui-structure-only.css";
+ @import "yhui-structure-overwrite.css";

@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* style of yhui skin toolbar
+ */
+ .yhToolbar{ height:24px; }
+div.toolbar { height:24px; padding:5px 0 0 0;; white-space: nowrap; background: #C9EBF7 url(images/Toolbar/bg.gif) repeat-x left 50%; zoom: 1; }
+.toolbar .toolbar_disabled { filter: alpha(opacity = 60); -moz-opacity: 0.6; opacity: 0.6; }
+.toolbar .toolbar_disabled a { color: #BBB; }
+.toolbar span{padding: 4px 5px; border:1px solid #ddf3fb;}
+/*.toolbar span.btn:hover { background: url(images/Toolbar/tb_border.gif) repeat-x 0 -42px; }
+.toolbar span.btn.down{ background: url(images/Toolbar/tb_border.gif) repeat-x 0 -105px; }*/
+.toolbar span.rightContiainer{padding:0px;float:right;}
+.toolbar span.rightContiainer:hover{}
+.toolbar .spacer { height: 17px;vertical-align:middle; font-size: 1px; border-left: solid 1px #84A4CE; border-right: solid 1px #FFF; display: inline-block; margin: 0 2px; padding: 0; }
+
+.toolbar span.btn:hover,.toolbar span.btn.down{border: 1px solid #9bd0e0; line-height: 15px;}
+.toolbar .over,.toolbar span.btn:hover{background: url(images/Toolbar/btn_hover.gif) repeat-x 0 0;}
+.toolbar .down,.toolbar span.btn.down{background: url(images/Toolbar/btn_down.gif) repeat-x  0 0;}
+
+.toolbar a { cursor: pointer ;display:inline-block ; vertical-align:middle; padding-top: 3px; padding-bottom: 4px; margin-left: 2px; margin-right: 2px; text-decoration:none; white-space:nowrap; height:14px; *height:auto; color:#333; _line-height:1.2; }
+.toolbar a.new { background: transparent url(images/Toolbar/toolbarIco/new.gif) no-repeat 0 1px; padding-left:18px; }
+.toolbar a.edit { background: transparent url(images/Toolbar/toolbarIco/edit.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.save { background: transparent url(images/Toolbar/toolbarIco/save.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.saveAs { background: transparent url(images/Toolbar/toolbarIco/saveAs.gif) no-repeat 0 1px; padding-left:20px; }
+
+.toolbar a.refresh { background: transparent url(images/Toolbar/toolbarIco/refresh.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.cancel { background: transparent url(images/Toolbar/toolbarIco/cancel.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.next { background: transparent url(images/Toolbar/toolbarIco/next.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.back { background: transparent url(images/Toolbar/toolbarIco/back.gif) no-repeat 0 1px; padding-left:20px; }
+
+.toolbar a.print{ background: transparent url(images/Toolbar/toolbarIco/print.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.import{ background: transparent url(images/Toolbar/toolbarIco/import.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.export{ background: transparent url(images/Toolbar/toolbarIco/export.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.delete{ background: transparent url(images/Toolbar/toolbarIco/delete.gif) no-repeat 0 1px; padding-left:20px; }
+
+.toolbar a.search{ background:transparent url(images/Toolbar/toolbarIco/search.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.alert_handle{ background:transparent url(images/Toolbar/toolbarIco/alert_handle.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.clear{ background:transparent url(images/Toolbar/toolbarIco/clear.gif) no-repeat 0 1px; padding-left:20px; }
+.toolbar a.arrow{ background:transparent url(images/Toolbar/toolbarIco/arrow.gif) no-repeat 0 1px; padding-left:20px; }
+
+.toolbar a.role-setup { background:transparent url(images/Toolbar/toolbarIco/role-setup.gif) no-repeat 0 2px ; padding-left:20px; }
+.toolbar a.linked { background:transparent url(images/Toolbar/toolbarIco/linked.gif) no-repeat 0 3px; padding-left:20px; }

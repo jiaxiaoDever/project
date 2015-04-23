@@ -1,0 +1,220 @@
+﻿[
+	{
+		"name" : "首页",
+		"children":[
+			{ "name" : "今日要闻" },
+			{ "name" : "小便签" },
+			{ "name" : "计划表" }
+		]
+	},
+	{
+		"name" : "日常关键报表",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "数据统计分析",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "星级档案库",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "业务探针",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "数据ETL管理",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "数据质量管理",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	},
+	{
+		"name" : "系统管理",
+		"children":[
+			{
+				"name":"上下布局"
+			,	"link":"Layout/templateOfUp-down.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左右布局"
+			,	"link":"Layout/templateOfUp-leftRight.html"
+			,	"isNewWindow": true
+			}
+		,	{
+				"name":"上-左-上下布局"
+			,	"children":[
+					{
+						"name":"基本内容填充"
+					,	"link":"Layout/templateOfUp-left-updown.html"
+					,	"isNewWindow": true
+					}
+				,	{
+						"name":"内嵌iframe"
+					,	"link":"Layout/iframesTemp.html"
+					,	"isNewWindow": true
+					}
+				]
+			}
+		]
+	}
+]

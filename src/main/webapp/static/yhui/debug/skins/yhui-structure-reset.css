@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* style of yhui reset
+ * created by jiangyuan(qq:741967342) 20130308
+ */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, code,del, dfn, em, img, q, dl, dt, dd, ol, ul, li,fieldset, form,
+label, legend,table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, figure, footer, header, hgroup, nav, section { margin: 0;padding: 0;border: 0; font-family: "SimSun" sans-serif serif; }
+body { font-size: 12px; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; }
+table { border-collapse: collapse; border-spacing: 0;}
+a img { border: none; }
+:focus { outline: 0; }
+
+.noPadding { padding:0 !important; } 
+.noMargin { margin: 0 !important; } 
+.noMP { padding: 0 !important; margin: 0 !important; } 
+.noBorder { border: none !important; }
+.noBorderBottom { border-bottom: none !important; }

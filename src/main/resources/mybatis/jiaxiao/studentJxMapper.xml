@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.StudentJxDAO">
+
+<resultMap type="TbStudentJx" id="defaulfResultMap">
+		<id property="studentId" column="STUDENT_ID"/>
+		<result property="branchId" column="BRANCH_ID"/>
+		<result property="branchName" column="BRANCH_NAME"/>
+		<result property="city" column="city"/>
+		<result property="common" column="common"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="deleteDate" column="DELETE_DATE"/>
+		<result property="deleteInfo" column="DELETE_INFO"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="exceptionBookNum" column="EXCEPTION_BOOK_NUM"/>
+		<result property="isBookedNotic" column="IS_BOOKED_NOTIC"/>
+		<result property="isImplScoreNotic" column="IS_IMPL_SCORE_NOTIC"/>
+		<result property="isPreImplNotic" column="IS_PRE_IMPL_NOTIC"/>
+		<result property="jxId" column="JX_ID"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="licenseType" column="LICENSE_TYPE"/>
+		<result property="licenseTypeCode" column="LICENSE_TYPE_CODE"/>
+		<result property="lockInfo" column="LOCK_INFO"/>
+		<result property="lockTime" column="LOCK_TIME"/>
+		<result property="password" column="password"/>
+		<result property="phoneNum" column="PHONE_NUM"/>
+		<result property="preImplNoticBHour" column="PRE_IMPL_NOTIC_B_HOUR"/>
+		<result property="province" column="province"/>
+		<result property="qq" column="qq"/>
+		<result property="sex" column="sex"/>
+		<result property="stAddress" column="ST_ADDRESS"/>
+		<result property="stArea" column="ST_AREA"/>
+		<result property="stWorkAddress" column="ST_WORK_ADDRESS"/>
+		<result property="studentCardId" column="STUDENT_CARD_ID"/>
+		<result property="studentName" column="STUDENT_NAME"/>
+		<result property="studentStat" column="STUDENT_STAT"/>
+		<result property="studentStatCode" column="STUDENT_STAT_CODE"/>
+		<result property="subjectId" column="SUBJECT_ID"/>
+		<result property="subjectName" column="SUBJECT_NAME"/>
+		<result property="unlockTime" column="UNLOCK_TIME"/>
+		<result property="maxNumSign" column="MAX_NUM_SIGN"/>
+		<result property="canSignCourseNum" column="CAN_SIGN_COURSE_NUM"/>
+		<result property="overCourseNum" column="OVER_COURSE_NUM"/>
+		<result property="addCourseNum" column="ADD_COURSE_NUM"/>
+		<result property="totalCourseNum" column="TOTAL_COURSE_NUM"/>
+	</resultMap>
+	<select id="getStudentJx" resultType="TbStudentJx">
+		select t.* from ${jdbc.schema}.tb_student_jx t where t.student_name = #{studentName} and t.student_card_id = #{studentCardId} and t.phone_num = #{studentPhone} 
+	</select>
+	<select id="getBandedStudentJx" resultType="TbStudentJx">
+		select s.* from ${jdbc.schema}.tb_wx_user u left join ${jdbc.schema}.tb_student_jx s on u.STUDENT_ID=s.STUDENT_ID where u.IS_BINDED='1' and u.OPEN_ID=#{openId}
+	</select>
+</mapper>

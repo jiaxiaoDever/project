@@ -1,0 +1,53 @@
+/* about comment dong guan kao he biao */
+.rpt-comment dt{
+	background: url(images/commentTitle.png) repeat-x left center;
+	padding: 5px 10px;
+	border-bottom: 1px solid #CAF0F8;
+}
+	.rpt-comment dt strong {
+		margin-right: 20px;
+	}
+	.rpt-comment dt span {
+		color: #3235F5;
+	}
+	.rpt-comment dt a {
+		color: #0081A8;
+		margin-left: 10px;
+	}
+	.rpt-comment dt a:hover {
+		color: #CC6600;
+	}
+.rpt-comment dd {
+	padding: 2px 10px;
+}
+.rpt-comment dd.odd {
+}
+.rpt-comment dd.even {
+	background-color: #F7FDFF;
+	border-top: 1px solid #D9F4FB;
+	border-bottom: 1px solid #D9F4FB;
+}
+	.rpt-comment dd div {
+		padding: 2px 0;
+	}
+	.rpt-comment dd div.rpt-commentInfo {
+		
+	}
+	.rpt-comment dd div.rpt-commentInfo span {
+		color: #196CA4;
+		margin-right: 5px;
+	}
+	.rpt-comment dd div.rpt-commentContent {
+		
+	}
+
+.comment{
+	background: url(../images/edit.gif) 0 -1px no-repeat;
+
+height: 20px;
+display: block;
+padding-left: 20px;
+text-decoration: none;
+
+}
+	

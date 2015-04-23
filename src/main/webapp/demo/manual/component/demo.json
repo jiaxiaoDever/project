@@ -1,0 +1,135 @@
+[ 
+{
+    "name": "基础",
+    "children": [
+        {
+            "name": "jquery",
+            "link": "http://api.jquery.com/",
+            "isNewWindow": true
+        },
+        {
+            "name": "jquery UI",
+            "link": "http://api.jqueryui.com/",
+            "isNewWindow": true
+        },
+        {
+            "name": "jquery layout",
+            "link": "http://layout.jquery-dev.net/documentation.cfm",
+            "isNewWindow": true
+        },
+        {
+            "name": "yhHead",
+            "link": "yhHead.jsp"
+        },
+        {
+            "name": "yhCore",
+            "link": "yhCore.jsp"
+        }
+    ]
+},
+{
+    "name": "布局",
+    "children": [
+        {
+            "name": "布局-yhLayout",
+            "link": "yhLayout.jsp"
+        }
+    ]
+},
+{
+    "name": "菜单",
+    "children": [
+        {
+            "name": "导航菜单-yhMenu",
+            "link": "yhMenu.jsp"
+        },
+        {
+            "name": "树型菜单-yhTreemenu",
+            "link": "yhTreemenu.jsp"
+        },
+        {
+            "name": "右键菜单-yhContextMenu",
+            "link": "yhContextMenu.jsp"
+        }
+    ]
+},
+{
+    "name": "基础组件",
+    "children": [
+        {
+            "name": "手风琴&面板-yhSwitchPanel",
+            "link": "yhSwitchPanel.jsp"
+        },
+        {
+            "name": "选项卡-tabs",
+            "link": "yhTabs.jsp"
+        },
+        {
+            "name": "滚动选项卡-yhScrollTab",
+            "link": "yhScrollTab.jsp"
+        },
+        {
+            "name": "工具栏-yhToolbar",
+            "link": "yhToolbar.jsp"
+        },
+        {
+            "name": "页面构建-yhPortlet",
+            "link": "yhPortlet.jsp"
+        },
+        {
+            "name": "官方弹窗-dialog",
+            "link": "http://api.jqueryui.com/dialog/",
+            "isNewWindow": true
+        },
+        {
+            "name": "提示弹窗-yhDialogTip",
+            "link": "yhDialogTip.jsp"
+        },
+        {
+            "name": "停靠窗口-yhWindow",
+            "link": "yhWindow.jsp"
+        },        
+        {
+            "name": "加载中-yhLoading",
+            "link": "yhLoading.jsp"
+        }
+    ]
+},
+{
+    "name": "表单",
+    "children": [
+        {
+            "name": "表单布局-yhFormField",
+            "link": "yhFormField.jsp"
+        },
+        {
+            "name": "按钮-yhButton",
+            "link": "yhButton.jsp"
+        },
+        {
+            "name": "搜索框-yhSearchBox",
+            "link": "yhSearchBox.jsp"
+        },
+        {
+            "name": "数字微调-spinner",
+            "link": "http://api.jqueryui.com/spinner/"
+        },
+        {
+            "name": "下拉框-yhSelectmenu",
+            "link": "yhSelectmenu.jsp"
+        },
+        {
+            "name": "时间选择器-yhDatePicker",
+            "link": "yhDatePicker.jsp"
+        },
+        {
+            "name": "占位符-yhPlaceholder",
+            "link": "yhPlaceholder.jsp"
+        },
+        {
+            "name": "验证-yhValidate",
+            "link": "yhValidate.jsp"
+        }        
+    ]
+}
+]

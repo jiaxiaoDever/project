@@ -1,0 +1,250 @@
+[
+    {
+        "name": "jqGrid基本实例",
+        "children": [
+            {
+                "name": "帮助手册-jqGrid的参数",
+                "link": "../../manual/component/jqGrid_options.jsp"
+            },
+            {
+                "name": "帮助手册-jqGrid方法",
+                "link": "../../manual/component/jqGrid_methods.jsp"
+            },
+            {
+                "name": "帮助手册-jqGrid事件",
+                "link": "../../manual/component/jqGrid_events.jsp"
+            },
+            {
+                "name": "jqGrid-自适应",
+                "link": "base/data-1.jsp"
+            },
+            {
+                "name": "jqGrid-固定尺寸",
+                "link": "base/data-2.jsp"
+            },
+            {
+                "name": "jqGrid-json数据展示",
+                "link": "base/jsondata.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid列模型",
+        "children": [
+            {
+                "name": "帮助手册-jqGrid列模型",
+                "link": "../../manual/component/jqGrid_colModel.jsp"
+            },
+            {
+                "name": "jqGrid列模型",
+                "link": "base/colModel.jsp"
+            },
+            {
+                "name": "jqGrid列模型(省colNames)",
+                "link": "base/colModel2.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid-新增",
+        "children": [
+            {
+                "name": "帮助手册-自定义单元格内容",
+                "link": "../../manual/component/jqGrid_Custom.jsp"
+            },
+            {
+                "name": "帮助手册-预定义单元格内容",
+                "link": "../../manual/component/jqGrid_Predefined.jsp"
+            },
+            {
+                "name": "表格内增改",
+                "link": "navGrid.jsp"
+            },
+            {
+                "name": "表格外增加行",
+                "link": "cud/create-remote.jsp"
+            },
+            {
+                "name": "自定义添加",
+                "link": "cud/create-custom-remote.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid-编辑",
+        "children": [
+            {
+                "name": "帮助手册-编辑-基本概念",
+                "link": "../../manual/component/jqGrid_editable.jsp"
+            },
+            {
+                "name": "帮助手册-编辑-单元格编辑",
+                "link": "../../manual/component/jqGrid_editable1.jsp"
+            },
+            {
+                "name": "帮助手册-编辑-行内编辑",
+                "link": "../../manual/component/jqGrid_editable3.jsp"
+            },
+            {
+                "name": "帮助手册-编辑-表单编辑",
+                "link": "../../manual/component/jqGrid_editable2.jsp"
+            },
+            {
+                "name": "编辑-本地单元格",
+                "link": "cud/local-edit-cell.jsp"
+            },
+            {
+                "name": "编辑-单元格编辑",
+                "link": "cud/edit-cell.jsp"
+            },
+            {
+                "name": "编辑-表格外编辑",
+                "link": "cud/edit-form.jsp"
+            },
+            {
+                "name": "编辑-行内编辑",
+                "link": "cud/edit-inline.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid删除",
+        "children": [
+            {
+                "name": "帮助手册-jqGrid方法",
+                "link": "../../manual/component/jqGrid_methods.jsp"
+            },
+            {
+                "name": "帮助手册-jqGrid事件",
+                "link": "../../manual/component/jqGrid_events.jsp"
+            },
+            {
+                "name": "删除-表格外删除",
+                "link": "cud/delete-remote.jsp"
+            },
+            {
+                "name": "删除-删除多行",
+                "link": "cud/delete-multi.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid导航栏",
+        "children": [
+            {
+                "name": "帮助手册-导航栏-翻页区",
+                "link": "../../manual/component/jqGrid_navigator.jsp"
+            },
+            {
+                "name": "帮助手册-导航栏-功能区",
+                "link": "../../manual/component/jqGrid_navigator1.jsp"
+            },
+            {
+                "name": "导航栏-翻页区",
+                "link": "base/pager.jsp"
+            },
+            {
+                "name": "导航栏-功能区",
+                "link": "base/navigator.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid的查询",
+        "children": [
+            {
+                "name": "帮助手册-查询-基本概念",
+                "link": "../../manual/component/jqGrid_search.jsp"
+            },
+            {
+                "name": "帮助手册-查询-工具栏过滤",
+                "link": "../../manual/component/jqGrid_search1.jsp"
+            },
+            {
+                "name": "帮助手册-查询-自定义",
+                "link": "../../manual/component/jqGrid_search2.jsp"
+            },
+            {
+                "name": "帮助手册-查询-单字段",
+                "link": "../../manual/component/jqGrid_search3.jsp"
+            },
+            {
+                "name": "帮助手册-查询-高阶查询",
+                "link": "../../manual/component/jqGrid_search4.jsp"
+            },
+            {
+                "name": "工具栏过滤-本地",
+                "link": "search/toolbar-local.jsp"
+            },
+            {
+                "name": "工具栏过滤-数据库",
+                "link": "search/toolbar-remote.jsp"
+            },
+            {
+                "name": "自定义查询",
+                "link": "search/search-custom.jsp"
+            },
+            {
+                "name": "单字段查询",
+                "link": "search/search-single.jsp"
+            },
+            {
+                "name": "高阶查询",
+                "link": "search/search-advanced.jsp"
+            }
+        ]
+    },
+    {
+        "name": "jqGrid其功能",
+        "children": [
+            {
+                "name": "帮助手册-表头分组",
+                "link": "../../manual/component/jqGrid_GroupHeaders.jsp"
+            },
+            {
+                "name": "帮助手册-冻结列",
+                "link": "../../manual/component/jqGrid_frozen.jsp"
+            },
+            {
+                "name": "帮助手册-子表格",
+                "link": "../../manual/component/jqGrid_subgrid.jsp"
+            },
+            {
+                "name": "帮助手册-树形表格-基本概念",
+                "link": "../../manual/component/jqGrid_treeGrid1.jsp"
+            },
+            {
+                "name": "帮助手册-树形表格-邻接列表模型",
+                "link": "../../manual/component/jqGrid_treeGrid.jsp"
+            },
+            {
+                "name": "帮助手册-数据格式",
+                "link": "../../manual/component/jqGrid_datatype.jsp"
+            },
+            {
+                "name": "表头分组",
+                "link": "others/col-group.jsp"
+            },
+            {
+                "name": "冻结列",
+                "link": "others/col-frozen.jsp"
+            },
+            {
+                "name": "子表格",
+                "link": "async/subgrid.jsp"
+            },
+            {
+                "name": "树形表格",
+                "link": "async/treeGrid.jsp"
+            },
+            {
+                "name": "表格联动",
+                "link": "others/linkage.jsp"
+            },
+            {
+                "name": "右键菜单",
+                "link": "others/contextmenu.jsp"
+            }
+        ]
+    }
+]

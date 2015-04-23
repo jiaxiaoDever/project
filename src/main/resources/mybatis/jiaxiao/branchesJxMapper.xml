@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.BranchesJxDAO">
+	<resultMap type="TbBranchesJx" id="defaulfResultMap">
+		<id property="branchId" column="BRANCH_ID"/>
+		<result property="branchCity" column="BRANCH_CITY"/>
+		<result property="branchName" column="BRANCH_NAME"/>
+		<result property="branchProvice" column="BRANCH_PROVICE"/>
+		<result property="jxId" column="JX_ID"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="branchAddress" column="BRANCH_ADDRESS"/>
+	</resultMap>
+</mapper>

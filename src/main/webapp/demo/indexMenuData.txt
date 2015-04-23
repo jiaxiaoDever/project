@@ -1,0 +1,10 @@
+﻿[
+	{
+		"name" : "版本说明",
+		"link": "version.jsp"
+	},
+	{
+	    "name": "使用文档",
+	    "link": "manual/document/index.html"
+	}
+]

@@ -1,0 +1,101 @@
+<anychart>
+	<settings>
+		<animation enabled="True"/>
+	</settings>
+	<charts>
+		<chart plot_type="CategorizedVertical">
+			<chart_settings>
+				<title enabled="true">
+					<text>Multi-Series: Multiple Y-Axes</text>
+				</title>
+				<axes>
+					<x_axis tickmarks_placement="Center">
+						<title enabled="true">
+							<text>Arguments</text>
+						</title>
+					</x_axis>
+					<y_axis>
+						<title enabled="true">
+							<text>Primary Y-Axis</text>
+							<font color="#135D8C"/>
+
+						</title>
+						<labels align="Inside">
+							<font color="#135D8C"/>
+						</labels>
+					</y_axis>
+					<extra>
+						<y_axis name="extra_y_axis_1" position="Right">
+							<minor_grid enabled="false"/>
+							<major_grid enabled="false"/>
+							<title enabled="true">
+	
+								<text>Secondary Y-Axis</text>
+								<font color="#A4300B"/>
+							</title>
+							<labels align="Inside">
+								<font color="#A4300B"/>
+							</labels>
+						</y_axis>
+					</extra>
+				</axes>
+
+			</chart_settings>
+			<data_plot_settings default_series_type="Spline">
+				<line_series>
+					<label_settings enabled="true">
+						<background enabled="false"/>
+
+						<font color="Rgb(45,45,45)" bold="true" size="9">
+
+							<effects enabled="true">
+								<glow enabled="true" color="White" opacity="1" blur_x="1.5" blur_y="1.5" strength="3"/>
+							</effects>
+						</font>
+						<format>{%YValue}{numDecimals:0}</format>
+					</label_settings>
+					<tooltip_settings enabled="true">
+<format>
+Value: {%YValue}{numDecimals:2}
+Argument: {%Name}
+</format>
+						<background>
+							<border type="Solid" color="DarkColor(%Color)"/>
+						</background>
+						<font color="DarkColor(%Color)"/>
+					</tooltip_settings>
+
+					<marker_settings enabled="true"/>
+					<line_style>
+						<line thickness="3"/>
+					</line_style>
+				</line_series>
+			</data_plot_settings>
+			<data>
+				<series name="Series 1">
+					<point name="P1" y="228.14"/>
+					<point name="P2" y="212.61"/>
+					<point name="P3" y="263.21"/>
+					<point name="P4" y="329.98"/>
+					<point name="P5" y="398.14"/>
+					<point name="P6" y="112.61"/>
+					<point name="P7" y="463.21"/>
+					<point name="P8" y="399.98"/>
+				</series>
+				
+				<series name="Series 2" y_axis="extra_y_axis_1">
+					<point name="P1" y="2790.54"/>
+					<point name="P2" y="4104.19"/>
+					<point name="P3" y="3250.67"/>
+					<point name="P4" y="5720.43"/>
+					<point name="P5" y="6298.54"/>
+					<point name="P6" y="7104.19"/>
+					<point name="P7" y="4898.67"/>
+					<point name="P8" y="8120.43"/>
+				</series>
+			</data>
+		</chart>
+
+	</charts>
+</anychart>
+			

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuhui.core.repository.system.MenuBaseDAO">
+	<resultMap type="MenuBase" id="defaulfResultMap">
+		<result property="isParent" column="is_parent" typeHandler="StringBooleanTypeHandle" />
+		<result property="iconSkin" column="icon"/>
+	</resultMap>
+	<select id="findByParentId" parameterType="MenuBase" resultMap="defaulfResultMap">
+		select t.*,
+		case when (select count(m.id) from ${jdbc.schema}.TB_SYS_MENU m where t.id = m.parent_id)>0 then 'TRUE' else 'FALSE' end as is_parent
+		from ${jdbc.schema}.tb_sys_menu t where
+		<choose>
+			<when test="id==null">
+				parent_Id is null
+			</when>
+			<otherwise>
+				parent_Id = #{id}
+			</otherwise>
+		</choose>
+		order by sort
+	</select>
+	<select id="getButtonsByParentCode" resultMap="defaulfResultMap">
+	    select distinct t.* 
+		from ${jdbc.schema}.tb_sys_menu t 
+		<choose>
+			<when test="parameters.userId != null and parameters.userId != ''">
+		     right join ${jdbc.schema}.tb_sys_role_menu rm on rm.menu_id=t.id right join 
+		    ${jdbc.schema}.tb_sys_role_user ru on ru.role_id=rm.role_id  where ru.user_id=#{parameters.userId} and t.parent_Id = (select tm.id from tb_sys_menu tm where tm.code=#{parameters.code}) order by t.sort asc 
+			</when>
+			<otherwise>
+			 where t.parent_Id = (select tm.id from ${jdbc.schema}.tb_sys_menu tm where tm.code=#{parameters.code}) order by t.sort asc 
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="getMenus" parameterType="MenuBase" resultMap="defaulfResultMap">
+		select t.*
+		from ${jdbc.schema}.tb_sys_menu t where
+		type=1
+		order by sort
+	</select>
+	<select id="getLastSortByParentId" parameterType="String" resultType="Integer">
+		select max(t.sort)
+		from ${jdbc.schema}.tb_sys_menu t where
+		parent_id = #{parentId}
+	</select>
+	<select id="getMenuIdByRoleId" parameterType="String" resultType="string">
+		select menu_id from ${jdbc.schema}.tb_sys_role_menu t where role_id= #{id}
+	</select>
+	
+	<select id="getUserMenus" parameterType="String" resultMap="defaulfResultMap">
+		select distinct t.* ,case when (select count(m.id) from ${jdbc.schema}.tb_sys_menu m where m.type='1' and t.id = m.parent_id)>0 then 'TRUE' else 'FALSE' end as is_parent 
+		from ${jdbc.schema}.tb_sys_menu t right join ${jdbc.schema}.tb_sys_role_menu rm on rm.menu_id=t.id right join 
+		    ${jdbc.schema}.tb_sys_role_user ru on ru.role_id=rm.role_id  where t.type='1' and ru.user_id=#{userId} order by t.sort asc 
+	</select>
+</mapper>

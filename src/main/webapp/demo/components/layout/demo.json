@@ -1,0 +1,81 @@
+[
+    {
+        "name": "基本布局",
+        "children": [
+            {
+                "name": "上下布局",
+                "link": "baselayout-ud.jsp"
+            },
+            {
+                "name": "左右布局",
+                "link": "baselayout-lr.jsp"
+            },
+            {
+                "name": "上中下布局",
+                "link": "baselayout-umd.jsp",
+                "isNewWindow": true
+            },
+            {
+                "name": "左中右布局",
+                "link": "baselayout-lmr.jsp"
+            },
+            {
+                "name": "上-左右布局",
+                "link": "baselayout-ulr.jsp"
+            }
+        ]
+    },
+    { 
+        "name": "嵌套布局",
+        "children":[
+            {
+                "name": "嵌套布局-纵向(上下)",
+                "link": "nest-right-ud.jsp"
+            },
+            {
+                "name": "嵌套布局-横向(左右)",
+                "link": "nest-right-lr.jsp"
+            },
+            {
+                "name": "嵌套布局-iframe",
+                "link": "nest-iframe.jsp"
+            }
+        ] 
+    },
+    { 
+        "name": "自适应布局",
+        "children":[
+            {
+                "name": "主体区自适应",
+                "link": "auto-main.jsp"
+            },
+            {
+                "name": "表格区自适应",
+                "link": "auto-table.jsp"
+            },
+            {
+                "name": "自定义自适应",
+                "link": "auto-custom.jsp"
+            }
+        ] 
+    },
+    { 
+        "name": "属性实例",
+        "children":[
+            {
+                "name": "中阶属性(初级)",
+                "link": "property-01.jsp"
+            },
+            {
+                "name": "中阶属性(高级)",
+                "link": "property-02.jsp"
+            },
+            {
+                "name": "高阶属性(研发型)待续",
+                "link": ""
+            }
+        ] 
+    }
+]
+
+        

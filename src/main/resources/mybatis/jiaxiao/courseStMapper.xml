@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.CourseStDAO">
+	<resultMap type="TbCourseSt" id="defaulfResultMap">
+		<id property="stCourseId" column="ST_COURSE_ID"/>
+		<result property="courseId" column="COURSE_ID"/>
+	</resultMap>
+	
+	<select id="" resultMap="defaulfResultMap">
+		select c.ST_COURSE_ID,c.COURSE_ID from ${jdbc.schema}.tb_course_st c left join ${jdbc.schema}.tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID 
+where r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) and c.STUDENT_ID = #{getDayBookNum} and c.COURSE_STAT != 'YQX'
+	</select>
+</mapper>

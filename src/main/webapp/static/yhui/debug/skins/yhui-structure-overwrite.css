@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* style of yhui structure overwrite
+ * created by jiangyuan(qq:741967342) 20130308
+ */
+
+.ui-jqgrid-btable .secRow { background:white; }
+.ui-jqgrid-sortable .ui-icon-triangle-1-s { background-position: -65px -16px; }
+
+.yhui-ie7 .ui-accordion, .yhui-ie6 .ui-accordion { width: 100%; }
+.ui-menu .ui-menu-item a.ui-state-focus, .ui-menu .ui-menu-item a.ui-state-active { margin: 0 }
+.ui-selectmenu-menu { z-index: 1002; }
+.ui-selectmenu-button span.ui-selectmenu-text { padding: 0.2em 2.1em 0.2em 1em; }
+.ui-selectmenu-menu .ui-menu .ui-menu-item a { padding: 0.2em 1em; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.yhui-ie8 .ui-selectmenu-button a.ui-button, .yhui-ie9 .ui-selectmenu-button a.ui-button, .yhui-ff .ui-selectmenu-button a.ui-button { margin-bottom: -2px; }
+.ui-resizable-helper { border: 1px dotted #000 !important; }
+.ui-resizable-s { bottom: 0; }
+.ui-resizable-e { right: 0; }
+
+.ui-accordion .ui-accordion-header{ padding: 3px 0.5em 3px 2.2em; margin-top: 0; }
+.ui-dialog { padding: 0; }
+.ui-dialog .ui-dialog-titlebar { padding-right: 0; }
+.ui-dialog .ui-dialog-content { padding: 0; }
+.ui-dialog .ui-dialog-titlebar-close { cursor: pointer; right: auto; top: auto; position: static; float: right;  width: 19px; margin:1px 5px 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-fold { float: right;  width: 19px; margin:1px 5px 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-maxi { float: right;  width: 19px; margin:1px 5px 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-mini { float: right;  width: 19px; margin:1px 5px 0 0; padding: 1px; height: 18px; }
+.ui-dialog .ui-dialog-titlebar-fold span,
+.ui-dialog .ui-dialog-titlebar-maxi span,
+.ui-dialog .ui-dialog-titlebar-mini span{ display: block; margin: 1px; }
+.ui-dialog .ui-dialog-titlebar-fold:hover,
+.ui-dialog .ui-dialog-titlebar-maxi:hover,
+.ui-dialog .ui-dialog-titlebar-mini:hover { padding: 0; }
+
+.ui-tabs { padding: 0; }
+.ui-tabs .ui-tabs-nav li a { padding: 3px 1em; }
+.yhui-ie7 .ui-tabs .ui-tabs-nav li { zoom: 1; }
+
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; text-indent:1.5em;  }
+.ui-timepicker-div dl dt.ui_tpicker_time_label{ position:relative; top:5px;  }
+.ui-timepicker-div dl dd.ui_tpicker_time{ position:relative; top:4px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { margin: 0; padding: 0; }

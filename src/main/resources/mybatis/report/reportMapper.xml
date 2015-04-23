@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yuhui.core.repository.report.ReportDao">
+	
+	 <select id="getReportTypeTreeNodes"  resultType ="java.util.HashMap">
+		select id, name, parent_id, description, privilege
+		  from ${jdbc.schema}.tb_report_type t
+		 where (t.privilege = 0 or
+		       (t.privilege = 1 and t.user_id = #{parameters.userId} ))
+		   AND parent_id = #{parameters.id}
+		 order by sort asc
+	</select>
+	
+	 <select id="getAllReportTypeTreeNodes"  resultType ="java.util.HashMap">
+		select id as ID, name as NAME, parent_id as PARENT_ID, description as DESCRIPTION, privilege as PRIVILEGE
+		  from ${jdbc.schema}.tb_report_type t
+		   where (t.privilege = 0 or
+		       (t.privilege = 1 and t.user_id = #{userId} ))
+		 order by sort asc
+	</select>
+	
+	 <select id="getReportTreeNodes" parameterType="String" resultType="java.util.HashMap">
+		select s.id,
+		       s.name,
+		       s.temp_dir,
+		       s.url,
+		       report_type,
+		       b.name AS report_type_name,
+		       rpt_class,
+		       query_condition,
+		       group_name,
+		       fdfs_filename,
+		       rpt_show,
+		       s.state,
+		       s.user_id,
+		       s.user_name,
+		       s.state_date
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		 where s.report_type = #{id}
+		 ORDER BY s.state_date DESC
+		   
+	</select>
+	<!-- 带参数 -->
+	<select id="getReportTreeNodesForPage" resultType="java.util.HashMap">
+		select s.id,
+		       s.name,
+		       s.temp_dir,
+		       s.url,
+		       report_type,
+		       b.name AS report_type_name,
+		       rpt_class,
+		       query_condition,
+		       group_name,
+		       fdfs_filename,
+		       rpt_show,
+		       s.state,
+		       s.user_id,
+		       s.user_name,
+		       s.state_date
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		 where s.report_type = #{id}
+		 <if test="parameters.name != null and parameters.name != ''">
+	  			and s.name like #{name}
+	 	 </if>
+	 	 <if test="parameters.rptShow!=null and parameters.rptShow!=''">
+	 	        and s.rpt_show=#{rptShow}
+	 	 </if>
+	 	 <if test="parameters.state!=null and parameters.state !=''">
+	 	        and s.state=#{state}
+	 	 </if>
+		 ORDER BY s.state_date DESC
+		   
+	</select>
+	
+	<select id="getAllReportsForPage" resultType="java.util.HashMap">
+		SELECT s.id,
+		       s.name,
+		       s.temp_dir,
+		       s.url,
+		       report_type,
+		       b.name AS report_type_name,
+		       rpt_class,
+		       query_condition,
+		       group_name,
+		       fdfs_filename,
+		       rpt_show,
+		       s.state,
+		       s.user_id,
+		       s.user_name,
+		       s.state_date
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		  WHERE (b.privilege=0 OR (b.privilege=1 AND b.user_id=#{id}))
+		   	<if test="parameters.name != null and parameters.name != ''">
+	  			and s.name like #{name}
+	 		</if>
+	 		<if test="parameters.rptShow !=null and parameters.rptShow !=''">
+	 	        and s.rpt_show=#{rptShow}
+	 	 	</if>
+	 	 	<if test="parameters.state!=null and parameters.state !=''">
+	 	        and s.state=#{state}
+	 		 </if>	
+		        
+		  ORDER BY s.state_date DESC
+	</select>
+	<select id="queryRootReportCount" resultType="Integer">
+	   SELECT count(distinct s.id)
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		  WHERE b.privilege=0
+		  <if test="parameters.name != null and parameters.name != ''">
+	  			and s.name like #{parameters.name}
+	 	  </if>
+	 	  <if test="parameters.rptShow!=null and parameters.rptShow!=''">
+	 	        and s.rpt_show=#{parameters.rptShow}
+	 	  </if>
+	 	  <if test="parameters.state!=null and parameters.state !=''">
+	 	        and s.state=#{parameters.state}
+	 	  </if>
+	 	   OR
+		        (b.privilege=1 AND b.user_id=#{parameters.id}) 
+		        
+	</select>
+	<select id="queryTreeNodesCount" resultType="Integer">
+	    select count(distinct s.id)
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		 where s.report_type = #{parameters.id}
+		 <if test="parameters.name != null and parameters.name != ''">
+	  			and s.name like #{parameters.name}
+	 	 </if>
+	 	 <if test="parameters.rptShow!=null and parameters.rptShow!=''">
+	 	        and s.rpt_show=#{parameters.rptShow}
+	 	 </if>
+	 	 <if test="parameters.state!=null and parameters.state !=''">
+	 	        and s.state=#{parameters.state}
+	 	 </if>
+	</select>
+	<select id="getAllReports" parameterType="String" resultType="java.util.HashMap">
+		SELECT s.id,
+		       s.name,
+		       s.temp_dir,
+		       s.url,
+		       report_type,
+		       b.name AS report_type_name,
+		       rpt_class,
+		       query_condition,
+		       group_name,
+		       fdfs_filename,
+		       rpt_show,
+		        s.state,
+		        s.user_id,
+		        s.user_name,
+		        s.state_date
+		  FROM ${jdbc.schema}.tb_report s LEFT JOIN ${jdbc.schema}.tb_report_type b ON b.id = s.report_type
+		  WHERE b.privilege=0 OR
+		        (b.privilege=1 AND b.user_id=#{userId})
+		  ORDER BY s.state_date DESC
+		   
+	</select>
+	
+	<update id="updateReportName" >
+		update ${jdbc.schema}.tb_report set name = #{parameters.name},
+		 report_type = #{parameters.rptType},rpt_show = #{parameters.rptShow},
+		 state= #{parameters.state}
+		 where id = #{parameters.id}
+	</update>
+	<delete id="deleteReport" >
+		delete from ${jdbc.schema}.tb_report where id = #{id}
+	</delete>
+	<delete id="deleteReports" >
+		delete from ${jdbc.schema}.tb_report where id in
+		<foreach collection="parameters.ids" item="item" index="index" open="(" separator="," close=")">
+		    #{item}
+		</foreach>
+	</delete>
+	<insert id="addDir" >
+    	insert into ${jdbc.schema}.tb_report_type(id,name,parent_id,description,
+    		state,state_date,sort,privilege,user_id) values (#{parameters.id},#{parameters.name},
+    		#{parameters.parent_id},
+    		#{parameters.description},#{parameters.state},#{parameters.state_date},
+    		#{parameters.sort},#{parameters.privilege},#{parameters.userId}) 
+    </insert>
+    
+	<update id="editDir" >
+		update ${jdbc.schema}.tb_report_type set name = #{parameters.name}
+		 where id = #{parameters.id}
+	</update>
+	<delete id="deleteDir" >
+		delete from ${jdbc.schema}.tb_report_type where id = #{id}
+	</delete>
+	
+	
+	<insert id="addReport" >
+    	insert into ${jdbc.schema}.tb_report(id,name,temp_dir,user_id,user_name,url,
+    		state,state_date,report_type,sort,rpt_class,rpt_show) 
+    		values (#{parameters.id},#{parameters.name},
+    		#{parameters.temp_dir},
+    		#{parameters.user_id},#{parameters.user_name},#{parameters.url},#{parameters.state},#{parameters.state_date},
+    		#{parameters.report_type},#{parameters.sort},#{parameters.rpt_class},#{parameters.rpt_show}) 
+    </insert>
+    
+	<select id="checkDir" resultType="Integer">
+	    select count(1) from ${jdbc.schema}.tb_report_type where 
+	    parent_id = #{parameters.parent_id} 
+	     and name = #{parameters.name}
+	</select>
+	
+	<select id="checkEditDir" resultType="Integer">
+	    select count(1) from ${jdbc.schema}.tb_report_type where 
+	     name = #{parameters.name} and parent_id = (select c.parent_id from ${jdbc.schema}.tb_report_type c 
+	       where c.id = #{parameters.id} )
+	     
+	</select>
+	
+	<insert id="addReportNote" >
+    	insert into ${jdbc.schema}.tb_report_note(id,name,user_id,user_name,report_id,
+    		left_time,note_msg,state,receive_id,receive_name,messageurl,is_report,rpt_state
+    	) values ( #{parameters.id},#{parameters.name},#{parameters.userId},#{parameters.userName},
+    	#{parameters.reportId},#{parameters.leftTime},#{parameters.msg},#{parameters.state},
+    	#{parameters.receiveId},#{parameters.receiveName},#{parameters.url},#{parameters.type},#{parameters.reportState} )
+    		
+    </insert>
+    
+	
+	<insert id="addReportMessage" >
+    	insert into ${jdbc.schema}.tb_sys_message(id,name,content,send_state,state_date,
+    		is_read,sender_id,sender_name,receive_id,receive_state,messageurl,is_report,rpt_id,state,state_desc
+    	) values ( #{parameters.id},#{parameters.name},#{parameters.content},#{parameters.send_state},
+    	#{parameters.state_date},#{parameters.is_read},#{parameters.sender_id},#{parameters.sender_name},#{parameters.receive_id},
+    	#{parameters.receive_state},#{parameters.messageurl},#{parameters.is_report},#{parameters.rpt_id},
+    	#{parameters.state},#{parameters.state_desc} )
+    		
+    </insert>
+    
+	<select id="getReportNotes"  resultType ="java.util.HashMap">
+		select note_msg ,user_name  ,left_time 
+		  from ${jdbc.schema}.tb_report_note t
+		 where t.report_id = #{reportId}
+		 order by t.left_time asc
+	</select>
+	
+	<select id="getMyAgencyInfo"  resultType ="java.util.HashMap">
+		select id,name,state_desc as content,state_date,sender_name,sender_id,messageurl,rpt_id,state_desc,state
+		  from ${jdbc.schema}.tb_sys_message t
+		 where t.receive_id = #{parameters.userId} and t.state in
+		 <foreach collection="parameters.states" index="index" item="item" open="(" separator="," close=")">
+		     #{item}
+		 </foreach>
+		 or( t.sender_id=#{parameters.userId} and t.state =#{parameters.state})
+		 order by t.state_date asc
+	</select>
+	
+	<select id="getMyAgenciedInfo"  resultType ="java.util.HashMap">
+		select id,name,state_desc as content,state_date,sender_name,sender_id,messageurl,rpt_id,state_desc,state
+		  from ${jdbc.schema}.tb_sys_message t
+		 where  t.sender_id=#{parameters.userId}  and t.state in
+		 <foreach collection="parameters.states" index="index" item="item" open="(" separator="," close=")">
+		     #{item}
+		 </foreach>
+		 
+		 or (t.receive_id = #{parameters.userId} and t.state = #{parameters.state})
+		 
+		 order by t.state_date asc
+	</select>
+	<!-- 
+	<update id="submitAgen" >
+		update ${jdbc.schema}.tb_sys_message set state = #{parameters.type},state_desc =#{parameters.msg},
+		 sender_id=  #{parameters.senderId},sender_name =#{parameters.senderName},
+		 receive_id=#{parameters.receiveId},state_date = #{parameters.stateDate} 
+		 where id = #{parameters.id}
+	</update>
+	 -->
+	 <update id="submitAgen" >
+		update ${jdbc.schema}.tb_sys_message set state = #{parameters.type},state_desc =#{parameters.msg},
+		 sender_name =#{parameters.senderName},
+		 state_date = #{parameters.stateDate} 
+		 where id = #{parameters.id}
+	</update>
+	<select id="getReportInfo" resultType ="java.util.HashMap">
+	    SELECT s.id,
+		       s.name,
+		       s.temp_dir,
+		       s.temp_xml,
+		       s.url,
+		       report_type,
+		       rpt_class,
+		       query_condition,
+		       group_name,
+		       fdfs_filename,
+		       rpt_show
+		  FROM ${jdbc.schema}.tb_report s 
+		  WHERE s.id=#{reportId}
+		  
+	</select>
+	<select id="getCountByName" resultType="Integer">
+	    select count(*) FROM ${jdbc.schema}.tb_report s 
+		  WHERE s.name=#{name}
+	</select>
+	<select id="executeReportSql" resultType ="java.util.HashMap">
+	    SELECT *  from (  
+	  	${parameters.sqltmp}  
+	     ) tmp
+		  
+	</select>
+</mapper>

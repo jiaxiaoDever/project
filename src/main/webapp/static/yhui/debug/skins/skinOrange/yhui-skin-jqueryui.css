@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* style of yhui skin orange jqueryui
+ * created by jiangyuan(qq:741967342) 20130308
+ */
+.ui-widget { font-family: Verdana,Arial,sans-serif; font-size: 1.1em; }
+.ui-widget .ui-widget { font-size: 1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Verdana,Arial,sans-serif; font-size: 1em; }
+.ui-widget-content { border: 1px solid #f9d094; background: #FFFAF3 /*url(images/ui-bg_inset-soft_100_ffffff_1x100.png) 50% bottom repeat-x*/; color: #1e1b1d; }
+.ui-widget-content a { color: #1e1b1d; }
+.ui-widget-header { border: 1px solid #f9d094; background: #fad4b0 url(images/ui-bg_highlight-hard_100_fad4b0_1x100.png) 50% 50% repeat-x; color: #000000; font-weight: bold; }
+.ui-widget-header a { color: #000000; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #f6c783; background: #f9d4af url(images/ui-bg_highlight-hard_100_f9d4af_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #3f3731; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #3f3731; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #efdfb6; background: #fcae07 url(images/ui-bg_highlight-soft_100_fcae07_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #a46313; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #a46313; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #f0b35c; background: #fcae07 url(images/ui-bg_highlight-hard_100_fcae07_1x100.png) 50% 50% repeat-x; font-weight: normal; color: #b85700; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #b85700; text-decoration: none; }
+.ui-widget :active { outline: none; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #efdfb6; background: #fcae07 url(images/ui-bg_highlight-soft_100_fcae07_1x100.png) 50% top repeat-x; color: #060200; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #060200; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #f8893f; background: #fee4bd url(images/ui-bg_highlight-hard_100_fee4bd_1x100.png) 50% top repeat-x; color: #592003; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #592003; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #592003; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+.ui-icon { width: 16px; height: 16px; background-image: url(images/ui-icons_f08000_256x240.png); }
+.ui-widget-content .ui-icon {background-image: url(images/ui-icons_f08000_256x240.png); }
+.ui-widget-header .ui-icon {background-image: url(images/ui-icons_f08000_256x240.png); }
+.ui-state-default .ui-icon { background-image: url(images/ui-icons_f08000_256x240.png); }
+.ui-state-hover .ui-icon, .ui-state-focus .ui-icon {background-image: url(images/ui-icons_f08000_256x240.png); }
+.ui-state-active .ui-icon {background-image: url(images/ui-icons_f35f07_256x240.png); }
+.ui-state-highlight .ui-icon {background-image: url(images/ui-icons_cb672b_256x240.png); }
+.ui-state-error .ui-icon, .ui-state-error-text .ui-icon {background-image: url(images/ui-icons_ff7519_256x240.png); }
+.ui-widget-overlay { background: #2e2d2d url(images/ui-bg_flat_75_2e2d2d_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); }
+.ui-widget-shadow { margin: -8px 0 0 -8px; padding: 8px; background: #4d4d4d url(images/ui-bg_flat_75_4d4d4d_40x100.png) 50% 50% repeat-x; opacity: .30;filter:Alpha(Opacity=30); -moz-border-radius: 8px; -khtml-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+/* overwrite */
+.ui-widget { font: 12px "SimSun"; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { background-position: 50% 60%; }
+.ui-widget-header, .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { font-weight: normal; }
+.ui-accordion .ui-accordion-header{ border-bottom: none; }
+.ui-accordion .ui-accordion-header a { font-weight: bold; }
+.ui-dialog .ui-dialog-titlebar { border: none; }
+
+.ui-effects-transfer { border: 2px dotted gray; }
+.ui-spinner .yhui-form-text { border: none;}
+.ui-menu li a { border: 1px solid #FFF; }
+.ui-tabs .ui-tabs-nav { border-top: none; border-left: none; border-right: none; }
+.ui-tabs .ui-tabs-nav li a { padding: 3px 1em; }
+
+.ui-icon-yhmaxi{ background-position: -128px -80px; }
+
+.yhui-layout-border {  border: 1px solid #FF8D46; }
+.yhui-layout-border-bottom { overflow: visible; border: none; border-bottom: 1px solid #FF8D46; }
+.ui-layout-toggler-north-open { background:#FFF url(images/arrows.png) no-repeat 0 -54px; }
+.ui-layout-toggler-north-closed{ background:#FFF url(images/arrows.png) no-repeat 0 -62px; } 
+.ui-layout-toggler-south-open { background:#FFF url(images/arrows.png) no-repeat 0 -62px; }
+.ui-layout-toggler-south-closed { background:#FFF url(images/arrows.png) no-repeat 0 -54px; }
+.ui-layout-toggler-west-open { background:#FFF url(images/arrows.png) no-repeat 0 0; }
+.ui-layout-toggler-west-closed { background:#FFF url(images/arrows.png) no-repeat -6px 0; }
+.ui-layout-toggler-east-open { background:#FFF url(images/arrows.png) no-repeat -6px 0; }
+.ui-layout-toggler-east-closed { background:#FFF url(images/arrows.png) no-repeat 0 0; }
+.ui-layout-resizer{ border:none; background-color:#FF8D46; }
+.ui-layout-resizer-south, .ui-layout-resizer-north{ background: #D7F1F8 url(images/arrows.png) repeat-x scroll 0 -70px; ; }
+.ui-layout-resizer-dragging-limit { background: #E18D8D; }
+
+.ui-jqgrid .ui-jqgrid-bdiv .ui-jqgrid-btable .ui-state-highlight { background-position: 50% 50%; }
+.ui-jqgrid .ui-jqgrid-bdiv .ui-state-hover { background-position: 50% top; }
+.ui-jqgrid .ui-separator { border-left: 1px solid #FFFFFF; border-right: 1px solid #F48204; }

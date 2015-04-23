@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!-- Reference Manual http://logback.qos.ch/manual/index.html -->
+ 
+<configuration>
+    <!-- 主机IP和端口，用来标识日志文件的来源 -->
+ 	<property name="IP" value="127.0.0.1_8088" />
+ 	<property name="DIR" value="C:/log/" />
+ 	
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender"> 
+        <encoder charset="UTF-8"> <!-- encoder 可以指定字符集，对于中文输出有意义 -->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender> 
+ 
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+ 		<!--  
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+ 		-->
+        <!-- 可让每天产生一个日志文件，最多 10 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${DIR}${IP}-info-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+ 
+        <!-- 下面这段注释的代码可以在日志文件超过 5MB 时进行归档，并且归档文件后缀只要是 .zip 或 .gz 就会自动压缩日志归档 -->
+        <!--file>d:/log/Unmi.log</file>
+ 
+        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+          <fileNamePattern>d:/log/Unmi.%i.log.zip</fileNamePattern>
+          <minIndex>1</minIndex>
+          <maxIndex>10</maxIndex>
+        </rollingPolicy>
+ 
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <maxFileSize>5MB</maxFileSize>
+        </triggeringPolicy-->
+		 <filter class="ch.qos.logback.classic.filter.LevelFilter">   
+		
+		      <level>INFO</level>   
+		
+		      <onMatch>ACCEPT</onMatch>   
+		
+		      <onMismatch>DENY</onMismatch>   
+		
+		</filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+             <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+ <appender name="RollingFileError" class="ch.qos.logback.core.rolling.RollingFileAppender">
+ 		
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${DIR}${IP}-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+ 
+		 <filter class="ch.qos.logback.classic.filter.LevelFilter">   
+		
+		      <level>ERROR</level>   
+		  		<onMatch>ACCEPT</onMatch>   
+		
+		      	<onMismatch>DENY</onMismatch>  
+		
+		</filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+             <charset class="java.nio.charset.Charset">UTF-8</charset>
+        </encoder>
+    </appender>
+    <!-- 输出到控制台和文件，可定义更多的 Appender -->
+ 
+    <root level="INFO">
+        <appender-ref ref="stdout" />
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="RollingFileError"/>
+    </root>
+ 
+    
+ 
+</configuration>

@@ -1,0 +1,130 @@
+[
+    {
+        "name": "手风琴与面板",
+        "children": [
+            {
+                "name": "帮助手册-yhSwitchPanel",
+                "link": "../../manual/component/yhSwitchPanel.jsp"
+            },
+            {
+                "name": "手风琴",
+                "link": "accordion01.jsp"
+            },
+            {
+                "name": "手风琴-中级",
+                "link": "accordion02.jsp"
+            },
+            {
+                "name": "折合面板",
+                "link": "accordion-switch-pannel.jsp"
+            }
+        ]
+    },
+    { 
+        "name": "选项卡",
+        "children":[
+            {
+                "name": "帮助手册-yhTabs",
+                "link": "../../manual/component/yhTabs.jsp"
+            },
+            {
+                "name": "帮助手册-yhScrollTab",
+                "link": "../../manual/component/yhScrollTab.jsp"
+            },
+            {
+                "name": "选项卡",
+                "link": "tabs.jsp"
+            },
+            {
+                "name": "选项卡-自适应&loading",
+                "link": "tabs-loading.jsp"
+            },
+            {
+                "name": "选项卡-动态增加tabs",
+                "link": "tabs-yhtabs-add.jsp"
+            },
+            {
+                "name": "选项卡-滚动tabs",
+                "link": "tabs-yhtabs-scroll.jsp"
+            },
+            {
+                "name": "选项卡-高级（列表&tabs）",
+                "link": "tabs-yhtabs-plain.jsp"
+            },
+            {
+                "name": "选项卡-高级（tree&tabs）",
+                "link": "tabs-yhtabs-treeplain.jsp"
+            }
+        ] 
+    },
+    { 
+        "name": "工具栏",
+        "children":[
+            {
+                "name": "帮助手册-yhToolbar",
+                "link": "../../manual/component/yhToolbar.jsp"
+            },
+            {
+                "name": "工具栏",
+                "link": "toolbar.jsp"
+            }
+        ] 
+    },
+    { 
+        "name": "页面构建",
+        "children":[
+            {
+                "name": "帮助手册-yhPortlet",
+                "link": "../../manual/component/yhPortlet.jsp"
+            },
+            {
+                "name": "页面构建portlet",
+                "link": "yhPortlet.jsp"
+            }
+        ] 
+    },
+    { 
+        "name": "弹窗",
+        "children":[
+            {
+                "name": "帮助手册-yhDialogTip",
+                "link": "../../manual/component/yhDialogTip.jsp"
+            },
+            {
+                "name": "帮助手册-yhWindow",
+                "link": "../../manual/component/yhWindow.jsp"
+            },
+            {
+                "name": "弹窗",
+                "link": "dialog.jsp"
+            },
+            {
+                "name": "弹窗-自定义提示",
+                "link": "dialog-tip01.jsp"
+            },
+            {
+                "name": "弹窗-js自定义弹窗",
+                "link": "dialog-tip02.jsp"
+            },
+            {
+                "name": "弹窗-停靠窗口",
+                "link": "dialog-yhwindow.jsp"
+            }           
+        ] 
+    },
+    { 
+        "name": "加载中...",
+        "children":[
+            {
+                "name": "帮助手册-yhloading",
+                "link": "../../manual/component/yhloading.jsp"
+            },
+            {
+                "name": "yhloading",
+                "link": "yhloading.jsp"
+            }          
+        ] 
+    }
+]
+
+        

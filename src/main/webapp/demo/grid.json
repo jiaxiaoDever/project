@@ -1,0 +1,294 @@
+//
+,
+                    {
+                        "name": "2栏上下伸缩",
+                        "link": "example/yh/layoutform-04.jsp",
+                        "isNewWindow": true
+                    }  
+
+
+,
+{       
+    "name":"表格",
+    "children": [
+        { 
+        "name": "基本用法",
+        "children": [
+             {
+                "name": "本地数据",
+                "children": [
+                    {
+                        "name": "基本本地数据",
+                        "link": "components/jqgrid/base/data-1.jsp"
+                    },
+                    {
+                        "name": "本地数据2",
+                        "link": "components/jqgrid/base/data-2.jsp"
+                    },
+                    {
+                        "name": "手动远程获取 json 数据",
+                        "link": "components/jqgrid/base/data-hand.jsp"
+                    }
+                ]
+                },        
+                {
+                    "name": "远程操作",
+                    "children": [
+                        {
+                            "name": "基本 json 数据展示",
+                            "link": "components/jqgrid/base/jsondata.jsp"
+                        },
+                        {
+                            "name": "表头排序",
+                            "link": "components/jqgrid/base/headsort.jsp"
+                        },
+                        {
+                            "name": "导航栏之翻页",
+                            "link": "components/jqgrid/base/pager.jsp"
+                        },
+                        {
+                            "name": "导航栏之功能",
+                            "link": "components/jqgrid/base/navigator.jsp"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "增删改",
+            "children": [
+                {
+                    "name": "新增记录",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/create/local.jsp"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/cud/create/remote.jsp"
+                        },
+                        {
+                            "name": "自定义添加形式",
+                            "link": "components/jqgrid/cud/create/custom-remote.jsp"
+                        }
+
+                    ]
+                },
+                {
+                    "name": "删除记录",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/delete/local.jsp"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/cud/delete/remote.jsp"
+                        },
+                        {
+                            "name": "自定义删除形式",
+                            "link": "components/jqgrid/cud/delete/custom-del.jsp"
+                        },
+                        {
+                            "name": "一次性删除多行",
+                            "link": "components/jqgrid/cud/delete/multi.jsp"
+                        }
+                    ]
+                },
+                {
+                    "name": "编辑数据",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/cud/edit/edit-local.jsp"
+                        },
+                        {
+                            "name": "单元格编辑",
+                            "link": "components/jqgrid/cud/edit/edit-cell.jsp"
+                        },
+                        {
+                            "name": "行内编辑",
+                            "link": "components/qgrid/cud/edit/edit-inline.jsp"
+                        },
+                        {
+                            "name": "表单编辑",
+                            "link": "components/jqgrid/cud/edit/edit-form.jsp"
+                        },
+                        {
+                            "name": "自定义编辑",
+                            "link": "components/jqgrid/cud/edit/edit-custom.jsp"
+                        }
+                    ]
+                }
+            ]
+
+        },
+        {
+            "name": "本地查询",
+            "children": [
+                {
+                    "name": "工具栏过滤",
+                    "children": [
+                        {
+                            "name": "本地",
+                            "link": "components/jqgrid/search/toolbar-local.jsp"
+                        },
+                        {
+                            "name": "同步到数据库",
+                            "link": "components/jqgrid/search/toolbar-remote.jsp"
+                        }
+                    ]
+                },
+                {
+                    "name": "自定义查询",
+                    "link": "components/jqgrid/search/search-custom.jsp"
+                },
+                {
+                    "name": "单字段查询",
+                    "link": "components/qgrid/search/search-single.jsp"
+                },
+                {
+                    "name": "高阶查询",
+                    "link": "components/jqgrid/search/search-advanced.jsp"
+                }
+            ]
+        },
+        {
+            "name": "异步加载",
+            "children": [
+                {
+                    "name": "子表格",
+                    "link": "components/jqgrid/async/subgrid.jsp"
+                },
+                {
+                    "name": "树形表格",
+                    "link": "components/jqgrid/async/treegrid.jsp"
+                }
+            ]
+        },
+        {
+            "name": "其他功能",
+            "children": [
+                {
+                    "name": "冻结列",
+                    "link": "components/jqgrid/others/col-frozen.jsp"
+                },
+                {
+                    "name": "表头分组",
+                    "link": "components/jqgrid/others/col-group.jsp"
+                },
+                {
+                    "name": "表格联动",
+                    "link": "components/jqgrid/others/linkage.jsp"
+                },
+                {
+                    "name": "自定义单元格内容",
+                    "link": "components/jqgrid/others/formatter.jsp"
+                },
+                {
+                    "name": "右键菜单",
+                    "link": "components/jqgrid/others/contextmenu.jsp"
+                }
+            ]
+        }
+         
+        ]   
+    }
+
+
+
+{       
+    "name":"表格",
+    "children": [
+        { 
+        "name": "基本用法",
+        "children": [
+             {
+                "name": "数据",
+                "children": [
+                    {
+                        "name": "本地数据",
+                        "link": "components/jqgrid/base/data-1.jsp"
+                    },
+                    {
+                        "name": "手动远程获取 json 数据",
+                        "link": "components/jqgrid/base/data-hand.jsp"
+                    },
+                    {
+                        "name": "服务器数据",
+                        "link": "components/jqgrid/base/data-hand.jsp"
+                    }
+                ]
+                },        
+                {
+                    "name": "导航栏之翻页",
+                    "link": "components/jqgrid/base/pager.jsp"
+                },
+                {
+                    "name": "导航栏之功能",
+                    "link": "components/jqgrid/base/navigator.jsp"
+                }
+            ]
+        },
+        {
+            "name": "增删改",
+            "children": [
+                {
+                    "name": "行内增删改",
+                    "link": "components/jqgrid/cud/create/local.jsp"
+                },
+                {
+                    "name": "表单增删改",
+                    "link": "components/jqgrid/cud/create/remote.jsp"
+                },
+                {
+                    "name": "批量增删改[研发中]",
+                    "link": ""
+                }
+            ]
+
+        },
+        {
+            "name": "异步加载",
+            "children": [
+                {
+                    "name": "子表格",
+                    "link": "components/jqgrid/async/subgrid.jsp"
+                },
+                {
+                    "name": "树形表格",
+                    "link": "components/jqgrid/async/treegrid.jsp"
+                }
+            ]
+        },
+        {
+            "name": "扩展功能",
+            "children": [
+                {
+                    "name": "冻结列",
+                    "link": "components/jqgrid/others/col-frozen.jsp"
+                },
+                {
+                    "name": "表头分组",
+                    "link": "components/jqgrid/others/col-group.jsp"
+                },
+                {
+                    "name": "表格联动",
+                    "link": "components/jqgrid/others/linkage.jsp"
+                },
+                {
+                    "name": "自定义单元格内容",
+                    "link": "components/jqgrid/others/formatter.jsp"
+                },
+                {
+                    "name": "右键菜单",
+                    "link": "components/jqgrid/others/contextmenu.jsp"
+                }
+            ]
+        }
+
+        
+         
+        ]   
+    }

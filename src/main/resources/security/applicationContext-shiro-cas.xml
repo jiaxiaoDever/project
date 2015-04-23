@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    default-lazy-init="true"
+    xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
+    					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd" >
+
+    <description>
+Shiro-cas安全配置，使用时直接在applicationContext.xml里面指定就行了。
+    </description>
+    <context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.properties" />
+
+    <!-- Shiro Filter -->
+
+    <bean id="shiroFilter"
+        class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" >
+
+        <property name="securityManager" ref="securityManager" />
+        <property name="loginUrl"
+            value="http://${cas.ip}:${cas.port}/${cas.context}?service=${clientServiceUrl}/shiro-cas" />
+
+        <property name="successUrl" value="/index" />
+
+        <property name="filters" >
+            <map>
+                <entry key="authc" >
+                    <bean class="com.yuhui.core.security.CaptchaFormAuthenticationFilter" />
+                </entry>
+                
+                <entry key="casFilter" value-ref="casFilter" />
+            </map>
+        </property>
+
+        <property name="filterChainDefinitions" >
+            <value>
+				/shiro-cas=casFilter
+			    /static/** = anon
+				/views/login/** =anon
+				/kaptcha.jpg** = anon
+				/login = authc
+				/** = user
+				/error* = anon            </value>
+        </property>
+    </bean>
+
+    <bean id="casFilter" class="org.apache.shiro.cas.CasFilter" >
+        <!-- 配置验证错误时的失败页面 -->
+        <property name="failureUrl" value="${clientServiceUrl}" />
+    </bean>
+
+    
+    <!-- <bean id="casRealm" class="org.apache.shiro.cas.CasRealm">-->
+    
+     <bean id="casRealm" class="com.yuhui.core.security.ShiroDbCasRealm"> 
+         
+  <property name="casServerUrlPrefix" value="http://${cas.ip}:${cas.port}/${cas.context}"/> 
+
+<!-- 客户端的回调地址设置，必须和下面的shiro-cas过滤器拦截的地址一致 --> 
+
+<property name="casService" value="${clientServiceUrl}/shiro-cas"/> 
+
+         
+    </bean>
+    <bean id="securityManager"
+        class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" >
+        <property name="realm" ref="casRealm" >
+        </property>
+
+        <property name="cacheManager" ref="shiroEhcacheManager" >
+        </property>
+        
+         <property name="subjectFactory" ref="casSubjectFactory"/>
+    </bean>
+
+    <bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"/>  
+    <!-- 项目自定义的Realm -->
+
+    <bean id="shiroDbRealm" class="com.yuhui.core.security.ShiroDbRealm"
+        depends-on="userBaseDAO,roleBaseDAO" >
+         <!-- 
+         <property name="casServerUrlPrefix" value="http://localhost:8088/cas"/>  
+		<property name="casService" value="http://localhost:8088/BaseFrame/shiro-cas"/>
+         -->
+    </bean>
+
+    <!-- 用户授权信息Cache, 采用EhCache -->
+
+    <bean
+        id="shiroEhcacheManager"
+        class="org.apache.shiro.cache.ehcache.EhCacheManager" >
+
+        <property
+            name="cacheManagerConfigFile"
+            value="classpath:security/ehcache-shiro.xml" />
+    </bean>
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+
+    <bean
+        id="lifecycleBeanPostProcessor"
+        class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+    <!-- AOP式方法级权限检查 -->
+
+    <bean
+        class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+        depends-on="lifecycleBeanPostProcessor" >
+
+        <property
+            name="proxyTargetClass"
+            value="true" />
+    </bean>
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor" >
+
+        <property
+            name="securityManager"
+            ref="securityManager" />
+    </bean>
+
+</beans>

@@ -1,0 +1,233 @@
+<anychart>
+	<dashboard>
+		<view type="Dashboard">
+			<title padding="2">
+				<text>钻取图表</text>
+			</title>
+			<background>
+				<inside_margin all="3" top="10"/>
+			</background>
+
+			<vbox width="100%" height="100%">
+				<margin all="0"/>
+				<hbox width="100%" height="50%">
+					<margin all="0"/>
+					<view type="Chart" source="mainChart" width="100%" height="100%"/>
+				</hbox>
+				<hbox width="100%" height="50%">
+					<margin all="0"/>
+					<view name="q12View" type="Chart" source="q12Chart2003" width="50%" height="100%"/>
+					<view name="q34View" type="Chart" source="q34Chart2003" width="50%" height="100%"/>
+				</hbox>
+			</vbox>
+		</view>
+	</dashboard>
+	<templates>
+		<template name="baseTemplate">
+			<chart>
+				<chart_settings>
+					<chart_background>
+						<border type="Solid" color="#CCCCCC" thickness="1"/>
+						<corners type="Square"/>
+						<effects enabled="false"/>
+						<inside_margin all="10" top="5"/>
+					</chart_background>
+					<title enabled="true" position="Bottom"/>
+				</chart_settings>
+				<data_plot_settings>
+					<pie_series>
+						<label_settings enabled="True" mode="Outside" multi_line_align="Center">
+							<position halign="Center" valign="Center"  padding="8"/>
+							<format>{%Name}, {%Value}</format>
+							<font bold="False"/>
+						</label_settings>
+						<connector enabled="True" opacity="0.3"/>					
+						<tooltip_settings enabled="True">
+							<format>{%Name} - {%Value}</format>
+						</tooltip_settings>
+					</pie_series>
+				</data_plot_settings>
+			</chart>
+		</template>
+	</templates>
+	<charts>
+		<chart name="mainChart" plot_type="CategorizedVertical">
+			<chart_settings>
+				<title enabled="False" align="Left" align_by="DataPlot" padding="0">
+					<text>Select a column to Drill-Down</text>
+				</title>
+				<chart_background>
+					<border type="Solid" color="#CCCCCC" thickness="1"/>
+					<corners type="Square"/>
+					<effects enabled="false"/>
+					<inside_margin all="10" top="5"/>
+				</chart_background>
+				<axes>
+					<y_axis position="Left">
+						<title enabled="False"/>
+						<scale type="Logarithmic" logarithmic_base="20" minimum="1"/>
+					</y_axis>
+					<x_axis>
+						<title enabled="False"/>
+					</x_axis>
+				</axes>
+			</chart_settings>
+			<data_plot_settings>
+					<bar_series group_padding="0.3">
+					<marker_settings enabled="true" color="Gold">
+						<marker type="None" size="10"/>
+						<states>
+							<hover>
+								<marker type="Circle"/>
+								<border thickness="2"/>
+							</hover>
+							<pushed>
+								<marker type="Circle" size="6"/>
+								<border thickness="2"/>
+							</pushed>
+							<selected_normal>
+								<marker type="Star5" size="16"/>
+
+								<border thickness="1"/>
+							</selected_normal>
+							<selected_hover>
+								<marker type="Star5" size="12"/>
+								<border thickness="1"/>
+							</selected_hover>
+						</states>
+					</marker_settings>
+					<tooltip_settings enabled="true">
+						<position anchor="CenterTop" padding="10"/>
+						<background>
+							<border color="DarkColor(Gold)" thickness="1"/>
+						</background>
+					</tooltip_settings>
+				</bar_series>
+				</data_plot_settings>
+			<data>
+				<series>
+					<point name="2003" y="15" selected="True">
+						<actions>
+							<action type="UpdateView" view="q12View" source="q12Chart2003" source_mode="InternalData"/>
+							<action type="UpdateView" view="q34View" source="q34Chart2003" source_mode="InternalData"/>
+						</actions>
+					</point>
+					<point name="2004" y="180">
+						<actions>
+							<action type="UpdateView" view="q12View" source="q12Chart2004" source_mode="InternalData"/>
+							<action type="UpdateView" view="q34View" source="q34Chart2004" source_mode="InternalData"/>
+						</actions>
+					</point>
+					<point name="2005" y="220">
+						<actions>
+							<action type="UpdateView" view="q12View" source="q12Chart2005" source_mode="InternalData"/>
+							<action type="UpdateView" view="q34View" source="q34Chart2005" source_mode="InternalData"/>
+						</actions>
+					</point>
+					<point name="2006" y="1341">
+						<actions>
+							<action type="UpdateView" view="q12View" source="q12Chart2006" source_mode="InternalData"/>
+							<action type="UpdateView" view="q34View" source="q34Chart2006" source_mode="InternalData"/>
+						</actions>
+					</point>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q12Chart2003" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2003 Q1-Q2</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="16"/>
+					<point name="P2" y="22"/>
+					<point name="P3" y="14"/>
+					<point name="P4" y="35"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q34Chart2003" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2003 Q3-Q4</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="8"/>
+					<point name="P2" y="11"/>
+					<point name="P3" y="9"/>
+					<point name="P4" y="5"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q12Chart2004" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2004 Q1-Q2</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="88"/>
+					<point name="P2" y="76"/>
+					<point name="P3" y="35"/>
+					<point name="P4" y="40"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q34Chart2004" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2004 Q3-Q4</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="120"/>
+					<point name="P2" y="99"/>
+					<point name="P3" y="12"/>
+					<point name="P4" y="21"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q12Chart2005" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2005 Q1-Q2</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="121"/>
+					<point name="P2" y="99"/>
+					<point name="P3" y="56"/>
+					<point name="P4" y="80"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q34Chart2005" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2005 Q3-Q4</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="76"/>
+					<point name="P2" y="120"/>
+					<point name="P3" y="98"/>
+					<point name="P4" y="140"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q12Chart2006" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2006 Q1-Q2</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="131"/>
+					<point name="P2" y="59"/>
+					<point name="P3" y="125"/>
+					<point name="P4" y="150"/>
+				</series>
+			</data>
+		</chart>
+		
+		<chart name="q34Chart2006" template="baseTemplate" plot_type="Pie">
+			<chart_settings><title><text>2006 Q3-Q4</text></title></chart_settings>
+			<data>
+				<series>
+					<point name="P1" y="176"/>
+					<point name="P2" y="220"/>
+					<point name="P3" y="59"/>
+					<point name="P4" y="110"/>
+				</series>
+			</data>
+		</chart>
+	</charts>	
+</anychart>

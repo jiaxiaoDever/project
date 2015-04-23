@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuhui.core.repository.system.RoleBaseDAO">
+	<resultMap type="RoleBase" id="defaulfResultMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="symbol" column="symbol"/>
+		<result property="roleLevel" column="role_level"/>
+		<result property="description" column="description"/>
+	</resultMap>
+	<select id="findByRoleName" parameterType="string" resultMap="defaulfResultMap">
+		select * from ${jdbc.schema}.tb_sys_role t where t.name = #{name}
+	</select>
+	<select id="queryByPage" resultType="hashmap">
+	    select * from ${jdbc.schema}.tb_sys_role t where 1=1 
+	  <if test="parameters.name != null and parameters.name != ''">
+	  	and name like #{name}
+	  </if>
+	  <if test="parameters.sordcol != null and parameters.sordcol != ''">
+	    order by #{sordcol} 
+	    <if test="parameters.sordstr != null and parameters.sordstr != ''">
+	    	<if test="parameters.sordstr == 'asc'"> asc </if>
+	    	<if test="parameters.sordstr == 'desc'"> desc </if>
+	    </if>
+	    <if test="parameters.sordstr == null or parameters.sordstr == ''"> asc </if>
+	  </if> 
+	</select>
+	<select id="getByUserId" resultMap="defaulfResultMap">
+		select r.* from ${jdbc.schema}.tb_sys_role_user ru
+		  left join ${jdbc.schema}.tb_sys_role r on r.id = ru.role_id where ru.user_id = #{id}
+	</select>
+	<delete id="deleteRoleMenu">
+		delete from ${jdbc.schema}.tb_sys_role_menu  where role_id = #{roleId}
+	</delete>
+	<delete id="deleteRoleUser">
+		delete from ${jdbc.schema}.tb_sys_role_user  where role_id = #{roleId}
+	</delete>
+	<insert id="updateRoleMenu" parameterType="RoleMenu">
+    	insert into ${jdbc.schema}.tb_sys_role_menu(role_id,menu_id) values (#{roleId} , #{menuId})
+    </insert>
+</mapper>

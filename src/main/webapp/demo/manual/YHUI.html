@@ -1,0 +1,506 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title></title>
+	<meta name="generator" content="libreoffice 3.6  (linux)">
+	<meta name="author" content="jiangyuan">
+	<meta name="created" content="20121225;3040000">
+	<meta name="changedby" content="jiangyuan">
+	<meta name="changed" content="20121225;9230000">
+	<meta name="appversion" content="14.0000">
+	<meta name="docsecurity" content="0">
+	<meta name="hyperlinkschanged" content="false">
+	<meta name="linksuptodate" content="false">
+	<meta name="scalecrop" content="false">
+	<meta name="sharedoc" content="false">
+	<style type="text/css">
+	<!--
+		@page { margin-left: 1.25in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+		p { margin-bottom: 0.08in; direction: ltr; color: #000000; widows: 2; orphans: 2 }
+	-->
+	</style>
+</head>
+<body lang="en-us" text="#000000" dir="ltr">
+<p align=center style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4 style="font-size: 16pt"><span lang="zh-cn"><b>前端开发规范</b></span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">ajax</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">技术流行起来之后，前端技术突飞猛进，</span></font></font><font size=2 style="font-size: 10pt">html5</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">在标准出来之前就炒得火热，浏览器厂商不断地提高自己产品的性能和对新技术的支持，如此背景下，前端应用的规模越来越大，从而大大提升开发和管理的复杂性，因此，前端开发规范化势在必行。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">yhui</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">经过九个月的开发，组件越来越多，代码量越来越大，和后端工程师的交流越来越频繁，如何科学地管理组件、编写代码，从而可以让使用者更容易使用组件以及阅读对应的代码，成为一个不得不考虑的问题。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">因此，才有了前端开发规范。本规范多就代码格式和编码风格进行了规整，从而避免五花八门的格式和看上去个性十足但毫无阅读性可言的风格，从感性地层面上提高代码的可读性。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">规范分为三个部分，分别讨论</span></font></font><font size=2 style="font-size: 10pt">yhui</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">开发过程中采用的或者即将采用的
+</span></font></font><font size=2 style="font-size: 10pt">html</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">、</span></font></font><font size=2 style="font-size: 10pt">css</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">、</span></font></font><font size=2 style="font-size: 10pt">javascript
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">的代码格式和编码风格。</span></font></font></p>
+<ol>
+	<li><p style="margin-bottom: 0in; line-height: 150%"><font size=4 style="font-size: 15pt"><b>html</b></font></p>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">超文本标记语言，看上去最简单，实际上却是最复杂的。</span></font></font></p>
+<ol>
+	<ol>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">大小写</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">和内容无关的文本一律小写，比如标签名、属性等。</span></font></font></p>
+<ol>
+	<ol start=2>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">文档声明</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">统一使用如下格式：</span></font></font></p>
+<p style="margin-left: 0.58in; text-indent: 0.29in; margin-bottom: 0in">
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;!doctype
+html&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不能没有，也不能写成其他的声明。</span></font></font><font size=2 style="font-size: 10pt">yhui1.3
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">所有页面都会采用这种文档声明。</span></font></font></p>
+<ol>
+	<ol start=3>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">缩进</span></font></font></p>
+	</ol>
+</ol>
+<p style="margin-left: 0.02in; text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">一律缩进四个空格。有些编辑器的
+</span></font></font><font size=2 style="font-size: 10pt">tab
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">键是一个制表符，请手动改为四个空格。</span></font></font></p>
+<ol>
+	<ol start=4>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">空格</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不得存在不必要的空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.85in; text-indent: 0.03in; margin-bottom: 0in">
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;p&gt;</span></font><span style="background: #dbe5f1"><font face="yahei consolas hybrid"><span lang="zh-cn">你好帅。
+            </span></font><font face="yahei consolas hybrid, serif">&lt;/p&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.85in; text-indent: 0.03in; margin-bottom: 0in">
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;p&gt;</span></font><span style="background: #dbe5f1"><font face="yahei consolas hybrid"><span lang="zh-cn">你好帅。</span></font><font face="yahei consolas hybrid, serif">&lt;/p&gt;</span></font></p>
+<ol>
+	<ol start=5>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">引号</span></font></font></p>
+	</ol>
+</ol>
+<p style="margin-left: 0.02in; text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">属性名一律使用双引号。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.85in; text-indent: 0.03in; margin-bottom: 0in">
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div
+class=’header’&gt;&lt;/div&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.85in; text-indent: 0.03in; margin-bottom: 0in">
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div
+class=”header”&gt;&lt;/div&gt;</span></font></p>
+<ol>
+	<ol start=6>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">自定义属性</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">必须以
+“</span></font></font><font size=2 style="font-size: 10pt">data-“
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">开头。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div
+role=”button”&gt;&lt;/div&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div
+data-role=” button”&gt;&lt;/div&gt;</span></font></p>
+<ol>
+	<ol start=7>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">页面编码</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">采用
+</span></font></font><font size=2 style="font-size: 10pt">utf-8
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">编码，如下：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;meta
+charset=”utf-8” /&gt;</span></font></p>
+<ol>
+	<ol start=8>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">标签</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">必须要闭合，不管是成对的标签还是单个标签。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;div&gt;&lt;/div&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;br&gt;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">&lt;br/&gt;</span></font></p>
+<ol start=2>
+	<li><p style="margin-bottom: 0in; line-height: 150%"><font size=4 style="font-size: 15pt"><b>css</b></font></p>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">层叠样式表，在前端开发中占有重要位置。</span></font></font><font size=2 style="font-size: 10pt">css3</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">的出现更是给页面设计师开辟了一个新的天地。</span></font></font></p>
+<ol>
+	<ol>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">命名</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">一律小写，必要时使用
+“</span></font></font><font size=2 style="font-size: 10pt">-“
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">连接符。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhuiheader
+{}</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header
+{}</span></font></p>
+<ol>
+	<ol start=2>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">选择器</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">尽量使用类选择器，尽量不要使用
+</span></font></font><font size=2 style="font-size: 10pt">id
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">、</span></font></font><font size=2 style="font-size: 10pt">nodename
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">和其他选择器。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">尽量使用单一选择器。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">#yhui-header
+{} </span></font><span style="background: #dbe5f1"><font face="yahei consolas hybrid"><span lang="zh-cn">或
+</span></font><font face="yahei consolas hybrid, serif">div {} </span></font><span style="background: #dbe5f1"><font face="yahei consolas hybrid"><span lang="zh-cn">或
+</span></font><font face="yahei consolas hybrid, serif">div:first-child
+{}</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header
+{}</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header
+.yhui-header-role</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header-role</span></font></p>
+<ol>
+	<ol start=3>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">简写属性</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">尽量简写属性。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">padding-top:
+2px; padding-bottom: 4px; padding-left: 3px; </span></font>
+</p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">padding:
+2px 0 4px 3px;</span></font></p>
+<ol>
+	<ol start=4>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">空格</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">冒号后面保留一个空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">如果所有属性在一行，属性之间空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+“<font size=2 style="font-size: 10pt">{“ </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">之前有空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><a name="ole_link2"></a><a name="ole_link1"></a>
+<font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header{height:20px;width:30px;}</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header
+{ height: 20px; width: 30px; }</span></font></p>
+<ol>
+	<ol start=5>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font size=4>hacks</font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">尽量避免使用
+“</span></font></font><font size=2 style="font-size: 10pt">*”</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">、”</span></font></font><font size=2 style="font-size: 10pt">_”
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">等特殊符号。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">尽量使用浏览器嗅探。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-header
+{ _zoom: 1; }</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">.yhui-ie6
+.yhui-header { zoom: 1; }</span></font></p>
+<ol start=3>
+	<li><p style="margin-bottom: 0in; line-height: 150%"><font size=4 style="font-size: 15pt"><b>javascript</b></font></p>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">关于</span></font></font><font size=2 style="font-size: 10pt">javascript</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">的规范，实在是太多，比如专业校验工具
+</span></font></font><font size=2 style="font-size: 10pt">jslint </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">、
+</span></font></font><font size=2 style="font-size: 10pt">jshint</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">，各大公司以及一些</span></font></font><font size=2 style="font-size: 10pt">javascript</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">框架都有自己的规范，比如
+</span></font></font><font size=2 style="font-size: 10pt">google </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">公司以及
+</span></font></font><font size=2 style="font-size: 10pt">kissy </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">框架。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">yhui </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">的核心是
+</span></font></font><font size=2 style="font-size: 10pt">jquery</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">，所以较多地采用
+</span></font></font><font size=2 style="font-size: 10pt">jquery
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">的官方规范。以下是一些摘录，当然做了翻译。</span></font></font></p>
+<ol>
+	<ol>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">空格</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">使用
+</span></font></font><font size=2 style="font-size: 10pt">tab
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">键缩进代码，有些编辑器的
+</span></font></font><font size=2 style="font-size: 10pt">tab
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">键是一个制表符，请手动改为四个空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">在编码过程中，尽可能多的使用空格。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	if(blah===”foo”){</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">		foo(“bar”,”baz”,{zoo:1});</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	}</font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐</span></font></font><font size=2 style="font-size: 10pt">:</font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">if
+( blah === “foo” ) {</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; text-indent: 0.31in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">foo(
+“bar”, “baz”, {</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; text-indent: 0.61in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">zoo:
+1</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; text-indent: 0.31in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">});</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">}</font></font></p>
+<ol>
+	<ol start=2>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">等于</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">在任何可能的情况下，使用
+“</span></font></font><font size=2 style="font-size: 10pt">===”
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">而不是
+“</span></font></font><font size=2 style="font-size: 10pt">==” </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">。</span></font></font></p>
+<ol>
+	<ol start=3>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">代码块</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">if/else/for/while/try </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">总是用
+“</span></font></font><font size=2 style="font-size: 10pt">{}“
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">包住，而且一律换行。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">条件语句和执行语句严禁放在同一行。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">	if(true)
+blah();</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	if
+( true ) {</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">		blah();</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	}</font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不要使用三元运算符代替
+</span></font></font><font size=2 style="font-size: 10pt">if/else </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">语句。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">除非是在条件语句中，否则不要使用
+</span></font></font><font size=2 style="font-size: 10pt">object &amp;&amp;
+object.method() </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">代替
+</span></font></font><font size=2 style="font-size: 10pt">if/else </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">语句。</span></font></font></p>
+<ol>
+	<ol start=4>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">函数调用</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">总是在参数列表的两头加上空格，如：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">	foo(
+true ) ;</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">特别说明：下面这种情况可以不用加空格。</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">	foo(
+bar(true) );</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">特别说明：参数有且只有数组、对象、函数、字符串等字面量时，可以不用空格。</span></font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	foo(function()
+{ });</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	foo({
+});</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	foo([
+]);</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	foo(“single
+string argument”);</font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">特别说明：如果参数是函数、数组和对象字面量并且有多行时，请以友好的方式结尾。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-bottom: 0in"><font face="yahei consolas hybrid, serif"><span style="background: #dbe5f1">	foo(
+true, { blah: “baz” } );</span></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	foo(
+true, {</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">		blah:
+“baz”</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	});</font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%"><a name="_goback"></a>
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">冒号和逗号后面总是有一个空格。</span></font></font></p>
+<ol>
+	<ol start=5>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">变量声明</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">变量声明必须用逗号隔开，并且逗号紧跟变量而不是另起一行。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">声明但不初始化的变量应该总是放在较前位置，声明并初始化的变量应该单独占一行。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">推荐：</span></font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	var
+a, b, c,</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	
+   test = true,</font></font></p>
+<p style="margin-left: 0.92in; margin-right: 1.73in; margin-bottom: 0in; background: #dbe5f1; line-height: 0.19in">
+<font face="yahei consolas hybrid, serif"><font size=2 style="font-size: 11pt">	
+   test2 = false;</font></font></p>
+<ol>
+	<ol start=6>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">类型检测</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">字符串：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+object === “string”</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">数字：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+object === “number”</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">布尔值：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+object === “boolean”</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">对象：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+object === “object”</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">函数：
+</span></font></font><font size=2 style="font-size: 10pt">$.isfunction()</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">数组：
+</span></font></font><font size=2 style="font-size: 10pt">$.isarray()</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">元素：
+</span></font></font><font size=2 style="font-size: 10pt">object.nodetype</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">null</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">：</span></font></font><font size=2 style="font-size: 10pt">object
+=== null</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">null </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">或者
+</span></font></font><font size=2 style="font-size: 10pt">undefined</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">：</span></font></font><font size=2 style="font-size: 10pt">object
+== null</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">undefined</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">：</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">	</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">全局变量：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+variable === “undefined”</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">	</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">局部变量：
+</span></font></font><font size=2 style="font-size: 10pt">typeof
+variable === undefined</font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">	</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">属性：
+</span></font></font><font size=2 style="font-size: 10pt">object.prop
+=== undefined</font></p>
+<ol>
+	<ol start=7>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">正则</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">总是使用
+</span></font></font><font size=2 style="font-size: 10pt">.test() </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">和
+</span></font></font><font size=2 style="font-size: 10pt">.exec() </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">，
+“</span></font></font><font size=2 style="font-size: 10pt">string”.match()
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不推荐使用。</span></font></font></p>
+<ol>
+	<ol start=8>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">字符串</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">总是使用双引号，而不是单引号。</span></font></font></p>
+<ol>
+	<ol start=9>
+		<li><p style="margin-bottom: 0in; line-height: 150%"><font face="나눔고딕코딩"><font size=4><span lang="zh-cn">节点</span></font></font></p>
+	</ol>
+</ol>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font size=2 style="font-size: 10pt">.nodename </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">优于
+</span></font></font><font size=2 style="font-size: 10pt">.tagname
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">使用。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">用
+</span></font></font><font size=2 style="font-size: 10pt">.nodetype
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">来判断一个节点是什么类型，而不是
+</span></font></font><font size=2 style="font-size: 10pt">.nodename </font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">不要给节点绑定布尔值。</span></font></font></p>
+<p style="text-indent: 0.29in; margin-bottom: 0in; line-height: 150%">
+<font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">总是使用
+</span></font></font><font size=2 style="font-size: 10pt">.data()
+</font><font face="나눔고딕코딩"><font size=2 style="font-size: 10pt"><span lang="zh-cn">来给节点绑定数据。</span></font></font></p>
+<p style="margin-bottom: 0in; line-height: 150%"><font size=2 style="font-size: 10pt">		</font></p>
+<p style="margin-bottom: 0in; line-height: 150%"><br>
+</p>
+</body>
+</html>

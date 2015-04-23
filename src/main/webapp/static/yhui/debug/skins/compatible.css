@@ -1,0 +1,45 @@
+@charset "utf-8";
+.fixHeader-west, .fixHeader-center, .fixHeader-south{ position:relative; min-width:600px; }
+.fixHeader-west{ min-width:240px; }
+.content-center, .content-west, .content-south{ position:relative; overflow:auto; border:none; _display:none; _zoom:1; }
+
+.header { position:relative; min-width:800px; _white-space: nowrap; }
+.header div.headerInner{ height:40px; font-size:12px; font-weight:normal; }
+.header div.headerInner div{ float:right; margin:10px 40px 0 0; }
+.header div.headerInner div a{ margin:0 5px; }
+.header .welcome{ display:inline-block; width:auto; padding-left:15px; }
+.header div.headerInner div a.passWordTip{ position:relative; display:none; margin:0; }
+.header div.headerInner div a.passWordTip:hover{ text-decoration:none; }
+.header div.headerInner div a.passWordTip span{ position:absolute; top:18px; left:-20px; width:220px; text-align:center; z-index:10; display:none; }
+.header span.userRole{ display:inline-block; width:72px; margin:1px 1px 0; padding:1px 5px 3px 5px; position:relative; *padding:0 5px; *line-height:1.5; }
+.header span.userRoleHover{ margin:0; }
+.header span.userRole ul.roleList{ position:absolute; list-style:none; display:none; top:18px; left:-1px; }
+.header span.userRole ul.roleList li{ width:140px; overflow:hidden; }
+.header span.userRole ul.roleList li a{ display:block; text-decoration:none; _zoom:1; width:100%; heigth:100%; text-indent:1.5em; margin:0; padding:1px 0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; -moz-binding:url('ellipsis.xml#ellipsis'); }
+
+.navbar{ height:23px; line-height:2; _overflow:hidden; }
+.navbar span{ display: inline-block; height: 23px; margin: 0 10px; width: 7px; overflow:hidden; vertical-align:middle; text-indent:-9999px; zoom:1; margin: 0 10px; _margin:0 5px; *float:left; *display:block; }
+.navbar a{ *margin-top: 2px; _position: relative; _top: 3px; }
+.navbar a:hover{ *margin-top: 2px; _position: relative; _top: 3px; }
+
+.column{ float:left; padding-bottom:100px; position:relative; _display:inline; }
+.column2{ width:48%; margin-left:1.5%; *width:46%; *margin-left:2%; }
+.column3{ width:30%; margin-left:2.5%; }
+.portlet{ margin:10px 0; }
+.portlet .title{ font:normal 12px 'SimSun'; padding:6px 0 6px 27px; padding:4px 0 4px 27px\0; position:relative; }
+:root .portlet .title{ padding:6px 0 6px 27px; }
+.portlet .title a{ display:inline-block; width:40px; height:24px; position:absolute; right:10px; top:0; }
+.portlet .title span{ position:absolute; left:10px; top:8px; _left:-25px; _top:7px; display:inline-block; width:11px; height:11px; cursor:pointer; }
+.portlet ul.newList {list-style:none; padding:0px;  font:normal 12px "宋体";}
+.portlet ul.newList { padding:10px 0 10px 0;}
+.portlet ul.newList li { position:relative;  height:25px; line-height:25px; _line-height:26px;font-size:0; overflow:hidden; }
+.portlet ul.newList li a{ text-decoration:none; float:left; width:76%; padding-left:102px; margin-right:112px; _margin-right:0;  font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; -o-text-overflow:ellipsis; -moz-binding:url('ellipsis.xml#ellipsis'); }
+.portlet ul.newList li a:hover {  }
+.portlet ul.newList li img { position:absolute; float:left; clear:right; margin-left:-110px; _margin-left:0px; top:4px;}
+.portlet ul.newList li span { position:absolute; width:85px; left:18px; font-size:12px;}
+.portlet .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+.portlet .ui-sortable-placeholder * { visibility: hidden; }
+
+form.yhFormField{ display: none; }
+
+a.dropClickArrow{ position:absolute; top:2px; *top:2px; right:1px; display:block; width:16px; height:16px; _line-height:0; _font-size:0; }

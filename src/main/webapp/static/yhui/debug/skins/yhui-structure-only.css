@@ -1,0 +1,305 @@
+@charset "utf-8";
+/* style of yhui structure
+ * created by jiangyuan(qq:741967342) 20130308
+ */
+            /* has a color ↓, to fix when switch skin the dom has no style */
+.yhui-whole-overlay { background-color: #FFF; height: 100%; left: 0; position: absolute; top: 0; width: 100%; z-index:10001; }
+.yhui-whole-loading { position: relative; margin: 200px auto 0 auto; width: 250px; height: 40px; z-index: 10002; _margin: 200px auto 1000px auto; }
+
+.yhui-header { position: relative; min-width: 800px; }
+.yhui-ie6 .yhui-header { white-space: nowrap; }
+.yhui-header-inner { height: 40px; }
+.yhui-header-inner div { float: right; margin: 10px 40px 0 0; }
+.yhui-header-inner div a { margin: 0 5px; }
+.yhui-header-welcome { display: inline-block; width: auto; padding-left: 15px; }
+.yhui-header-password { position: relative; display: none; margin: 0; }
+.yhui-header-password:hover { text-decoration: none; }
+.yhui-header-password:hover span { position: absolute; top: 18px; left: -20px; width: 220px; text-align: center; z-index: 10; line-height: 1.5; }
+.yhui-header-role { display: inline-block; width: 72px; margin: 1px 1px 0; padding: 1px 5px 3px 5px; position: relative; }
+.yhui-ie7 .yhui-header-role, .yhui-ie6 .yhui-header-role { padding:0 5px; line-height:1.5; }
+.userRoleHover { margin: 0; }
+.yhui-header-rolelist { position: absolute; list-style: none; display: none; top: 16px; border-top: none; padding-top: 3px; left: -1px; }
+.yhui-header-rolelist li { width: 140px; overflow: hidden; zoom: 1; }
+.yhui-header-rolelist li a { display: block; text-decoration:none;  margin:0; padding: 3px 6px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.yhui-ie7 .yhui-header-rolelist li a, .yhui-ie6 .yhui-header-rolelist li a { padding-top: 2px; padding-bottom: 2px; zoom: 1; }
+
+.yhui-menu, .yhui-menu-firstul { list-style: none; padding-left: 10px; }
+.yhui-menu-firstli { float:left; height:22px; padding:0 30px 0 6px; line-height:1.8; text-align:center; cursor:pointer; position:relative; overflow:visible; }
+.yhui-menu-secul { padding: 0; list-style: none; position: absolute; left:-1px; overflow:visible !important; display:none; }
+.yhui-ie7 .yhui-menu-secul, .yhui-ie6 .yhui-menu-secul { top:22px; }
+.yhui-menu-secul li { height:22px; width:128px; text-align:left; padding-left:5px; position:relative; overflow:visible !important; padding-top: 0; }
+.yhui-menu-secul li:hover, .yhui-menu-seclihover { cursor:pointer; }
+.yhui-menu-firstli span, .yhui-menu-secli span { position:absolute; right:5px; top: 0; }
+.yhui-ie7 .yhui-menu-firstli span, .yhui-ie7 .yhui-menu-secli span, .yhui-ie6.yhui-menu-firstli span, .yhui-ie6 .yhui-menu-secli span { top: 0; }
+.yhui-ie6 .yhui-menu-secul span { color:#666 }
+.yhui-menu-secul a { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.yhui-ie7 .yhui-menu-secul a, .yhui-ie6 .yhui-menu-secul a { zoom: 1; }
+.yhui-menu-thiul { list-style: none; position: relative; width: 133px; top: -22px; left: 128px; }
+.yhui-ie7 .yhui-menu-thiul { top: -23px; }
+.yhui-ie6 .yhui-menu-thiul { position: absolute; left: 133px; top: -1px; }
+.yhui-menu-aligncenter { text-align: center; padding: 0 18px; }
+
+.yhui-formfield { display: none; margin-top: 10px;  }
+.yhui-formfield-table { width: 100%; }
+.yhui-formfield-table td { padding:3px; white-space:nowrap;height: 28px; }
+.yhui-formfield-table td.column2Even { width:40%; text-align:right;  line-height: 26px;}
+.yhui-formfield-table td.column4Even { width:15%; text-align:right; }
+.yhui-formfield-table td.column4Odd { width:35%; /*background-color:#FFF; */}
+.yhui-formfield-table td.column6Even { width:10%; text-align:right; }
+.yhui-formfield-table td.column6Odd { width:23.33%; /*background-color:#FFF; */}
+        
+.yhui-btn-holder { text-align:center; padding:5px 10px; }
+.yhui-btn-holder a { margin-left:10px; }
+.yhui-btn { display:inline-block; padding:0 5px; text-decoration:none; }
+.yhui-ie .yhui-btn { padding: 5px 6px; }
+.yhui-form-icon { display:inline-block; width:16px; height:16px; margin:0 4px 0 0; vertical-align:middle; cursor:pointer; }
+.yhui-form-text { width:150px; }
+.yhui-form-select { width: 150px; }
+.yhui-form-checkable { padding: 3px 5px; }
+.yhui-ie7 .yhui-form-checkable, .yhui-ie6 .yhui-form-checkable { padding: 0 4px; }
+.yhui-form-checkable input { position: relative; top: 2px; }
+.yhui-button { overflow: hidden; }
+
+.yhui-dropdown { position:relative; padding:2px 0 0 0; display:inline-block; }
+.yhui-ie7 .yhui-dropdown, .yhui-ie6 .yhui-dropdown { padding:0; display:inline; zoom:1; }
+.yhui-dropdown input { margin: 0 0 2px 0; border:0; }
+.yhui-ie .yhui-dropdown input { line-height: 1.4; }
+.yhui-ie7 .yhui-dropdown input, .yhui-ie6 .yhui-dropdown input { line-height: 1.5; }
+.yhui-dropdown-arrow { position:absolute; top:5px; right:1px; display:block; width:16px; height:16px; }
+.yhui-ie6 .yhui-dropdown-arrow { line-height:0; font-size:0; }
+.yhui-dropdown .yhui-dropdown-disabled { cursor: no-drop; position:absolute; top:0; left:0; width:100%; height:100%; z-index:4; zoom:1; display: none; }
+body .yhui-dropdown-drop { z-index: 3000; position: absolute; }
+.yhui-dropdown-tree { overflow:auto; max-height:200px; }
+.yhui-ie8 .yhui-dropdown-tree { max-height: none; }
+.yhui-ie9 .yhui-dropdown-tree:hover { height:100%; }
+.yhui-dropdown-buttonpanel { padding: 3px 0; }
+.yhui-dropdown-buttonpanel a { margin-left: 9px; }
+
+.yhui-tabs .ui-tabs-nav { border: none; border-bottom: 1px solid #b9e3f1; }
+.yhui-tabs .ui-tabs-nav .ui-icon-close { float: right; }
+.yhui-tabs div.ui-tabs-panel { padding: 0; }
+
+.yhui-tabs-header { position:relative; height:23px; }
+.yhui-ie6 .yhui-tabs-header, .yhui-ie7 .yhui-tabs-header, .yhui-ie8 .yhui-tabs-header { z-index: 102; }
+.yhui-tabs-header-inner { overflow:hidden; position:relative; height:23px; margin:0 36px 0 0; }
+.yhui-tabs-header .yhui-tabs-header-inner .ui-tabs-nav { width:10000px; position:absolute; padding: 0; }
+.yhui-tabs-header .yhui-tabs-header-inner .ui-tabs-nav li { margin:0 3px 0 0; width:100px; position:relative; }
+.yhui-tabs-header .yhui-tabs-header-inner .ui-tabs-nav li a { width:65%; padding: 3px 1em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.yhui-tabs-header .ui-icon { position:absolute; top:1px; display:none; cursor:pointer; }
+:root .yhui-tabs-header .ui-icon { top:2px; }
+.yhui-tabs-list { overflow: hidden; width:150px; padding:5px; display:none; position:absolute; right:0; top:20px; z-index:200; }
+.yhui-tabs-list-up { max-height:350px; overflow:auto; }
+.yhui-tabs-list ul { list-style:none; }
+.yhui-tabs-list li { padding:4px 4px; margin-top:2px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.yhui-tabs-list .yhui-tabs-list-disable { cursor: default; }
+.yhui-tabs-arrow-w { left:0; }
+.yhui-tabs-arrow-e { right:34px; }
+.yhui-tabs-header .yhui-tabs-refresh { right:17px; display:block; }
+.yhui-tabs-header .yhui-tabs-arrow-s { right:0; display:block; }
+.yhui-tabs-header .ui-tabs-nav .yhui-tabs-close { top:1px; right:3px;  cursor:pointer; display: block; }
+.yhui-tabs-panels .ui-tabs-panel { height: 100%; }
+.yhui-ie8 .yhui-tabs-panels .ui-tabs-panel { overflow: hidden; }
+
+.yhui-switchpanel-activateall { right: 16px; margin-top: -8px; position: absolute; top: 50%; }
+.yhui-switchpanel-foldall { right: 0; margin-top: -8px; position: absolute; top: 50%; }
+.yhui-switchpanel-panel { position: relative; overflow: hidden !important; }
+
+.yhui-selector { position: relative; }
+.yhui-selector-panel { position: absolute; top: 0; overflow: auto; }
+.yhui-selector-panel div { margin-top: 1px; padding: 1px 2px; }
+.yhui-selector-leftpanel { left: 0; }
+.yhui-selector-rightpanel { right: 0; }
+.yhui-selector-btncontainer { position: absolute; top: 50%; left: 50%; width: 20px; height: 140px; margin-top: -70px; margin-left: -10px; }
+.yhui-selector-btn { margin: 13px auto 0 auto; cursor: pointer; }
+
+.yhui-scrolltabs .yhui-scrolltabs-panelContainer { overflow: auto; position: relative; }
+.yhui-ie7 .yhui-scrolltabs .yhui-scrolltabs-panelContainer, .yhui-ie6 .yhui-scrolltabs .yhui-scrolltabs-panelContainer { overflow-x:hidden; }
+.yhui-scrolltabs .yhui-scrolltabs-panel { padding: 5px 10px; }
+.yhui-scrolltabs .yhui-scrolltabs-title { padding: 3px 10px; font-weight: normal; }
+.yhui-ie6 .yhui-scrolltabs .yhui-scrolltabs-title { zoom: 1; }
+.yhui-scrolltabs .yhui-scrolltabs-actived { font-weight: bold; }
+
+.yhui-window-taskbar { position: absolute; bottom: 0; left: 0; width: 100%; display: none;  z-index: 2000; }
+.yhui-window-taskbar-inner { overflow: hidden; }
+.yhui-window-taskbar ul { list-style: none;  padding: 0 3px; height: 24px; width: 10000px; }
+.yhui-window-taskbar li { position: relative; float: left; height: 18px; padding-top: 1px; margin: 2px 0 0 3px; text-indent: 2em; width: 158px; cursor: pointer; display: none; }
+.yhui-ie .yhui-window-taskbar li { line-height: 1.3; }
+.yhui-ie9 .yhui-window-taskbar li { height: 17px; padding-top: 2px; }
+.yhui-window-taskbar li span { cursor: default; position: absolute; display: block; width: 10px; height: 11px; right: 4px; top: 6px;}
+
+.yhui-contextmenu .yhui-contextmenu-disabled { cursor: default; }
+
+.yhui-datepicker { position: absolute; padding: 3px 11px; z-index: 10001; }
+.yhui-datepicker-head { position: relative; padding-top: 3px; padding-bottom: 5px; padding-left: 8px; }
+.yhui-datepicker-year, .yhui-datepicker-month { position: absolute; display: none; text-align: center; border-radius: 3px; box-shadow: 0 2px 3px #BBB; }
+.yhui-ie7 .yhui-datepicker-year, .yhui-ie6 .yhui-datepicker-year, .yhui-ie7 .yhui-datepicker-month, .yhui-ie6 .yhui-datepicker-month { top:32px; }
+.yhui-datepicker-head div { padding: 2px; }
+.yhui-datepicker-head div table td { padding: 3px 6px; cursor: default; }
+.yhui-datepicker-year { left: 0; font-family: "SimSun"; }
+.yhui-datepicker-month { left: 52px; }
+a.yhui-datepicker-prev, a.yhui-datepicker-next, a.yhui-datepicker-btntoday { position: absolute; top: 10px; }
+.yhui-datepicker-head a.yhui-datepicker-prev { left: -8px; }
+.yhui-ie6 .yhui-datepicker-head a.yhui-datepicker-prev { left: -19px; }
+.yhui-datepicker-head a.yhui-datepicker-next { right: 31px; }
+.yhui-ie6 .yhui-datepicker-head a.yhui-datepicker-next { right: 41px }
+.yhui-datepicker-head .yhui-datepicker-btntoday { display: block; right: -3px; top: 3px; padding: 8px 5px 8px 4px; }
+.yhui-chrome .yhui-datepicker-head .yhui-datepicker-btntoday { padding: 8px 5px 9px 4px; }
+.yhui-ie8 .yhui-datepicker-head .yhui-datepicker-btntoday { padding: 8px 5px 10px 4px; }
+.yhui-ie7 .yhui-datepicker-head .yhui-datepicker-btntoday { top: 4px; padding: 8px 5px 10px 4px; }
+.yhui-ie6 .yhui-datepicker-head .yhui-datepicker-btntoday { right: 8px; top: 4px; }
+.yhui-datepicker-head input { font-family: "SimSun"; border: none; padding: 9px 5px 9px 0; margin: 0; width: 50px; cursor: pointer; text-align: center; }
+:root .yhui-datepicker-head input { padding: 8px 5px 7px 0; }
+.yhui-datepicker-head .yhui-datepicker-split { padding: 5px 1px 6px 0; }
+.yhui-ie9 .yhui-datepicker-head .yhui-datepicker-split { padding: 4px 1px 6px 0; }
+.yhui-datepicker-yearprev, .yhui-datepicker-yearnext { padding: 0 13px; }
+.yhui-datepicker-main { padding-left: 2px; padding-right: 3px; }
+.yhui-datepicker-main th, .yhui-datepicker-main td { text-align: center; } 
+.yhui-datepicker-main th { font-weight: normal; padding: 1px 5px 2px; } 
+.yhui-datepicker-main td { cursor: pointer; font-family: "arial" serif sans-serif; padding: 3px 3px; }
+.yhui-ie9 .yhui-datepicker-main td { padding: 3px 3px 4px; }
+.yhui-datepicker-disable { cursor: default; }
+.yhui-datepicker-time { position: absolute; padding: 0; bottom: 8px; left: 10px; }
+.yhui-ie9 .yhui-datepicker-time { bottom: 6px; }
+.yhui-ie8 .yhui-datepicker-time { bottom: 5px; }
+.yhui-ie6 .yhui-datepicker-time, .yhui-ie7 .yhui-datepicker-time { bottom: 8px; zoom: 1; }
+.yhui-datepicker-timeinner { position: relative; width: 80px; padding: 2px 0 3px 4px; }
+.yhui-ie7 .yhui-datepicker-timeinner { padding: 1px 0 1px 4px; }
+.yhui-ie6 .yhui-datepicker-timeinner { zoom: 1; padding: 1px 0 1px 4px; }
+.yhui-datepicker-timeinner input { cursor: pointer; margin: 0; padding: 0; width: 16px; border: none; outline: none; }
+.yhui-datepicker-timeinner a { position: absolute; right: 3px; height: 50%; overflow: hidden; display: block; cursor: default; }
+.yhui-datepicker-timeinner a span { left: 0; margin-top: -8px; position: relative; top: 50%; } 
+.yhui-datepicker-up { top: 1px; }
+.yhui-ie6 .yhui-datepicker-up { top: 1px; }
+.yhui-datepicker-down { bottom: 2px; }
+.yhui-ie6 .yhui-datepicker-down { bottom: 3px; }
+.yhui-datepicker-control { text-align: right; padding-top: 5px; padding-bottom: 5px; }
+.yhui-ie .yhui-datepicker-control { padding-top: 8px; padding-bottom: 2px; }
+.yhui-ie7 .yhui-datepicker-control, .yhui-ie6 .yhui-datepicker-control { padding-top: 5px; padding-bottom: 5px; }
+.yhui-datepicker-control button { padding: 2px 3px 4px; margin: 0 0 0 3px; line-height: 1;  }
+.yhui-chrome .yhui-datepicker-control button { padding: 4px 6px; }
+.yhui-ie9 .yhui-datepicker-control button { padding: 5px 6px 3px 6px; }
+.yhui-ie8 .yhui-datepicker-control button { padding: 3px 6px 5px 6px; }
+.yhui-ie7 .yhui-datepicker-control button, .yhui-ie6 .yhui-datepicker-control button { padding: 0 3px 0 1px; line-height: 1.2; }
+
+
+.yhui-portlet { min-width: 740px; overflow: auto; display: none;  }
+.yhui-portlet-column { float: left; padding-bottom: 100px;  }
+.yhui-ie6 .yhui-portlet-column { display: inline; }
+.yhui-portlet-panel { margin-top: 10px; margin-bottom: 10px; border-radius: 4px; }
+.yhui-portlet-head { position: relative; padding: 4px 0 4px 28px; cursor: move; }
+.yhui-ie .yhui-portlet-head { padding-bottom: 2px; line-height: 1.5; }
+.yhui-ie7 .yhui-portlet-head { padding-bottom: 5px; line-height: 1; }
+.yhui-ie6 .yhui-portlet-head { zoom:1; }
+.yhui-portlet-logo { position: absolute; display: block; width: 16px; height: 16px; top: 4px; left: 8px; }
+.yhui-ie7 .yhui-portlet-logo { top: 3px; }
+.yhui-portlet-head .yhui-portlet-title { cursor: move; }
+.yhui-ie7 .yhui-portlet-head .yhui-portlet-title { position: relative; top: 1px; }
+.yhui-portlet-panelcontrol { float: right; margin-top: -1px; margin-right: 5px; }
+.yhui-ie7 .yhui-portlet-panelcontrol { margin-top: -20px; }
+.yhui-ie6 .yhui-portlet-panelcontrol { margin-top: -18px;  }
+.yhui-portlet-content { min-height: 360px; max-height: 400px; }
+.yhui-ie6 .yhui-portlet-content { height: 150px }
+.yhui-portlet-content iframe, .yhui-portlet-dialog iframe { width: 100%; height: 100%; }
+.yhui-portlet .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 100px !important; }
+.yhui-portlet .ui-sortable-placeholder *{ visibility: hidden; }
+
+.yhui-validate-tip { position: absolute; cursor: pointer; text-align:left; padding: 0; }
+.yhui-validate-tip-content { padding: 2px 4px 2px 0; margin-left: 8px; width: 140px; overflow: hidden; }
+.yhui-validate-tip-errorlist { padding-left: 20px; }
+.yhui-validate-pending { display: inline-block; position: absolute; height: 16px; width: 16px; z-index: 99999999; }
+
+.yhui-searchbox { height:27px; overflow:hidden; }
+.yhui-searchbox-input { height:22px; width:150px; overflow:hidden; padding:3px 0 0 3px; margin-left:5px; line-height:24px; }
+.yhui-searchbox-search, .yhui-searchbox-cancel { cursor:pointer; height:27px; width:30px; float:left; padding:0; }
+.yhui-searchbox-search { margin-left: 2px; }
+
+.yhui-loading { position: absolute; z-index: 200; }
+.yhui-loading-loader { width: 100%; height: 100%; }
+
+.yhui-dialogtip table{ margin:10px auto; width: 80%; line-height: 2; font-weight: bold; }
+.yhui-dialogtip .yhui-dialogtip-logo{ width:64px; height:64px; }
+.yhui-dialogtip .yhui-dialogtip-message{ padding-left:20px; }
+.yhui-dialogtip .ui-dialog-buttonpane { margin: auto; padding-top: 0; padding-bottom: 0; }
+.yhui-dialogtip .ui-dialog-buttonpane button { margin: 0.3em 0.4em 0.3em 0; }
+.yhui-dialogtip div.ui-dialog-content { padding: 10px 0; }
+
+
+.noscroll{overflow: hidden;}
+#cntyearbtn{ background: url("images/ui-bg_highlight-soft_100_effbff_1x100.png") repeat-x scroll 50% 50% #EFFBFF; border: 1px solid #B9E3F1; color: #666666; font-weight: bold;cursor: pointer; margin: 0.3em 0.4em 0.3em 0;padding: 3px 10px; line-height: 20px; vertical-align: middle;}
+.noscroll{overflow: hidden;}
+.noborder{margin-top: 0;}
+.noborder .yhui-formfield-table{background: #f7fdff;}
+.noborder table.yhui-formfield-table,.noborder .yhui-formfield-table td{background: #f7fdff; border: 0;}
+.noborder .yhui-formfield-table td.column2Odd, 
+.noborder .yhui-formfield-table td.column4Odd,
+.noborder .yhui-formfield-table td.column6Odd{background: #f7fdff;}
+.diplaynone{ display:table-row!important;}
+/*.yhui-header-inner div{position: absolute;
+    right: 3px;
+    top: 9px;
+    z-index: 30000;}
+#roleMenu {
+    display: inline-block;
+    position: relative;
+    font-weight: normal;
+}
+.rolelist {
+    height: 66px;
+    left: 0;
+    margin-left: 6px;
+    position: absolute;
+    top: 20px;
+    width: 90px;
+    z-index: 30000;
+}
+.rolelist li {
+    float: left;
+    height: 22px;
+    overflow: hidden;
+    width: 90px;
+    line-height:22px;
+}
+#roleMenu a.icoRole{
+	text-decoration:none;
+	border:1px solid #4EC2EA  ;
+	border-bottom:0;
+	 height: 19px;
+    line-height: 22px;
+	background:url(skinBlue/images/other/icoRole.gif) right 8px no-repeat;}
+#roleMenu a.icoRoleHover{
+	color:#666;
+	border:1px solid #026f94;	
+	border-bottom:0;
+	background:#eaf9ff url(skinBlue/images/other/icoRole.gif) right -22px no-repeat;}
+.rolelist{
+	color:#666;
+	border:1px solid #026f94;	
+	border-top:0;
+	margin-left:5px;
+	background:#c9ebf8 url(skinBlue/images/other/roleBg.gif) top repeat-x; }
+.rolelist, .rolelist a, .rolelist a:link, .rolelist a:visited{
+	color:#666; display:block;padding-left:10px;
+	}
+.rolelist a{ 
+	color:#666;
+	background:url(skinBlue/images/other/icoArrows.gif) 0px 5px no-repeat;}
+.yhui-header-inner .rolelist a:visited{color:#666;}	
+.yhui-header-inner .rolelist a:hover{
+	overflow:hidden;
+	display:block;
+	color:#666;
+	}
+#roleMenu .icoRole, #roleMenu a.icoRoleHover {
+    display: block;
+    padding-left: 5px;
+    width: 65px;
+    z-index: 30002;
+}*/
+#formButtons{padding: 15px 0;}
+#formButtons .yhui-btn-holder{border-top: 1px solid #B9E3F1; padding:5px 20px 0 0; }
+#formButtons .yhui-btn-holder a{padding:8px 15px; background: url("skinBlue/images/ui-bg_highlight-soft_100_effbff_1x100.png") repeat-x scroll 50% 50% #EFFBFF;
+    border: 1px solid #B9E3F1;
+    color: #666666;
+    font-weight: bold; }
+#formButtons .yhui-btn-holder #yhButton_0,#formButtons .yhui-btn-holder a:hover{border: 1px solid #b5e0ef; background: #ddf5fe url(skinBlue/images/ui-bg_highlight-hard_100_ddf5fe_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #666666; }
+    #formButtons .yhui-btn-holder a span{display:none;}

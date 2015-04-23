@@ -1,0 +1,8 @@
+html, body, p, div, pre { margin: 0; padding: 0; }
+body { background: url(img/bg.gif); }
+.container { width: 1000px; margin: 0 auto; }
+p { line-height: 1.8; font-size: 14px; padding-left: 40px; }
+p:before { content: "";  display: inline-block; width: 0; height: 0; border-left: 10px solid #000; border-top: 5px solid transparent; border-bottom: 5px solid transparent; margin: 0 20px; }
+.code { color: red; font-family: "YaHei Consolas Hybrid"; }
+a.code:hover { color: #FF802C; text-decoration: none; }
+.content { margin-left: 50px; }

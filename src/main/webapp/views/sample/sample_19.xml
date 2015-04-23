@@ -1,0 +1,58 @@
+<anychart>
+	<settings>
+		<animation enabled="True"/>
+	</settings>
+	<charts>
+		<chart plot_type="CategorizedVertical">
+			<data_plot_settings default_series_type="Bar" enable_3d_mode="True">
+				<bar_series group_padding="0.5">
+					<tooltip_settings enabled="True">
+						<format>{%Name} - ${%YValue}</format>
+					</tooltip_settings>
+				</bar_series>
+			</data_plot_settings>
+			<chart_settings>
+				<title enabled="true">
+					<text>Single-Series: with Simple Legend</text>
+				</title>
+				<legend enabled="true" position="Bottom" align="Spread" ignore_auto_item="true">
+					<format>{%Icon} {%Name} (${%YValue})</format>
+					<template></template>
+					<title enabled="true">
+						<text>Products Sales</text>
+					</title>
+					<columns_separator enabled="false"/>
+					<background>
+						<inside_margin left="10" right="10"/>
+					</background>
+					<items>
+						<item source="Points"/> 
+					</items>
+				</legend>
+				<axes>
+					<y_axis>
+						<title><text>Sales (in USD)</text></title>
+						<labels align="Inside">
+							<format>${%Value}{numDecimals:0}</format>
+						</labels>
+					</y_axis>
+					<x_axis>
+						<title enabled="false"><text>Products</text></title>
+					</x_axis>
+				</axes>
+			</chart_settings>
+			<data>
+				<series name="Series 1" palette="Default">
+		    		<point name="Product A" y="1222"/>
+		    		<point name="Product B" y="2431"/>
+		    		<point name="Product C" y="3624"/>
+		    		<point name="Product D" y="5243"/>
+		    		<point name="Product E" y="8813"/>
+		    	</series>
+			</data>
+		</chart>
+	</charts>
+</anychart>
+			
+			
+			

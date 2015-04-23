@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	<!-- 把标记了@Controller注解的类转换为bean -->
+	<context:component-scan base-package="com.yuhui.core.*,com.jiaxiao.*" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
+	<!-- 启动spring mvc的注解功能 -->
+	<mvc:annotation-driven/>
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+		
+	<!-- 将无法mapping到Controller的path交给default servlet handler处理 -->		
+	<mvc:default-servlet-handler/>	
+	
+	<mvc:interceptors>  
+    	<bean class="com.yuhui.core.log.SystemVisitorLogInterceptor" />
+	</mvc:interceptors>  
+	
+	<!-- springMVC 错误拦截 -->
+	<bean id="exceptionResolver" class="com.yuhui.core.exception.CustomSimpleMappingExceptionResolver">
+	  <property name="exceptionMappings"> 
+     	<props> 
+		  <prop key="com.yuhui.core.exception.SystemException">error/500</prop> 
+          <prop key="com.yuhui.core.exception.BusinessException">error/errorpage</prop>
+		  <prop key="java.lang.exception">error/500</prop>
+       </props> 
+   	 </property> 
+   	 <property name="statusCodes">    
+             <props>    
+                 <prop key="error/500">500</prop>    
+                 <prop key="error/404">404</prop>    
+             </props>    
+         </property>
+     <property name="defaultErrorView" value="error/500" />    
+         <!-- 默认HTTP状态码 -->    
+     <property name="defaultStatusCode" value="500" />  
+	</bean>
+	
+	<!-- 定义jsp文件的位置 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+</beans>	

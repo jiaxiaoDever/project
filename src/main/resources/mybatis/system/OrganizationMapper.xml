@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuhui.core.repository.system.OrganizationDAO">
+	<resultMap type="Organization" id="defaulfResultMap">
+		<result property="isParent" column="is_parent" typeHandler="StringBooleanTypeHandle" />
+	</resultMap>
+	<select id="findByParentId" resultMap="defaulfResultMap" parameterType="string">
+		select t.*,
+		case when (select count(m.id) from ${jdbc.schema}.tb_sys_organization m where t.id = m.parent_id)>0 then 'TRUE' else 'FALSE' end as is_parent
+		from ${jdbc.schema}.tb_sys_organization t where
+		<choose>
+			<when test="_parameter==null or _parameter == ''">
+				parent_Id is null
+			</when>
+			<otherwise>
+				parent_Id = #{id}
+			</otherwise>
+		</choose>
+		order by org_level asc 
+	</select>
+</mapper>
