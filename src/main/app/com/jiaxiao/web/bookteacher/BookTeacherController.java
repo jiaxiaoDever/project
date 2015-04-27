@@ -1,5 +1,6 @@
 package com.jiaxiao.web.bookteacher;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jiaxiao.entity.StudentCourse;
 import com.jiaxiao.ro.BookTeachers;
 import com.jiaxiao.ro.Course;
 import com.jiaxiao.ro.CourseDay;
@@ -65,7 +67,7 @@ public class BookTeacherController {
 			if(openId != null && studentCardId != null && studentName != null && studentPhone != null 
 					&& !"".equals(openId) && !"".equals(studentCardId) && !"".equals(studentName) 
 					&& !"".equals(studentPhone)){
-				studentName = new String(studentName.getBytes("ISO-8859-1"),"UTF-8");
+				studentName = URLDecoder.decode(studentName, "UTF-8");
 				int rs = baseService.bandToStudent(openId, studentName, studentCardId, studentPhone);
 				if(rs == 2) return AjaxResult.failure("找不到对应学员");
 				if(rs == 3) return AjaxResult.failure("更新数据库失败");
@@ -164,6 +166,29 @@ public class BookTeacherController {
 			}else{				
 				return AjaxResult.failure("学员当前课程已经预约过");
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-27
+	 * @todo TODO 查看用户自己已经预约的教练
+	 * @param openId 用户微信openId
+	 * @param request
+	 * @return 返回用户已经预约的教练
+	 */
+	@RequestMapping("bookedCourses/{openId}")
+	@ResponseBody
+	public AjaxResult bookedCourses(@PathVariable String openId,HttpServletRequest request){
+		try {
+			List<StudentCourse> scs = bookTeacherService.bookedCourses(openId);
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.success(scs):AjaxResult.failure("微信用户还未绑定学员");
+			}
+			return scs == null ? AjaxResult.failure("微信用户还未绑定学员"):AjaxResult.success(scs);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");

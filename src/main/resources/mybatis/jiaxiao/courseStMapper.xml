@@ -3,13 +3,85 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jiaxiao.repository.CourseStDAO">
-	<resultMap type="TbCourseSt" id="defaulfResultMap">
+	<resultMap type="TbCourseSt" id="idMap">
 		<id property="stCourseId" column="ST_COURSE_ID"/>
 		<result property="courseId" column="COURSE_ID"/>
 	</resultMap>
+	<resultMap type="TbRoasterJx" id="roasterJx">
+		<id property="courseId" column="COURSE_ID"/>
+		<result property="branchId" column="BRANCH_ID"/>
+		<result property="branchName" column="BRANCH_NAME"/>
+		<result property="canSignNum" column="CAN_SIGN_NUM"/>
+		<result property="common" column="common"/>
+		<result property="courseHour" column="COURSE_HOUR"/>
+		<result property="courseInNum" column="COURSE_IN_NUM"/>
+		<result property="courseInfo" column="COURSE_INFO"/>
+		<result property="courseName" column="COURSE_NAME"/>
+		<result property="courseNoticBHour" column="COURSE_NOTIC_B_HOUR"/>
+		<result property="courseStat" column="COURSE_STAT"/>
+		<result property="courseStatCode" column="COURSE_STAT_CODE"/>
+		<result property="courseTimearea" column="COURSE_TIMEAREA"/>
+		<result property="courseTimeareaCode" column="COURSE_TIMEAREA_CODE"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="editEndTime" column="EDIT_END_TIME"/>
+		<result property="endTime" column="END_TIME"/>
+		<result property="isCourseNotic" column="IS_COURSE_NOTIC"/>
+		<result property="isRoastNotic" column="IS_ROAST_NOTIC"/>
+		<result property="jxId" column="JX_ID"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="offlineNum" column="OFFLINE_NUM"/>
+		<result property="roastNoticAHour" column="ROAST_NOTIC_A_HOUR"/>
+		<result property="signEndTime" column="SIGN_END_TIME"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="subjectId" column="SUBJECT_ID"/>
+		<result property="subjectName" column="SUBJECT_NAME"/>
+		<result property="teacherId" column="TEACHER_ID"/>
+		<result property="teacherName" column="TEACHER_NAME"/>
+	</resultMap>
+	<resultMap type="TbCourseSt" id="defaulfResultMap">
+		<id property="stCourseId" column="ST_COURSE_ID"/>
+		<result property="courseId" column="COURSE_ID"/>
+		<result property="bookTime" column="BOOK_TIME"/>
+		<result property="cancelDate" column="CANCEL_DATE"/>
+		<result property="cancelInfo" column="CANCEL_INFO"/>
+		<result property="carScore" column="CAR_SCORE"/>
+		<result property="common" column="common"/>
+		<result property="courseId" column="COURSE_ID"/>
+		<result property="courseName" column="COURSE_NAME"/>
+		<result property="courseStat" column="COURSE_STAT"/>
+		<result property="courseStatCode" column="COURSE_STAT_CODE"/>
+		<result property="implCourseStat" column="IMPL_COURSE_STAT"/>
+		<result property="implCourseStatCode" column="IMPL_COURSE_STAT_CODE"/>
+		<result property="isCancelBook" column="IS_CANCEL_BOOK"/>
+		<result property="isNormalCancel" column="IS_NORMAL_CANCEL"/>
+		<result property="isUncareUnimpl" column="IS_UNCARE_UNIMPL"/>
+		<result property="learnInfo" column="LEARN_INFO"/>
+		<result property="overTime" column="OVER_TIME"/>
+		<result property="scoreInfo" column="SCORE_INFO"/>
+		<result property="scoreTime" column="SCORE_TIME"/>
+		<result property="serviceScore" column="SERVICE_SCORE"/>
+		<result property="startTime" column="START_TIME"/>
+		<result property="studentId" column="STUDENT_ID"/>
+		<result property="studentName" column="STUDENT_NAME"/>
+		<result property="teacherReplyInfo" column="TEACHER_REPLY_INFO"/>
+		<result property="teacherReplyTime" column="TEACHER_REPLY_TIME"/>
+		<result property="teacherScore" column="TEACHER_SCORE"/>
+		<result property="unimplInfo" column="UNIMPL_INFO"/>
+	</resultMap>
+	<resultMap type="StudentCourse" id="studentCourse">
+		<id property="stCourseId" column="ST_COURSE_ID"/>
+		<association property="courseSt" resultMap="defaulfResultMap" javaType="TbCourseSt" column="ST_COURSE_ID"></association>
+		<association property="roasterJx" resultMap="roasterJx" javaType="TbRoasterJx" column="COURSE_ID"></association>
+	</resultMap>
 	
-	<select id="" resultMap="defaulfResultMap">
+	<select id="getDayBookNum" resultMap="idMap">
 		select c.ST_COURSE_ID,c.COURSE_ID from ${jdbc.schema}.tb_course_st c left join ${jdbc.schema}.tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID 
-where r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) and c.STUDENT_ID = #{getDayBookNum} and c.COURSE_STAT != 'YQX'
+where r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) and c.STUDENT_ID = #{studentId} and c.COURSE_STAT != 'YQX'
+	</select>
+	
+	<select id="findStudentBookedCourse" resultMap="studentCourse">
+		select c.*,r.* from tb_course_st c left join tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID
+where c.STUDENT_ID= #{studentId}
 	</select>
 </mapper>

@@ -1,5 +1,6 @@
 package com.jiaxiao.ro;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import java.util.List;
  * @author 肖长江
  * 教练对象信息
  */
-public class Teacher {
+public class Teacher implements Serializable {
 
+	/** */
+	private static final long serialVersionUID = 6203257480316498098L;
 	/**教练编号*/
 	private String teacherId;
 	/**教练名称*/

@@ -1,11 +1,15 @@
 package com.jiaxiao.ro;
 
+import java.io.Serializable;
+
 /**
  * @author 肖长江
  * 驾校课程信息
  */
-public class Course {
+public class Course  implements Serializable{
  
+	/** */
+	private static final long serialVersionUID = -2647304306496331932L;
 	/**课程编号*/
 	private String courseId;
 	/**课程名称*/

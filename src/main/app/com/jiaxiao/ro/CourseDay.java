@@ -1,5 +1,6 @@
 package com.jiaxiao.ro;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,8 +8,10 @@ import java.util.List;
  * @author 肖长江
  * 教练一天的课程情况
  */
-public class CourseDay {
+public class CourseDay implements Serializable {
 
+	/** */
+	private static final long serialVersionUID = -5055754396619199931L;
 	/**课程日期*/
 	private String day;
 	/**科目编号*/

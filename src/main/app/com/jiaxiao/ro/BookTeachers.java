@@ -1,5 +1,6 @@
 package com.jiaxiao.ro;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,10 @@ import java.util.Map;
  * @author 肖长江
  * 预约教练对象
  */
-public class BookTeachers {
+public class BookTeachers  implements Serializable{
 
+	/** */
+	private static final long serialVersionUID = 1117195756938404307L;
 	/**微信openId*/
 	private String openId;
 	/**用户是否绑定到指定学员了*/

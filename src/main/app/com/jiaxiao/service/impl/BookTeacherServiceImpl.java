@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.jiaxiao.entity.StudentCourse;
 import com.jiaxiao.entity.TbCourseSt;
 import com.jiaxiao.entity.TbRoasterJx;
 import com.jiaxiao.entity.TbStudentJx;
@@ -99,8 +100,9 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		//2.判断当前学员是否还有剩余课时
 		if(studentJx.getCanSignCourseNum() < 1) return 4;
 		//3.判断当前学员当前预约的课时是否达到上限
+		TbRoasterJx tr = roasterJxDAO.get(TbRoasterJx.class, courseId);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		List<TbCourseSt> courseSts = courseStDAO.getDayBookNum(studentJx.getStudentId(), sdf.format(new Date()));
+		List<TbCourseSt> courseSts = courseStDAO.getDayBookNum(studentJx.getStudentId(), sdf.format(tr.getStartTime()));
 		if(courseSts != null && courseSts.size() >= studentJx.getMaxNumSign()) return 5;
 		//4.判断当前课时，该学员是否已经预约
 		boolean isBooked = false;
@@ -114,7 +116,6 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		//3.修改当前课程信息：可预约人数减一，
 		//如果成功则新增学员课程信息以及学员剩余课时数减一，否则查看课程是否已无空位
 		int rs = teacherJxDAO.bookingTeacherCourse(courseId);
-		TbRoasterJx tr = roasterJxDAO.get(TbRoasterJx.class, courseId);
 		if(rs > 0){
 			TbCourseSt stc = new TbCourseSt();
 			stc.setCourseId(courseId);
@@ -130,6 +131,7 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 			return 3;
 		}else{
 			if(tr != null){
+				tr = roasterJxDAO.get(TbRoasterJx.class, courseId);
 				if(tr.getCanSignNum() < 1) return 2;
 				if(tr.getStartTime().getTime() <= (new Date()).getTime()) return 2;
 			}
@@ -193,5 +195,16 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		return ts;
 	}
 
+	@Override
+	public List<StudentCourse> bookedCourses(String openId) throws Exception {
+		String studentId = baseService.isUserBandedStudent(openId);
+		if(studentId != null){
+			List<StudentCourse> scs = courseStDAO.findStudentBookedCourse(studentId);
+			return scs;
+		}
+		return null;
+	}
+
+	
 
 }

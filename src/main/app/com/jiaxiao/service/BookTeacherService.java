@@ -1,5 +1,8 @@
 package com.jiaxiao.service;
 
+import java.util.List;
+
+import com.jiaxiao.entity.StudentCourse;
 import com.jiaxiao.ro.BookTeachers;
 import com.jiaxiao.ro.CourseDay;
 
@@ -35,4 +38,14 @@ public interface BookTeacherService {
 	 * @throws Exception
 	 */
 	public int bookCourse(String openId,String courseId) throws Exception;
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-27
+	 * @todo TODO 微信用户对应学员的已约教练课程信息
+	 * @param openId 微信openId
+	 * @return 如果用户未绑定学员,返回Null;否则返回用户对应学员的已预约教练课程信息
+	 * @throws Exception
+	 */
+	public List<StudentCourse> bookedCourses(String openId) throws Exception;
 }
