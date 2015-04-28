@@ -6,55 +6,69 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_subject database table.
- * 
+ * @author 肖长江
+ * 科目信息
  */
 @Entity
 @Table(name="tb_subject")
 public class TbSubject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 科目编号*/
 	@Id
 	@Column(name="SUBJECT_ID")
 	private String subjectId;
 
+	/** 备注*/
 	private String common;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 删除时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DELETE_DATE")
 	private Date deleteDate;
 
+	/** 是否在考*/
 	@Column(name="IS_ON")
 	private Integer isOn;
 
+	/** 是否要理论考试*/
 	@Column(name="IS_ON_THEORY")
 	private Integer isOnTheory;
 
+	/** 是否要路考*/
 	@Column(name="IS_ONROAD")
 	private Integer isOnroad;
 
+	/** 驾照类型*/
 	@Column(name="LICENSE_TYPE")
 	private String licenseType;
 
+	/** 驾照类型编码*/
 	@Column(name="LICENSE_TYPE_CODE")
 	private String licenseTypeCode;
 
+	/** 科目学名*/
 	@Column(name="SUBJECT_ASNAME")
 	private String subjectAsname;
 
+	/** 科目代码*/
 	@Column(name="SUBJECT_CODE")
 	private String subjectCode;
 
+	/** 科目级别*/
 	@Column(name="SUBJECT_GREATE")
 	private Integer subjectGreate;
 
+	/** 科目简介*/
 	@Column(name="SUBJECT_INFO")
 	private String subjectInfo;
 
+	/** 科目名称*/
 	@Column(name="SUBJECT_NAME")
 	private String subjectName;
 

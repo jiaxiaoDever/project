@@ -7,131 +7,171 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_student_jx database table.
- * 
+ * @author 肖长江
+ * 学员信息
  */
 @Entity
 @Table(name="tb_student_jx")
 public class TbStudentJx implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 学员编号*/
 	@Id
 	@Column(name="STUDENT_ID")
 	private String studentId;
 
+	/** 网点编号*/
 	@Column(name="BRANCH_ID")
 	private String branchId;
 
+	/** 网点名称*/
 	@Column(name="BRANCH_NAME")
 	private String branchName;
 
+	/** 所在地市*/
 	private String city;
 
+	/** 备注*/
 	private String common;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 删除时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DELETE_DATE")
 	private Date deleteDate;
 
+	/** 删除原因*/
 	@Column(name="DELETE_INFO")
 	private String deleteInfo;
 
+	/** 编辑时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="EDIT_DATE")
 	private Date editDate;
 
+	/** 异常预约次数*/
 	@Column(name="EXCEPTION_BOOK_NUM")
 	private Integer exceptionBookNum;
 
+	/** 课程预约通知开关*/
 	@Column(name="IS_BOOKED_NOTIC")
 	private Integer isBookedNotic;
 
+	/** 课程结束评价通知开关*/
 	@Column(name="IS_IMPL_SCORE_NOTIC")
 	private Integer isImplScoreNotic;
 
+	/** 课程上课通知开关*/
 	@Column(name="IS_PRE_IMPL_NOTIC")
 	private Integer isPreImplNotic;
 
+	/** 驾校编号*/
 	@Column(name="JX_ID")
 	private String jxId;
 
+	/** 驾校名称*/
 	@Column(name="JX_NAME")
 	private String jxName;
 
+	/** 在考驾照类型*/
 	@Column(name="LICENSE_TYPE")
 	private String licenseType;
 
+	/** 在考驾照类型编码*/
 	@Column(name="LICENSE_TYPE_CODE")
 	private String licenseTypeCode;
 
+	/** 锁定原因*/
 	@Column(name="LOCK_INFO")
 	private String lockInfo;
 
+	/** 锁定时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="LOCK_TIME")
 	private Date lockTime;
 
+	/** 密码*/
 	private String password;
 
+	/** 手机号*/
 	@Column(name="PHONE_NUM")
 	private String phoneNum;
 
+	/** 课程上课通知提前小时数*/
 	@Column(name="PRE_IMPL_NOTIC_B_HOUR")
 	private Integer preImplNoticBHour;
 
+	/** 所在省*/
 	private String province;
 
+	/** QQ*/
 	private String qq;
 
+	/** 性别*/
 	private Integer sex;
 	
+	/** 住址*/
 	@Column(name="ST_ADDRESS")
 	private String stAddress;
 
+	/** 所在区县*/
 	@Column(name="ST_AREA")
 	private String stArea;
 
+	/** 工作地址*/
 	@Column(name="ST_WORK_ADDRESS")
 	private String stWorkAddress;
 
+	/** 身份证号*/
 	@Column(name="STUDENT_CARD_ID")
 	private String studentCardId;
 
+	/** 姓名*/
 	@Column(name="STUDENT_NAME")
 	private String studentName;
 
+	/** 状态*/
 	@Column(name="STUDENT_STAT")
 	private String studentStat;
 
+	/** 状态编码*/
 	@Column(name="STUDENT_STAT_CODE")
 	private String studentStatCode;
 
+	/** 科目编号*/
 	@Column(name="SUBJECT_ID")
 	private String subjectId;
 
+	/** 科目名称*/
 	@Column(name="SUBJECT_NAME")
 	private String subjectName;
 
+	/** 解锁时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="UNLOCK_TIME")
 	private Date unlockTime;
 
+	/** 每天最多可约课次数*/
 	@Column(name="MAX_NUM_SIGN")
 	private Integer maxNumSign;
 	
+	/** 可预约课次数*/
 	@Column(name="CAN_SIGN_COURSE_NUM")
 	private Integer canSignCourseNum;
 	
+	/** 已预约课次数*/
 	@Column(name="OVER_COURSE_NUM")
 	private Integer overCourseNum;
 	
+	/** 新增可约课次数*/
 	@Column(name="ADD_COURSE_NUM")
 	private Integer addCourseNum;
 	
+	/** 总约课次数*/
 	@Column(name="TOTAL_COURSE_NUM")
 	private Integer totalCourseNum;
 	

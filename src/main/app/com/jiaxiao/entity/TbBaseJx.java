@@ -6,55 +6,69 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_base_jx database table.
- * 
+ * @author 肖长江
+ * 驾校基础信息
  */
 @Entity
 @Table(name="tb_base_jx")
 public class TbBaseJx implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 驾校编号*/
 	@Id
 	@Column(name="JX_ID")
 	private String jxId;
 
+	/** 驾校备注*/
 	private String common;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 编辑时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="EDIT_DATE")
 	private Date editDate;
 
+	/** 驾校地址*/
 	@Column(name="JX_ADDRESS")
 	private String jxAddress;
 
+	/** 驾校简介*/
 	@Column(name="JX_INFO")
 	private String jxInfo;
 
+	/** 驾校LOGO图片地址*/
 	@Column(name="JX_LOGO")
 	private String jxLogo;
 
+	/** 驾校名称*/
 	@Column(name="JX_NAME")
 	private String jxName;
 
+	/** 驾校联系电话*/
 	@Column(name="JX_PHONE")
 	private String jxPhone;
 
+	/** 客服QQ*/
 	@Column(name="JX_QQ")
 	private String jxQq;
 
+	/** 驾校简写名称*/
 	@Column(name="JX_SHORT_NAME")
 	private String jxShortName;
 
+	/** 驾校状态*/
 	@Column(name="JX_STAT")
 	private String jxStat;
 
+	/** 驾校状态编码*/
 	@Column(name="JX_STAT_CODE")
 	private String jxStatCode;
 
+	/** 驾校联系人手机号*/
 	@Column(name="JX_TEL")
 	private String jxTel;
 

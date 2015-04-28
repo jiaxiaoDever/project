@@ -6,88 +6,114 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_wx_user database table.
- * 
+ * @author 肖长江
+ * 微信用户信息
  */
 @Entity
 @Table(name="tb_wx_user")
 public class TbWxUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 用户编号*/
 	@Id
 	@Column(name="USER_ID")
 	private String userId;
 
+	/** 网点编号*/
 	@Column(name="BRANCH_ID")
 	private String branchId;
 
+	/** 关注时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CONTACT_DATE")
 	private Date contactDate;
 
+	/** 国籍*/
 	private String country;
 
+	/** 所在分组编号*/
 	@Column(name="GROUP_ID")
 	private String groupId;
 
+	/** 所在分组名称*/
 	@Column(name="GROUP_NAME")
 	private String groupName;
 
+	/** 是否绑定*/
 	@Column(name="IS_BINDED")
 	private Integer isBinded;
 
+	/** 是否关注*/
 	@Column(name="IS_CONTACT")
 	private Integer isContact;
 
+	/** 是否在线*/
 	@Column(name="IS_ONLINE")
 	private Integer isOnline;
 
+	/** 所属驾校*/
 	@Column(name="JX_ID")
 	private String jxId;
 
+	/** 关注驾校公众号编号*/
 	@Column(name="JX_PUBLIC_ID")
 	private String jxPublicId;
 
+	/** 关注驾校公众号名称*/
 	@Column(name="JX_PUBLIC_NAME")
 	private String jxPublicName;
 
+	/** 微信OPENID*/
 	@Column(name="OPEN_ID")
 	private String openId;
 
+	/** 微信账号*/
 	@Column(name="OPEN_ZH")
 	private String openZh;
 
+	/** 所在省*/
 	private String province;
 
+	/** 角色编码*/
 	@Column(name="ROLE_CODE")
 	private String roleCode;
 
+	/** 角色名称*/
 	@Column(name="ROLE_NAME")
 	private String roleName;
 
+	/** 性别*/
 	private Integer sex;
 
+	/** 城市*/
 	private String sity;
 
+	/** 绑定学院编号*/
 	@Column(name="STUDENT_ID")
 	private String studentId;
 
+	/** 绑定教练编号*/
 	@Column(name="TEACHER_ID")
 	private String teacherId;
 
+	/** 取消关注时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="UNCONTACT_DATE")
 	private Date uncontactDate;
 
+	/** 绑定微信唯一编号*/
 	@Column(name="UNION_ID")
 	private String unionId;
 
+	/** 头像*/
 	@Column(name="USER_LOGO")
 	private String userLogo;
 
+	/** 昵称*/
 	@Column(name="USER_NAME")
 	private String userName;
 
+	/** 所在分组编号*/
 	@Column(name="WXGROUP_ID")
 	private String wxgroupId;
 

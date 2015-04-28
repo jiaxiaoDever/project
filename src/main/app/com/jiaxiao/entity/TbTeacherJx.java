@@ -6,140 +6,183 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_teacher_jx database table.
- * 
+ * @author 肖长江
+ * 教练信息
  */
 @Entity
 @Table(name="tb_teacher_jx")
 public class TbTeacherJx implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 教练编号*/
 	@Id
 	@Column(name="TEACHER_ID")
 	private String teacherId;
 
+	/** 出生日期*/
 	@Column(name="BIRTH_DATE")
 	private String birthDate;
 
+	/** 网点编号*/
 	@Column(name="BRANCH_ID")
 	private String branchId;
 
+	/** 网点名称*/
 	@Column(name="BRANCH_NAME")
 	private String branchName;
 
+	/** 浏览数*/
 	@Column(name="CHECK_NUM")
 	private Integer checkNum;
 
+	/** 所在城市*/
 	private String city;
 
+	/** 备注*/
 	private String common;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 教龄*/
 	@Column(name="DUTE_AGE")
 	private Integer duteAge;
 
+	/** 入职时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DUTE_DATE")
 	private Date duteDate;
 
+	/** 最高职称*/
 	@Column(name="DUTE_LEVEL")
 	private String duteLevel;
 
+	/** 最高职称编码*/
 	@Column(name="DUTE_LEVEL_CODE")
 	private String duteLevelCode;
 
+	/** 最高职称证件编号*/
 	@Column(name="DUTE_LEVEL_NO")
 	private String duteLevelNo;
 
+	/** 最高职称证件照*/
 	@Column(name="DUTE_LEVEL_PIC")
 	private String duteLevelPic;
 
+	/** 在职状态*/
 	@Column(name="DUTE_STAT")
 	private String duteStat;
 
+	/** 在职状态编码*/
 	@Column(name="DUTE_STAT_CODE")
 	private String duteStatCode;
 
+	/** 编辑时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="EDIT_DATE")
 	private Date editDate;
 
+	/** 课程提醒通知开关*/
 	@Column(name="IS_COURSE_NOTIC")
 	private Integer isCourseNotic;
 
+	/** 是否全职*/
 	@Column(name="IS_FULL_TIME")
 	private Integer isFullTime;
 
+	/** 是否明星*/
 	@Column(name="IS_HOT")
 	private Integer isHot;
 
+	/** 是否在职*/
 	@Column(name="IS_ON_DUTE")
 	private Integer isOnDute;
 
+	/** 课程排班通知开关*/
 	@Column(name="IS_ROAST_NOTIC")
 	private Integer isRoastNotic;
 
+	/** 驾校编号*/
 	@Column(name="JX_ID")
 	private String jxId;
 
+	/** 驾校名称*/
 	@Column(name="JX_NAME")
 	private String jxName;
 
+	/** 被赞数*/
 	@Column(name="LIKE_NUM")
 	private Integer likeNum;
 
+	/** 近期带班时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="NEAR_DUTE_DATE")
 	private Date nearDuteDate;
 
+	/** 身份证号*/
 	@Column(name="CARD_ID")
 	private String cardId;
 
+	/** 所在省份*/
 	private String province;
 
+	/** 评分*/
 	private Integer score;
 
+	/** 点评数*/
 	@Column(name="SCORE_NUM")
 	private Integer scoreNum;
 
+	/** 性别*/
 	private Integer sex;
 
+	/** 学员数*/
 	@Column(name="STUDENT_NUM")
 	private Integer studentNum;
 
+	/** 科目编号*/
 	@Column(name="SUBJECT_ID")
 	private String subjectId;
 
+	/** 科目名称*/
 	@Column(name="SUBJECT_NAME")
 	private String subjectName;
 
+	/** 住址*/
 	@Column(name="TEA_ADDRESS")
 	private String teaAddress;
 
+	/** 名族*/
 	@Column(name="TEA_ETHNIC")
 	private String teaEthnic;
 
+	/** 头像*/
 	@Column(name="TEA_LOGO")
 	private String teaLogo;
 
+	/** 籍贯*/
 	@Column(name="TEA_NATIVE")
 	private String teaNative;
 
+	/** 手机号*/
 	@Column(name="TEA_PHONE")
 	private String teaPhone;
 
+	/** QQ*/
 	@Column(name="TEA_QQ")
 	private String teaQq;
 
+	/** 联系电话*/
 	@Column(name="TEA_TEL")
 	private String teaTel;
 
+	/** 所在区县*/
 	@Column(name="TEACHER_AREA")
 	private String teacherArea;
 
+	/** 姓名*/
 	@Column(name="TEACHER_NAME")
 	private String teacherName;
 

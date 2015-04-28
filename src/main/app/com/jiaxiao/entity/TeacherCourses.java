@@ -5,14 +5,21 @@ import java.util.List;
 
 import javax.persistence.Entity;
 
+/**
+ * @author 肖长江
+ * 教练课程信息
+ */
 @Entity
 public class TeacherCourses  implements Serializable {
 
 	/** */
 	private static final long serialVersionUID = 2019889771277794733L;
 
+	/** 教练编号*/
 	private String teacherId;
+	/** 教练详细信息*/
 	private TbTeacherJx tbTeacherJx;
+	/** 教练课程详细信息*/
 	private List<TbRoasterJx> tbRoasterJxs;
 	public TbTeacherJx getTbTeacherJx() {
 		return tbTeacherJx;

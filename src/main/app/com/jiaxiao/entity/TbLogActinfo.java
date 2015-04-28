@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_log_actinfo database table.
+ * @author 肖长江
  * 
  */
 @Entity

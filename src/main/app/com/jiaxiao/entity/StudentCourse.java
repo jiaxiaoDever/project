@@ -7,13 +7,20 @@ import javax.persistence.Entity;
 import com.jiaxiao.entity.TbCourseSt;
 import com.jiaxiao.entity.TbRoasterJx;
 
+/**
+ * @author 肖长江
+ * 学员已约课程信息
+ */
 @Entity
 public class StudentCourse  implements Serializable{
 
 	/** */
 	private static final long serialVersionUID = -4704751329665892950L;
+	/** 学员课程信息编号*/
 	private String stCourseId;
+	/** 对应教练课程信息*/
 	private TbRoasterJx roasterJx;
+	/** 学员课程详细信息*/
 	private TbCourseSt courseSt;
 	public String getStCourseId() {
 		return stCourseId;

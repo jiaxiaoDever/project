@@ -6,38 +6,46 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_key_tm database table.
- * 
+ * @author 肖长江
+ * 消息模板换建信息
  */
 @Entity
 @Table(name="tb_key_tm")
 public class TbKeyTm implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 换键编号*/
 	@Id
 	@Column(name="TM_KEY_ID")
 	private String tmKeyId;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 默认值*/
 	@Column(name="DEFUALT_VALUE")
 	private String defualtValue;
 
+	/** 编辑时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="EDIT_DATE")
 	private Date editDate;
 
+	/** 键码*/
 	@Column(name="KEY_CODE")
 	private String keyCode;
 
+	/** 键描述*/
 	@Column(name="KEY_INFO")
 	private String keyInfo;
 
+	/** 键要求*/
 	@Column(name="KEY_REQUEST")
 	private String keyRequest;
 
+	/** 消息模板编号*/
 	@Column(name="TM_ID")
 	private String tmId;
 

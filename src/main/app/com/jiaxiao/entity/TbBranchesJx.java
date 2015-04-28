@@ -6,69 +6,87 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the tb_branches_jx database table.
- * 
+ * @author 肖长江
+ * 驾校网点信息
  */
 @Entity
 @Table(name="tb_branches_jx")
 public class TbBranchesJx implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	/** 网点编号*/
 	@Id
 	@Column(name="BRANCH_ID")
 	private String branchId;
 
+	/** 网点地址*/
 	@Column(name="BRANCH_ADDRESS")
 	private String branchAddress;
 
+	/** 所在区县*/
 	@Column(name="BRANCH_AREA")
 	private String branchArea;
 
+	/** 班车信息*/
 	@Column(name="BRANCH_BUS")
 	private String branchBus;
 
+	/** 所在城市*/
 	@Column(name="BRANCH_CITY")
 	private String branchCity;
 
+	/** 名称*/
 	@Column(name="BRANCH_NAME")
 	private String branchName;
 
+	/** 所在省份*/
 	@Column(name="BRANCH_PROVICE")
 	private String branchProvice;
 
+	/** 简写名称*/
 	@Column(name="BRANCH_SHORT_NAME")
 	private String branchShortName;
 
+	/** 状态*/
 	@Column(name="BRANCH_STAT")
 	private String branchStat;
 
+	/** 状态编码*/
 	@Column(name="BRANCH_STAT_CODE")
 	private String branchStatCode;
 
+	/** 备注*/
 	private String common;
 
+	/** 创建时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="CREATE_DATE")
 	private Date createDate;
 
+	/** 删除时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="DELETE_DATE")
 	private Date deleteDate;
 
+	/** 编辑时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="EDIT_DATE")
 	private Date editDate;
 
+	/** 驾校编号*/
 	@Column(name="JX_ID")
 	private String jxId;
 
+	/** 驾校名称*/
 	@Column(name="JX_NAME")
 	private String jxName;
 
+	/** 维护结束时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="STOP_END_DATE")
 	private Date stopEndDate;
 
+	/** 维护开始时间*/
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="STOP_START_DATE")
 	private Date stopStartDate;
