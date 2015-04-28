@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 /**
  * @author 肖长江
  * 教练课程信息
+ * 
  */
 @Entity
 public class TeacherCourses  implements Serializable {
