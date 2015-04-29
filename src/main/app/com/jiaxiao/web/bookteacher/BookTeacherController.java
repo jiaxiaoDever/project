@@ -47,13 +47,75 @@ public class BookTeacherController {
 	
 	/**
 	 * @author 肖长江
+	 * @date 2015-4-29
+	 * @todo TODO 判断微信用户是否已经绑定学员
+	 * @param openId 微信openId
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("isBandedToStudent/{openId}")
+	@ResponseBody
+	public AjaxResult isBandedToStudent(@PathVariable String openId,HttpServletRequest request){
+		try {
+			String studentId = baseService.isUserBandedStudent(openId);
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.success("unbanded");
+			}
+			return studentId != null ?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.success("unbanded");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
 	 * @date 2015-4-16
 	 * @todo TODO 绑定微信用户到对应学员
 	 * @param openId 微信ID
 	 * @param studentName 学员姓名
 	 * @param studentCardId 学员卡号
 	 * @param studentPhone 学员手机号
-	 * @return 绑定成功返回true，否则返回false
+	 * @return 
+	 */
+	@RequestMapping("bandingToStudent/{openId}")
+	@ResponseBody
+	public AjaxResult bandingToStudent(@PathVariable String openId,@RequestParam String studentName,@RequestParam String studentCardId,
+			@RequestParam String studentPhone,HttpServletRequest request){
+		try {
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.failure("找不到对应学员"):AjaxResult.success("{studentId:asdfwesdfawef}");
+			}
+			boolean isbanded = false;
+			if(openId != null && studentCardId != null && studentName != null && studentPhone != null 
+					&& !"".equals(openId) && !"".equals(studentCardId) && !"".equals(studentName) 
+					&& !"".equals(studentPhone)){
+				studentName = URLDecoder.decode(studentName, "UTF-8");
+				int rs = baseService.bandToStudent(openId, studentName, studentCardId, studentPhone);
+				if(rs == 2) return AjaxResult.failure("找不到对应学员");
+				if(rs == 3) return AjaxResult.failure("更新数据库失败");
+				isbanded = true;
+			}else{
+				return AjaxResult.failure("提交的参数不符合要求");
+			}
+			String studentId = baseService.isUserBandedStudent(openId);
+			return isbanded?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.failure("绑定失败");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
+	}
+	
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-16
+	 * @todo TODO 绑定微信用户到对应学员，并返回可约教练信息
+	 * @param openId 微信ID
+	 * @param studentName 学员姓名
+	 * @param studentCardId 学员卡号
+	 * @param studentPhone 学员手机号
+	 * @return 
 	 */
 	@RequestMapping("bandToStudent/{openId}")
 	@ResponseBody
@@ -186,13 +248,18 @@ public class BookTeacherController {
 		try {
 			List<StudentCourse> scs = bookTeacherService.bookedCourses(openId);
 			if(isTest(request)){
-				return ti%2 != 0 ?AjaxResult.success(scs):AjaxResult.failure("微信用户还未绑定学员");
+				return ti%2 != 0 ?AjaxResult.success(scs):AjaxResult.success("unbanded");
 			}
-			return scs == null ? AjaxResult.failure("微信用户还未绑定学员"):AjaxResult.success(scs);
+			return scs == null ? AjaxResult.success("微信用户还未绑定学员","unbanded"):AjaxResult.success(scs);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
 		}
+	}
+	
+	public AjaxResult cancelCourse(@PathVariable String openId,@PathVariable String stCourseId){
+		
+		return null;
 	}
 	
 	/**
