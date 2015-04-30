@@ -33,7 +33,7 @@
 		<result property="offlineNum" column="OFFLINE_NUM"/>
 		<result property="roastNoticAHour" column="ROAST_NOTIC_A_HOUR"/>
 		<result property="signEndTime" column="SIGN_END_TIME"/>
-		<result property="startTime" column="START_TIME"/>
+		<result property="startTime" column="COURSE_START_TIME"/>
 		<result property="subjectId" column="SUBJECT_ID"/>
 		<result property="subjectName" column="SUBJECT_NAME"/>
 		<result property="teacherId" column="TEACHER_ID"/>
@@ -81,7 +81,17 @@ where r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{
 	</select>
 	
 	<select id="findStudentBookedCourse" resultMap="studentCourse">
-		select c.*,r.* from tb_course_st c left join tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID
+		select c.*,r.*,r.START_TIME COURSE_START_TIME from ${jdbc.schema}.tb_course_st c left join ${jdbc.schema}.tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID
 where c.STUDENT_ID= #{studentId}
 	</select>
+	
+	<update id="cancelCourse" >
+		update tb_course_st sc set sc.CANCEL_DATE=now(),sc.COURSE_STAT='已取消',sc.COURSE_STAT_CODE='YQX',sc.IS_CANCEL_BOOK=1 where sc.ST_COURSE_ID= #{stCourseId}
+	</update>
+	
+	<insert id="addStudentCourse"  parameterType="TbCourseSt">
+    	insert into ${jdbc.schema}.tb_course_st(ST_COURSE_ID,STUDENT_ID,STUDENT_NAME,COURSE_ID,COURSE_NAME,BOOK_TIME,COURSE_STAT_CODE,COURSE_STAT) 
+    	values(#{stCourseId},#{studentId},#{studentName},#{courseId},#{courseName},now(),'DSK','待上课')
+    </insert>	
+   
 </mapper>

@@ -93,7 +93,7 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public int bookCourse(String openId, String courseId) throws Exception {
+	public int bookCourse(String openId, String courseId) throws RuntimeException {
 		//1.找出openId对应的学员，判断是否存在和绑定
 		TbStudentJx studentJx = studentJxDAO.getBandedStudentJx(openId);
 		if(studentJx == null) return 0;
@@ -115,7 +115,7 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		if(isBooked) return 6;
 		//3.修改当前课程信息：可预约人数减一，
 		//如果成功则新增学员课程信息以及学员剩余课时数减一，否则查看课程是否已无空位
-		int rs = teacherJxDAO.bookingTeacherCourse(courseId);
+		int rs = roasterJxDAO.bookingTeacherCourse(courseId);
 		if(rs > 0){
 			TbCourseSt stc = new TbCourseSt();
 			stc.setCourseId(courseId);
@@ -123,20 +123,20 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 			stc.setStCourseId(UUID.randomUUID().toString());
 			stc.setStudentId(studentJx.getStudentId());
 			stc.setStudentName(studentJx.getStudentName());
-			int i = teacherJxDAO.addStudentCourse(stc);
-			if(i > 0){
-				int j = teacherJxDAO.reduceStudentCanSianNum(studentJx.getStudentId());
-				return j > 0 ? 1 : 3;
+			rs = courseStDAO.addStudentCourse(stc);
+			if(rs > 0){
+				rs = studentJxDAO.reduceStudentCanSianNum(studentJx.getStudentId());
+				if(rs > 0) return 1;
 			}
-			return 3;
 		}else{
 			if(tr != null){
 				tr = roasterJxDAO.get(TbRoasterJx.class, courseId);
 				if(tr.getCanSignNum() < 1) return 2;
 				if(tr.getStartTime().getTime() <= (new Date()).getTime()) return 2;
 			}
-			return 3;
 		}
+		//回滚
+		throw new RuntimeException("3");
 	}
 
 	/**
@@ -205,6 +205,29 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		return null;
 	}
 
-	
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public int cancelCourse(String openId, String stCourseId) throws RuntimeException {
+		//1.获取绑定的用户，如果未绑定，则返回2
+		String studentId = baseService.isUserBandedStudent(openId);
+		if(studentId == null) return 2;
+		//2.获取学员约课对应的教练课程信息，判定是否超出课程最后可退时间，如果超出返回3
+		TbRoasterJx roasterJx = roasterJxDAO.getRoasterByStudentCourse(stCourseId);
+		if(roasterJx == null) return 4;
+		if(roasterJx.getEditEndTime().getTime() < (new Date()).getTime()) return 3;
+		//3.修改学员约课信息的状态为已取消和写入取消时间
+		int rs = courseStDAO.cancelCourse(stCourseId);
+		if(rs > 0){
+			//4.给学员信息可剩余预约次数加一
+			rs = studentJxDAO.addStudentCanSianNum(studentId);
+			if(rs > 0){
+				//5.给教练课程信息可预约人数加一
+				rs = roasterJxDAO.addTeacherCourse(roasterJx.getCourseId());
+				if(rs > 0) return 1;
+			}
+		}
+		throw new RuntimeException("0");
+	}
+
 
 }

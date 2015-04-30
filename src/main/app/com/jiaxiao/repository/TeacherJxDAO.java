@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.jiaxiao.entity.TbCourseSt;
 import com.jiaxiao.entity.TbTeacherJx;
 import com.jiaxiao.entity.TeacherCourses;
 import com.yuhui.core.repository.mybatis.BaseRepository;
@@ -34,30 +33,5 @@ public interface TeacherJxDAO extends BaseRepository<TbTeacherJx> {
 	 */
 	public List<TeacherCourses> findTeacherCouresDetail(@Param(value="teacherId") String teacherId,@Param(value="bookingDate") String bookingDate);
 	
-	/**
-	 * @author 肖长江
-	 * @date 2015-4-18
-	 * @todo TODO 预约教练课程，课程可预约人数减一
-	 * @param courseId 课程编号
-	 * @return
-	 */
-	public int bookingTeacherCourse(String courseId);
-	
-	/**
-	 * @author 肖长江
-	 * @date 2015-4-18
-	 * @todo TODO 新增学员约课记录
-	 * @param stc 学员约课对象
-	 * @return
-	 */
-	public int addStudentCourse(TbCourseSt stc);
-	
-	/**
-	 * @author 肖长江
-	 * @date 2015-4-22
-	 * @todo TODO 给指定的学员信息的剩余课时数减一
-	 * @param studentId 学员编号
-	 * @return
-	 */
-	public int reduceStudentCanSianNum(String studentId);
+
 }

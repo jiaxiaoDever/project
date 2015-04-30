@@ -59,9 +59,9 @@ public class BookTeacherController {
 		try {
 			String studentId = baseService.isUserBandedStudent(openId);
 			if(isTest(request)){
-				return ti%2 != 0 ?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.success("unbanded");
+				return ti%2 != 0 ?new AjaxResult(true, "", "", "{studentId:"+studentId+",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
 			}
-			return studentId != null ?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.success("unbanded");
+			return studentId != null ?new AjaxResult(true, "", "", "{studentId:"+studentId+",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
@@ -84,7 +84,7 @@ public class BookTeacherController {
 			@RequestParam String studentPhone,HttpServletRequest request){
 		try {
 			if(isTest(request)){
-				return ti%2 != 0 ?AjaxResult.failure("找不到对应学员"):AjaxResult.success("{studentId:asdfwesdfawef}");
+				return ti%2 != 0 ?AjaxResult.failure("找不到对应学员"):new AjaxResult(true, "", "", "{studentId:asdfewfasdfawe}");
 			}
 			boolean isbanded = false;
 			if(openId != null && studentCardId != null && studentName != null && studentPhone != null 
@@ -99,7 +99,7 @@ public class BookTeacherController {
 				return AjaxResult.failure("提交的参数不符合要求");
 			}
 			String studentId = baseService.isUserBandedStudent(openId);
-			return isbanded?AjaxResult.success("{studentId:"+studentId+"}"):AjaxResult.failure("绑定失败");
+			return isbanded?new AjaxResult(true, "", "", "{studentId:"+studentId+"}"):AjaxResult.failure("绑定失败");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
@@ -220,7 +220,7 @@ public class BookTeacherController {
 			}else if(rs == 2){				
 				return AjaxResult.failure("该节课程已经没有空位");
 			}else if(rs == 3){				
-				return AjaxResult.failure("数据更新失败");
+				return AjaxResult.failure("预约失败");
 			}else if(rs == 4){				
 				return AjaxResult.failure("学员已无剩余课时");
 			}else if(rs == 5){				
@@ -229,6 +229,9 @@ public class BookTeacherController {
 				return AjaxResult.failure("学员当前课程已经预约过");
 			}
 		} catch (Exception e) {
+			if("3".equals(e.getMessage())){
+				return AjaxResult.failure("预约失败");
+			}
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
 		}
@@ -257,9 +260,43 @@ public class BookTeacherController {
 		}
 	}
 	
-	public AjaxResult cancelCourse(@PathVariable String openId,@PathVariable String stCourseId){
-		
-		return null;
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-29
+	 * @todo TODO 用户取消已经预约的教练课程
+	 * @param openId 微信用户openId
+	 * @param stCourseId 学员课程编号
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("cancelCourse/{openId}/{stCourseId}")
+	@ResponseBody
+	public AjaxResult cancelCourse(@PathVariable String openId,@PathVariable String stCourseId,HttpServletRequest request){
+		try {
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.success():AjaxResult.failure("取消失败");
+			}
+			int rs = bookTeacherService.cancelCourse(openId, stCourseId);
+			if(rs == 0){
+				return AjaxResult.failure("取消失败");
+			}else if(rs == 1){
+				return AjaxResult.success();
+			}else if(rs == 2){				
+				return AjaxResult.failure("找不到微信用户对应学员");
+			}else if(rs == 3){				
+				return AjaxResult.failure("超出变更时间");
+			}else if(rs == 4){				
+				return AjaxResult.failure("找不到对应的教练课程");
+			}else{				
+				return AjaxResult.failure("取消失败");
+			}
+		} catch (Exception e) {
+			if("0".equals(e.getMessage())){
+				return AjaxResult.failure("取消失败");
+			}
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
 	}
 	
 	/**

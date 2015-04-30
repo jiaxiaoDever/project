@@ -29,4 +29,22 @@ public interface StudentJxDAO extends BaseRepository<TbStudentJx> {
 	 * @return
 	 */
 	public TbStudentJx getBandedStudentJx(String openId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-22
+	 * @todo TODO 给指定的学员信息的剩余课时数加一
+	 * @param studentId 学员编号
+	 * @return
+	 */
+	public int addStudentCanSianNum(String studentId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-22
+	 * @todo TODO 给指定的学员信息的剩余课时数减一
+	 * @param studentId 学员编号
+	 * @return
+	 */
+	public int reduceStudentCanSianNum(String studentId);
 }

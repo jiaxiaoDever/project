@@ -52,4 +52,12 @@
 	<select id="getBandedStudentJx" resultType="TbStudentJx">
 		select s.* from ${jdbc.schema}.tb_wx_user u left join ${jdbc.schema}.tb_student_jx s on u.STUDENT_ID=s.STUDENT_ID where u.IS_BINDED='1' and u.OPEN_ID=#{openId}
 	</select>
+	
+	<update id="addStudentCanSianNum">
+		update ${jdbc.schema}.tb_student_jx s set s.CAN_SIGN_COURSE_NUM = s.CAN_SIGN_COURSE_NUM+1 where s.CAN_SIGN_COURSE_NUM > 0 and s.STUDENT_ID = #{studentId}
+	</update>
+	
+	<update id="reduceStudentCanSianNum">
+		update ${jdbc.schema}.tb_student_jx s set s.CAN_SIGN_COURSE_NUM = s.CAN_SIGN_COURSE_NUM-1 where s.CAN_SIGN_COURSE_NUM > 0 and s.STUDENT_ID = #{studentId}
+	</update>
 </mapper>

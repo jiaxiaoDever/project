@@ -32,4 +32,23 @@ public interface CourseStDAO  extends BaseRepository<TbCourseSt>{
 	 * @return
 	 */
 	public List<StudentCourse> findStudentBookedCourse(@Param(value="studentId") String studentId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-29
+	 * @todo TODO 取消已约课程，修改课程状态和写入取消时间
+	 * @param stCourseId 已约课程编号
+	 * @return
+	 */
+	public int cancelCourse(String stCourseId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-18
+	 * @todo TODO 新增学员约课记录
+	 * @param stc 学员约课对象
+	 * @return
+	 */
+	public int addStudentCourse(TbCourseSt stc);
+
 }

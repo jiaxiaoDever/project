@@ -94,17 +94,5 @@
 		where j.TEACHER_ID= #{teacherId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB' 
 		and r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
 	</select>
-	
-	<update id="bookingTeacherCourse">
-		update ${jdbc.schema}.tb_roaster_jx r set r.CAN_SIGN_NUM=r.CAN_SIGN_NUM-1 where r.START_TIME > now() and r.CAN_SIGN_NUM > 0 and r.COURSE_ID = #{courseId} 
-	</update>
-	
-	<insert id="addStudentCourse"  parameterType="TbCourseSt">
-    	insert into ${jdbc.schema}.tb_course_st(ST_COURSE_ID,STUDENT_ID,STUDENT_NAME,COURSE_ID,COURSE_NAME,BOOK_TIME,COURSE_STAT_CODE,COURSE_STAT) 
-    	values(#{stCourseId},#{studentId},#{studentName},#{courseId},#{courseName},now(),'DSK','待上课')
-    </insert>	
-    
-	<update id="reduceStudentCanSianNum">
-		update ${jdbc.schema}.tb_student_jx s set s.CAN_SIGN_COURSE_NUM = s.CAN_SIGN_COURSE_NUM-1 where s.CAN_SIGN_COURSE_NUM > 0 and s.STUDENT_ID = #{studentId}
-	</update>
+ 
 </mapper>

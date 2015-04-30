@@ -35,9 +35,9 @@ public interface BookTeacherService {
 	 * @param openId 微信openId
 	 * @param courseId 课程编号
 	 * @return 如果用户未绑定学员返回0,预约成功返回1,课程无空位返回2,修改数据库失败返回3,已无剩余课时返回4,当日可预约课时已满返回5,当前课程已经预约过返回6
-	 * @throws Exception
+	 * @throws RuntimeException 抛出此异常说明事物回滚了，修改数据库失败，抛出异常的message为“3”，同返回3一样的意思
 	 */
-	public int bookCourse(String openId,String courseId) throws Exception;
+	public int bookCourse(String openId,String courseId) throws RuntimeException;
 	
 	/**
 	 * @author 肖长江
@@ -48,4 +48,15 @@ public interface BookTeacherService {
 	 * @throws Exception
 	 */
 	public List<StudentCourse> bookedCourses(String openId) throws Exception;
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-29
+	 * @todo TODO 取消已经预约的教练课程
+	 * @param openId 微信用户openId
+	 * @param stCourseId 学员课程编号
+	 * @return 取消失败返回0，取消成功返回1，未绑定学员返回2，超出变更时间返回3，找不到教练课程返回4
+	 * @throws RuntimeException 相关条件不满足，回滚事物；取消失败
+	 */
+	public int cancelCourse(String openId,String stCourseId) throws RuntimeException;
 }

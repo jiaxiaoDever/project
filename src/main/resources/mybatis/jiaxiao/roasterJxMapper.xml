@@ -35,4 +35,16 @@
 		<result property="teacherId" column="TEACHER_ID"/>
 		<result property="teacherName" column="TEACHER_NAME"/>
 	</resultMap>
+	<select id="getRoasterByStudentCourse" resultMap="defaulfResultMap">
+		select r.* from ${jdbc.schema}.tb_course_st sc left join ${jdbc.schema}.tb_roaster_jx r on sc.COURSE_ID=r.COURSE_ID where sc.ST_COURSE_ID= #{stCourseId}
+	</select>
+	
+	<update id="addTeacherCourse">
+		update ${jdbc.schema}.tb_roaster_jx r set r.CAN_SIGN_NUM=r.CAN_SIGN_NUM+1 where r.COURSE_ID = #{courseId} 
+	</update>
+	
+	<update id="bookingTeacherCourse">
+		update ${jdbc.schema}.tb_roaster_jx r set r.CAN_SIGN_NUM=r.CAN_SIGN_NUM-1 where r.START_TIME > now() and r.CAN_SIGN_NUM > 0 and r.COURSE_ID = #{courseId} 
+	</update>
+	
 </mapper>
