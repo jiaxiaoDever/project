@@ -47,6 +47,7 @@
 		<result property="teaTel" column="TEA_TEL"/>
 		<result property="teacherArea" column="TEACHER_AREA"/>
 		<result property="teacherName" column="TEACHER_NAME"/>
+		<result property="carLicenseNo" column="CAR_LICENSE_NO"/>
 		<result property="duteCardId" column="DUTE_CARD_ID"/>
 		<result property="password" column="PASSWORD"/>
 		<result property="teaCarTypeCode" column="TEA_CAR_TYPE_CODE"/>

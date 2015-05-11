@@ -186,6 +186,10 @@ public class TbTeacherJx implements Serializable {
 	@Column(name="TEACHER_NAME")
 	private String teacherName;
 
+	/** 驾驶证编号*/
+	@Column(name="CAR_LICENSE_NO")
+	private String carLicenseNo;
+	
 	/** 教练工卡号*/
 	@Column(name="DUTE_CARD_ID")
 	private String duteCardId;
@@ -714,6 +718,14 @@ public class TbTeacherJx implements Serializable {
 		this.fromName = fromName;
 	}
 
+	public String getCarLicenseNo() {
+		return carLicenseNo;
+	}
+
+	public void setCarLicenseNo(String carLicenseNo) {
+		this.carLicenseNo = carLicenseNo;
+	}
+
 	public TbTeacherJx(String teacherId, String birthDate, String branchId,
 			String branchName, Integer checkNum, String city, String common,
 			Date createDate, Integer duteAge, Date duteDate, String duteLevel,
@@ -726,10 +738,10 @@ public class TbTeacherJx implements Serializable {
 			String subjectId, String subjectName, String teaAddress,
 			String teaEthnic, String teaLogo, String teaNative,
 			String teaPhone, String teaQq, String teaTel, String teacherArea,
-			String teacherName, String duteCardId, String password,
-			String teaCarTypeCode, String teaCarType, String carTypeCode,
-			String carType, String carNo, String placeAddress, String fromId,
-			String fromName) {
+			String teacherName, String carLicenseNo, String duteCardId,
+			String password, String teaCarTypeCode, String teaCarType,
+			String carTypeCode, String carType, String carNo,
+			String placeAddress, String fromId, String fromName) {
 		super();
 		this.teacherId = teacherId;
 		this.birthDate = birthDate;
@@ -774,6 +786,7 @@ public class TbTeacherJx implements Serializable {
 		this.teaTel = teaTel;
 		this.teacherArea = teacherArea;
 		this.teacherName = teacherName;
+		this.carLicenseNo = carLicenseNo;
 		this.duteCardId = duteCardId;
 		this.password = password;
 		this.teaCarTypeCode = teaCarTypeCode;
@@ -785,5 +798,6 @@ public class TbTeacherJx implements Serializable {
 		this.fromId = fromId;
 		this.fromName = fromName;
 	}
+
 
 }
