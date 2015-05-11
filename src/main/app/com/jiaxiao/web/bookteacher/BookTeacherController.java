@@ -301,6 +301,36 @@ public class BookTeacherController {
 	
 	/**
 	 * @author 肖长江
+	 * @date 2015-4-30
+	 * @todo TODO 学员练车后对课程进行评价
+	 * @param stCourseId 学员约课编号
+	 * @param teacherScore 教练评分
+	 * @param carScore 练车环境评分
+	 * @param serviceScore 整体服务评分
+	 * @param scoreInfo 评论内容
+	 * @return
+	 */
+	@RequestMapping("scoreCourse/{stCourseId}")
+	@ResponseBody
+	public AjaxResult scoreCourse(@PathVariable String stCourseId,@RequestParam Integer teacherScore,@RequestParam Integer carScore,@RequestParam Integer serviceScore,@RequestParam String scoreInfo,HttpServletRequest request){
+		try {
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.success():AjaxResult.failure("评论失败");
+			}
+			int rs = bookTeacherService.scoreCourse(stCourseId, carScore, teacherScore, serviceScore, scoreInfo);
+			if(rs == 1){
+				return AjaxResult.success();
+			}else{
+				return AjaxResult.failure("评论失败");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
 	 * @date 2015-4-16
 	 * @todo TODO 是否为测试接口
 	 * @param request

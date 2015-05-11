@@ -229,5 +229,12 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		throw new RuntimeException("0");
 	}
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public int scoreCourse(String stCourseId, Integer carScore,
+			Integer teacherScore, Integer serviceScore, String scoreInfo) {
+		return courseStDAO.scoreCourse(stCourseId, carScore, teacherScore, serviceScore, scoreInfo);
+	}
+
 
 }

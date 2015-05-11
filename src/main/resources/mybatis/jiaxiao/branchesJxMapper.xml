@@ -11,5 +11,16 @@
 		<result property="jxId" column="JX_ID"/>
 		<result property="jxName" column="JX_NAME"/>
 		<result property="branchAddress" column="BRANCH_ADDRESS"/>
+		<result property="branchArea" column="BRANCH_AREA"/>
+		<result property="branchBus" column="BRANCH_BUS"/>
+		<result property="branchShortName" column="BRANCH_SHORT_NAME"/>
+		<result property="branchStat" column="BRANCH_STAT"/>
+		<result property="branchStatCode" column="BRANCH_STAT_CODE"/>
+		<result property="placeAddress" column="PLACE_ADDRESS"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="deleteDate" column="DELETE_DATE"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="stopEndDate" column="STOP_END_DATE"/>
+		<result property="stopStartDate" column="STOP_START_DATE"/>
 	</resultMap>
 </mapper>

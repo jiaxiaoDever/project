@@ -186,6 +186,47 @@ public class TbTeacherJx implements Serializable {
 	@Column(name="TEACHER_NAME")
 	private String teacherName;
 
+	/** 教练工卡号*/
+	@Column(name="DUTE_CARD_ID")
+	private String duteCardId;
+	
+	/** 密码*/
+	@Column(name="PASSWORD")
+	private String password;
+	
+	/** 准教车型编码*/
+	@Column(name="TEA_CAR_TYPE_CODE")
+	private String teaCarTypeCode;
+	
+	/** 准教车型*/
+	@Column(name="TEA_CAR_TYPE")
+	private String teaCarType;
+	
+	/** 训练车型编码*/
+	@Column(name="CAR_TYPE_CODE")
+	private String carTypeCode;
+	
+	/** 训练车型*/
+	@Column(name="CAR_TYPE")
+	private String carType;
+	
+	/** 训练车车牌号*/
+	@Column(name="CAR_NO")
+	private String carNo;
+	
+	/** 训练场地址*/
+	@Column(name="PLACE_ADDRESS")
+	private String placeAddress;
+	
+	/** 来源渠道编号*/
+	@Column(name="FROM_ID")
+	private String fromId;
+	
+	/** 来源渠道*/
+	@Column(name="FROM_NAME")
+	private String fromName;
+	
+	
 	public TbTeacherJx() {
 	}
 
@@ -591,6 +632,158 @@ public class TbTeacherJx implements Serializable {
 		this.teaTel = teaTel;
 		this.teacherArea = teacherArea;
 		this.teacherName = teacherName;
+	}
+
+	public String getDuteCardId() {
+		return duteCardId;
+	}
+
+	public void setDuteCardId(String duteCardId) {
+		this.duteCardId = duteCardId;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTeaCarTypeCode() {
+		return teaCarTypeCode;
+	}
+
+	public void setTeaCarTypeCode(String teaCarTypeCode) {
+		this.teaCarTypeCode = teaCarTypeCode;
+	}
+
+	public String getTeaCarType() {
+		return teaCarType;
+	}
+
+	public void setTeaCarType(String teaCarType) {
+		this.teaCarType = teaCarType;
+	}
+
+	public String getCarTypeCode() {
+		return carTypeCode;
+	}
+
+	public void setCarTypeCode(String carTypeCode) {
+		this.carTypeCode = carTypeCode;
+	}
+
+	public String getCarType() {
+		return carType;
+	}
+
+	public void setCarType(String carType) {
+		this.carType = carType;
+	}
+
+	public String getCarNo() {
+		return carNo;
+	}
+
+	public void setCarNo(String carNo) {
+		this.carNo = carNo;
+	}
+
+	public String getPlaceAddress() {
+		return placeAddress;
+	}
+
+	public void setPlaceAddress(String placeAddress) {
+		this.placeAddress = placeAddress;
+	}
+
+	public String getFromId() {
+		return fromId;
+	}
+
+	public void setFromId(String fromId) {
+		this.fromId = fromId;
+	}
+
+	public String getFromName() {
+		return fromName;
+	}
+
+	public void setFromName(String fromName) {
+		this.fromName = fromName;
+	}
+
+	public TbTeacherJx(String teacherId, String birthDate, String branchId,
+			String branchName, Integer checkNum, String city, String common,
+			Date createDate, Integer duteAge, Date duteDate, String duteLevel,
+			String duteLevelCode, String duteLevelNo, String duteLevelPic,
+			String duteStat, String duteStatCode, Date editDate,
+			Integer isCourseNotic, Integer isFullTime, Integer isHot,
+			Integer isOnDute, Integer isRoastNotic, String jxId, String jxName,
+			Integer likeNum, Date nearDuteDate, String cardId, String province,
+			Integer score, Integer scoreNum, Integer sex, Integer studentNum,
+			String subjectId, String subjectName, String teaAddress,
+			String teaEthnic, String teaLogo, String teaNative,
+			String teaPhone, String teaQq, String teaTel, String teacherArea,
+			String teacherName, String duteCardId, String password,
+			String teaCarTypeCode, String teaCarType, String carTypeCode,
+			String carType, String carNo, String placeAddress, String fromId,
+			String fromName) {
+		super();
+		this.teacherId = teacherId;
+		this.birthDate = birthDate;
+		this.branchId = branchId;
+		this.branchName = branchName;
+		this.checkNum = checkNum;
+		this.city = city;
+		this.common = common;
+		this.createDate = createDate;
+		this.duteAge = duteAge;
+		this.duteDate = duteDate;
+		this.duteLevel = duteLevel;
+		this.duteLevelCode = duteLevelCode;
+		this.duteLevelNo = duteLevelNo;
+		this.duteLevelPic = duteLevelPic;
+		this.duteStat = duteStat;
+		this.duteStatCode = duteStatCode;
+		this.editDate = editDate;
+		this.isCourseNotic = isCourseNotic;
+		this.isFullTime = isFullTime;
+		this.isHot = isHot;
+		this.isOnDute = isOnDute;
+		this.isRoastNotic = isRoastNotic;
+		this.jxId = jxId;
+		this.jxName = jxName;
+		this.likeNum = likeNum;
+		this.nearDuteDate = nearDuteDate;
+		this.cardId = cardId;
+		this.province = province;
+		this.score = score;
+		this.scoreNum = scoreNum;
+		this.sex = sex;
+		this.studentNum = studentNum;
+		this.subjectId = subjectId;
+		this.subjectName = subjectName;
+		this.teaAddress = teaAddress;
+		this.teaEthnic = teaEthnic;
+		this.teaLogo = teaLogo;
+		this.teaNative = teaNative;
+		this.teaPhone = teaPhone;
+		this.teaQq = teaQq;
+		this.teaTel = teaTel;
+		this.teacherArea = teacherArea;
+		this.teacherName = teacherName;
+		this.duteCardId = duteCardId;
+		this.password = password;
+		this.teaCarTypeCode = teaCarTypeCode;
+		this.teaCarType = teaCarType;
+		this.carTypeCode = carTypeCode;
+		this.carType = carType;
+		this.carNo = carNo;
+		this.placeAddress = placeAddress;
+		this.fromId = fromId;
+		this.fromName = fromName;
 	}
 
 }

@@ -55,6 +55,10 @@ public class TbBranchesJx implements Serializable {
 	@Column(name="BRANCH_STAT_CODE")
 	private String branchStatCode;
 
+	/** 训练场地*/
+	@Column(name="PLACE_ADDRESS")
+	private String placeAddress;
+	
 	/** 备注*/
 	private String common;
 
@@ -238,6 +242,42 @@ public class TbBranchesJx implements Serializable {
 		this.stopStartDate = stopStartDate;
 	}
 
+	public String getPlaceAddress() {
+		return placeAddress;
+	}
+
+	public void setPlaceAddress(String placeAddress) {
+		this.placeAddress = placeAddress;
+	}
+
+	public TbBranchesJx(String branchId, String branchAddress,
+			String branchArea, String branchBus, String branchCity,
+			String branchName, String branchProvice, String branchShortName,
+			String branchStat, String branchStatCode, String placeAddress,
+			String common, Date createDate, Date deleteDate, Date editDate,
+			String jxId, String jxName, Date stopEndDate, Date stopStartDate) {
+		super();
+		this.branchId = branchId;
+		this.branchAddress = branchAddress;
+		this.branchArea = branchArea;
+		this.branchBus = branchBus;
+		this.branchCity = branchCity;
+		this.branchName = branchName;
+		this.branchProvice = branchProvice;
+		this.branchShortName = branchShortName;
+		this.branchStat = branchStat;
+		this.branchStatCode = branchStatCode;
+		this.placeAddress = placeAddress;
+		this.common = common;
+		this.createDate = createDate;
+		this.deleteDate = deleteDate;
+		this.editDate = editDate;
+		this.jxId = jxId;
+		this.jxName = jxName;
+		this.stopEndDate = stopEndDate;
+		this.stopStartDate = stopStartDate;
+	}
+
 	public TbBranchesJx(String branchId, String branchAddress,
 			String branchArea, String branchBus, String branchCity,
 			String branchName, String branchProvice, String branchShortName,
@@ -264,5 +304,4 @@ public class TbBranchesJx implements Serializable {
 		this.stopEndDate = stopEndDate;
 		this.stopStartDate = stopStartDate;
 	}
-
 }

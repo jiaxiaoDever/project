@@ -47,6 +47,16 @@
 		<result property="teaTel" column="TEA_TEL"/>
 		<result property="teacherArea" column="TEACHER_AREA"/>
 		<result property="teacherName" column="TEACHER_NAME"/>
+		<result property="duteCardId" column="DUTE_CARD_ID"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="teaCarTypeCode" column="TEA_CAR_TYPE_CODE"/>
+		<result property="teaCarType" column="TEA_CAR_TYPE"/>
+		<result property="carTypeCode" column="CAR_TYPE_CODE"/>
+		<result property="carType" column="CAR_TYPE"/>
+		<result property="carNo" column="CAR_NO"/>
+		<result property="placeAddress" column="PLACE_ADDRESS"/>
+		<result property="fromId" column="FROM_ID"/>
+		<result property="fromName" column="FROM_NAME"/>
 	</resultMap>
 	<resultMap type="TeacherCourses" id="tcMap">
 		<id property="teacherId" column="TEACHER_ID"/>

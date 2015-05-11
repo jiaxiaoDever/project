@@ -59,4 +59,17 @@ public interface BookTeacherService {
 	 * @throws RuntimeException 相关条件不满足，回滚事物；取消失败
 	 */
 	public int cancelCourse(String openId,String stCourseId) throws RuntimeException;
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-30
+	 * @todo TODO 学员练车后对课程进行评价
+	 * @param stCourseId 学员课程编号
+	 * @param carScore 练车环境评分
+	 * @param teacherScore 教练评分
+	 * @param serviceScore 整体服务评分
+	 * @param scoreInfo 评论内容
+	 * @return 成功评论返回1，否则返回0
+	 */
+	public int scoreCourse(String stCourseId,Integer carScore,Integer teacherScore,Integer serviceScore,String scoreInfo);
 }

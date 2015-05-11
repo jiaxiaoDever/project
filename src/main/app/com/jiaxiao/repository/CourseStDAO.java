@@ -51,4 +51,16 @@ public interface CourseStDAO  extends BaseRepository<TbCourseSt>{
 	 */
 	public int addStudentCourse(TbCourseSt stc);
 
+	/**
+	 * @author 肖长江
+	 * @date 2015-4-30
+	 * @todo TODO 插入学员对课程的评分信息及评论信息
+	 * @param stCourseId 学员课程编号
+	 * @param carScore 练习环境(车况、场地)评分
+	 * @param teacherScore 教练态度评分
+	 * @param serviceScore 整体服务评分
+	 * @param scoreInfo 评论内容
+	 * @return
+	 */
+	public int scoreCourse(@Param(value="stCourseId") String stCourseId,@Param(value="carScore") Integer carScore,@Param(value="teacherScore") Integer teacherScore,@Param(value="serviceScore") Integer serviceScore,@Param(value="scoreInfo") String scoreInfo );
 }
