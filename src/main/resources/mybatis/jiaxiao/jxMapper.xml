@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.JxDAO">
+	<resultMap type="TbbaseJx" id="defaulfResultMap">
+		<id property="jxId" column="JX_ID"/>
+		<result property="common" column="common"/>
+		<result property="createDate" column="CREATE_DATE"/>
+		<result property="editDate" column="EDIT_DATE"/>
+		<result property="jxAddress" column="JX_ADDRESS"/>
+		<result property="jxInfo" column="JX_INFO"/>
+		<result property="jxLogo" column="JX_LOGO"/>
+		<result property="jxName" column="JX_NAME"/>
+		<result property="jxPhone" column="JX_PHONE"/>
+		<result property="jxQq" column="JX_QQ"/>
+		<result property="jxShortName" column="JX_SHORT_NAME"/>
+		<result property="jxStat" column="JX_STAT"/>
+		<result property="jxStatCode" column="JX_STAT_CODE"/>
+		<result property="jxTel" column="JX_TEL"/>
+	</resultMap>
+</mapper>

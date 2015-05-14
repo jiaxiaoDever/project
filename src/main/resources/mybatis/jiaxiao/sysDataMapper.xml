@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jiaxiao.repository.SysdataDAO">
+	<resultMap type="TbSysData" id="defaulfResultMap">
+		<id property="dataId" column="DATA_ID"/>
+		<result property="dataCode" column="DATA_CODE"/>
+		<result property="dataName" column="DATA_NAME"/>
+		<result property="dataPid" column="DATA_PID"/>
+		<result property="dataXh" column="DATA_XH"/>
+	</resultMap>
+</mapper>
