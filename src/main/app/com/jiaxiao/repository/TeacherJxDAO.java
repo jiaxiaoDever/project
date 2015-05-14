@@ -34,4 +34,12 @@ public interface TeacherJxDAO extends BaseRepository<TbTeacherJx> {
 	public List<TeacherCourses> findTeacherCouresDetail(@Param(value="teacherId") String teacherId,@Param(value="bookingDate") String bookingDate);
 	
 
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-11
+	 * @todo TODO 根据微信openId获取绑定的教练对象
+	 * @param openId 微信openId
+	 * @return 微信openId获取绑定的教练对象
+	 */
+	public TbTeacherJx getBandedTeacherJx(String openId);
 }

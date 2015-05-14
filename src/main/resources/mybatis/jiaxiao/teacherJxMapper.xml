@@ -47,7 +47,10 @@
 		<result property="teaTel" column="TEA_TEL"/>
 		<result property="teacherArea" column="TEACHER_AREA"/>
 		<result property="teacherName" column="TEACHER_NAME"/>
+		<result property="checkStatCode" column="CHECK_STAT_CODE"/>
+		<result property="checkStat" column="CHECK_STAT"/>
 		<result property="carLicenseNo" column="CAR_LICENSE_NO"/>
+		<result property="carLicenseAge" column="CAR_LICENSE_AGE"/>
 		<result property="duteCardId" column="DUTE_CARD_ID"/>
 		<result property="password" column="PASSWORD"/>
 		<result property="teaCarTypeCode" column="TEA_CAR_TYPE_CODE"/>
@@ -105,5 +108,7 @@
 		where j.TEACHER_ID= #{teacherId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB' 
 		and r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
 	</select>
- 
+ 	<select id="getBandedTeacherJx" resultType="TbTeacherJx">
+		select t.* from ${jdbc.schema}.tb_wx_user u left join ${jdbc.schema}.tb_teacher_jx t on u.TEACHER_ID=t.TEACHER_ID where u.IS_BINDED='1' and u.OPEN_ID=#{openId}
+	</select>
 </mapper>

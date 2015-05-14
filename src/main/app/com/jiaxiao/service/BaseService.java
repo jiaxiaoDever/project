@@ -18,9 +18,18 @@ public interface BaseService {
 	/**
 	 * @author 肖长江
 	 * @date 2015-4-17
-	 * @todo TODO 判断用户是否已经绑定学员
+	 * @todo TODO 判断微信用户是否已经绑定到学员
 	 * @param openId 
 	 * @return 绑定了返回学员编号，否则返回null
 	 */
 	public String isUserBandedStudent(String openId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-11
+	 * @todo TODO 判断微信用户是否已经绑定到教练
+	 * @param openId 微信openId
+	 * @return 绑定了返回教练编号，否则返回null
+	 */
+	public String isUserBandedTeacher(String openId);
 }

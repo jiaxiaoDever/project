@@ -185,10 +185,22 @@ public class TbTeacherJx implements Serializable {
 	/** 姓名*/
 	@Column(name="TEACHER_NAME")
 	private String teacherName;
+	
+	/** 审核状态编码*/
+	@Column(name="CHECK_STAT_CODE")
+	private String checkStatCode;
+	
+	/** 审核状态*/
+	@Column(name="CHECK_STAT")
+	private String checkStat;
 
 	/** 驾驶证编号*/
 	@Column(name="CAR_LICENSE_NO")
 	private String carLicenseNo;
+	
+	/** 驾龄*/
+	@Column(name="CAR_LICENSE_AGE")
+	private String carLicenseAge;
 	
 	/** 教练工卡号*/
 	@Column(name="DUTE_CARD_ID")
@@ -726,6 +738,30 @@ public class TbTeacherJx implements Serializable {
 		this.carLicenseNo = carLicenseNo;
 	}
 
+	public String getCheckStatCode() {
+		return checkStatCode;
+	}
+
+	public void setCheckStatCode(String checkStatCode) {
+		this.checkStatCode = checkStatCode;
+	}
+
+	public String getCheckStat() {
+		return checkStat;
+	}
+
+	public void setCheckStat(String checkStat) {
+		this.checkStat = checkStat;
+	}
+
+	public String getCarLicenseAge() {
+		return carLicenseAge;
+	}
+
+	public void setCarLicenseAge(String carLicenseAge) {
+		this.carLicenseAge = carLicenseAge;
+	}
+
 	public TbTeacherJx(String teacherId, String birthDate, String branchId,
 			String branchName, Integer checkNum, String city, String common,
 			Date createDate, Integer duteAge, Date duteDate, String duteLevel,
@@ -738,7 +774,8 @@ public class TbTeacherJx implements Serializable {
 			String subjectId, String subjectName, String teaAddress,
 			String teaEthnic, String teaLogo, String teaNative,
 			String teaPhone, String teaQq, String teaTel, String teacherArea,
-			String teacherName, String carLicenseNo, String duteCardId,
+			String teacherName, String checkStatCode, String checkStat,
+			String carLicenseNo, String carLicenseAge, String duteCardId,
 			String password, String teaCarTypeCode, String teaCarType,
 			String carTypeCode, String carType, String carNo,
 			String placeAddress, String fromId, String fromName) {
@@ -786,7 +823,10 @@ public class TbTeacherJx implements Serializable {
 		this.teaTel = teaTel;
 		this.teacherArea = teacherArea;
 		this.teacherName = teacherName;
+		this.checkStatCode = checkStatCode;
+		this.checkStat = checkStat;
 		this.carLicenseNo = carLicenseNo;
+		this.carLicenseAge = carLicenseAge;
 		this.duteCardId = duteCardId;
 		this.password = password;
 		this.teaCarTypeCode = teaCarTypeCode;
@@ -798,6 +838,5 @@ public class TbTeacherJx implements Serializable {
 		this.fromId = fromId;
 		this.fromName = fromName;
 	}
-
 
 }

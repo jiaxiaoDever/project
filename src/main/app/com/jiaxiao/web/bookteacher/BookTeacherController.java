@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jiaxiao.base.Constants;
 import com.jiaxiao.entity.StudentCourse;
 import com.jiaxiao.ro.BookTeachers;
 import com.jiaxiao.ro.Course;
@@ -26,10 +27,14 @@ import com.yuhui.core.entity.common.AjaxResult;
 /**
  * @author 肖长江
  * 预约教练资源控制对象，提供操作如下：
+ * 0.判断微信用户是否已经绑定学员
  * 1.绑定微信用户到对应学员
  * 2.请求微信用户对应驾校网点的教练信息
  * 3.请求某教练某天的课程详细信息
  * 4.微信用户预订了课程
+ * 5.查看用户自己已经预约的教练
+ * 6.用户取消已经预约的教练课程
+ * 7.学员练车后对课程进行评价
  */
 @Controller
 @RequestMapping(value = "/bookTeacher")
@@ -41,9 +46,6 @@ public class BookTeacherController {
 	
 	@Autowired
 	private BookTeacherService bookTeacherService;
-	
-	public static final String subject2Id = "de9581d9-d016-470b-9126-ae297b673e57";
-	public static final String subject3Id = "351742ee-ebcc-40cc-b5fc-fb3a39131e14";
 	
 	/**
 	 * @author 肖长江
@@ -160,10 +162,10 @@ public class BookTeacherController {
 			}
 			BookTeachers bt = bookTeacherService.bookTeacher(openId);
 			if(bt != null){
-				if(bt.getSubjectTeachers() != null && !bt.getSubjectTeachers().containsKey(subject2Id))
-					bt.getSubjectTeachers().put(subject2Id, new ArrayList<Teacher>());
-				if(bt.getSubjectTeachers() != null && !bt.getSubjectTeachers().containsKey(subject3Id))
-					bt.getSubjectTeachers().put(subject3Id, new ArrayList<Teacher>());
+				if(bt.getSubjectTeachers() != null && !bt.getSubjectTeachers().containsKey(Constants.subject2Id))
+					bt.getSubjectTeachers().put(Constants.subject2Id, new ArrayList<Teacher>());
+				if(bt.getSubjectTeachers() != null && !bt.getSubjectTeachers().containsKey(Constants.subject3Id))
+					bt.getSubjectTeachers().put(Constants.subject3Id, new ArrayList<Teacher>());
 			}
 			return AjaxResult.success(bt);
 		} catch (Exception e) {

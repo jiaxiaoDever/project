@@ -26,6 +26,13 @@ public class BaseServiceImpl implements BaseService {
 	
 	
 	@Override
+	public String isUserBandedTeacher(String openId) {
+		TbWxUser user = wxUserDAO.getUserByOpenId(openId);
+		if(user != null && user.getIsBinded() != null && user.getIsBinded() == 1 && user.getTeacherId() != null) return user.getTeacherId();
+		return null;
+	}
+
+	@Override
 	public String isUserBandedStudent(String openId) {
 		TbWxUser user = wxUserDAO.getUserByOpenId(openId);
 		if(user != null && user.getIsBinded() != null && user.getIsBinded() == 1 && user.getStudentId() != null) return user.getStudentId();
