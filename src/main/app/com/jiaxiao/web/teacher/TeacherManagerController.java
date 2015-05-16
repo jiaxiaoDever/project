@@ -3,6 +3,8 @@ package com.jiaxiao.web.teacher;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.apache.shiro.crypto.hash.Sha1Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,11 +28,13 @@ import com.jiaxiao.entity.TbBranchesJx;
 import com.jiaxiao.entity.TbSysData;
 import com.jiaxiao.entity.TbTeacherJx;
 import com.jiaxiao.ro.TeacherRegInfo;
+import com.jiaxiao.ro.TeacherRoasters;
 import com.jiaxiao.service.BaseService;
 import com.jiaxiao.service.BranchesJxService;
 import com.jiaxiao.service.JxService;
 import com.jiaxiao.service.TeacherJxService;
 import com.yuhui.core.entity.common.AjaxResult;
+import com.yuhui.core.security.utils.Digests;
 import com.yuhui.core.utils.CacheUtils;
 
 /**
@@ -47,6 +52,7 @@ import com.yuhui.core.utils.CacheUtils;
 public class TeacherManagerController {
 
 	static int ti=1;
+
 	@Autowired
 	private BaseService baseService;
 	
@@ -71,11 +77,14 @@ public class TeacherManagerController {
 	public AjaxResult isBandedToTeacher(@PathVariable String openId,HttpServletRequest request){
 		try {
 			String teacherId = baseService.isUserBandedTeacher(openId);
-			TbTeacherJx teacherJx = teacherJxService.get(teacherId);
-			if(isTest(request)){
-				return ti%2 != 0 ?new AjaxResult(true, "", "", "{teacherId:"+teacherId+",isbanded:true,checkstat:待审核}"):new AjaxResult(true, "", "", "{teacherId:null,isbanded:false,checkstat:null}");
+			TbTeacherJx teacherJx = null;
+			if(teacherId != null){
+				teacherJx = teacherJxService.get(teacherId);
 			}
-			return teacherId != null ?new AjaxResult(true, "", "", "{teacherId:"+teacherId+",isbanded:true,checkstat:"+teacherJx.getCheckStat()+"}") :new AjaxResult(true, "", "", "{teacherId:null,isbanded:false,checkstat:null}");
+			if(isTest(request)){
+				return ti%2 != 0 ?new AjaxResult(true, "", "", "{teacherId:\""+teacherId+"\",isbanded:true,checkstat:\"DSH\"}"):new AjaxResult(true, "", "", "{teacherId:null,isbanded:false,checkstat:null}");
+			}
+			return teacherId != null ?new AjaxResult(true, "", "", "{teacherId:\""+teacherId+"\",isbanded:true,checkstat:\""+teacherJx.getCheckStatCode()+"\"}") :new AjaxResult(true, "", "", "{teacherId:null,isbanded:false,checkstat:null}");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
@@ -158,6 +167,15 @@ public class TeacherManagerController {
 			@RequestParam String carLicenseAge,@RequestParam String password,@RequestParam String teaCarTypeCode,@RequestParam String teaCarType,@RequestParam String carTypeCode,
 			@RequestParam String carType,@RequestParam String carNo,@RequestParam String placeAddress,@RequestParam String duteDate,@RequestParam String duteLevelNo){
 		try {
+			jxName = URLDecoder.decode(jxName, "UTF-8");
+			branchName = URLDecoder.decode(branchName, "UTF-8");
+			subjectName = URLDecoder.decode(subjectName, "UTF-8");
+			teacherName = URLDecoder.decode(teacherName, "UTF-8");
+			address = URLDecoder.decode(address, "UTF-8");
+			teaCarType = URLDecoder.decode(teaCarType, "UTF-8");
+			carType = URLDecoder.decode(carType, "UTF-8");
+			placeAddress = URLDecoder.decode(placeAddress, "UTF-8");
+			password = entryptPassword(password);
 			String teaLogo = savePic(logostr);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			TbTeacherJx tbTeacherJx = new TbTeacherJx(UUID.randomUUID().toString(), null, branchId, branchName, null, null, null, new Date(), duteAge, df.parse(duteDate), null, null, duteLevelNo, null, Constants.TEACHE_DUTESTAT_DEF, Constants.TEACHE_DUTESTAT_DEF_CODE, new Date(),null
@@ -175,10 +193,94 @@ public class TeacherManagerController {
 		}
 	}
 	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-15
+	 * @todo TODO 绑定微信用户到教练
+	 * @param openId 微信openId
+	 * @param teacherName 教练姓名
+	 * @param password 密码
+	 * @param teacherPhone 手机号
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("bandToTeacher/{openId}")
+	@ResponseBody
+	public AjaxResult bandToTeacher(@PathVariable String openId,@RequestParam String teacherName,@RequestParam String password,
+			@RequestParam String teacherPhone,HttpServletRequest request){
+		try {
+			if(isTest(request)){
+				return ti%2 != 0 ?AjaxResult.failure("找不到对应教练"):new AjaxResult(true, "", "", "{teacherId:\"6fdea2dd-a28d-429d-934b-658b900e900e\"}");
+			}
+			boolean isbanded = false;
+			if(openId != null && password != null && teacherName != null && teacherPhone != null 
+					&& !"".equals(openId) && !"".equals(password) && !"".equals(teacherName) 
+					&& !"".equals(teacherPhone)){
+				teacherName = URLDecoder.decode(teacherName, "UTF-8");
+				password = entryptPassword(password);
+				int rs = teacherJxService.bandToTeacher(openId, teacherName, password, teacherPhone);
+				if(rs == 2) return AjaxResult.failure("找不到对应教练");
+				if(rs == 3) return AjaxResult.failure("更新数据库失败");
+				isbanded = true;
+			}else{
+				return AjaxResult.failure("提交的参数不符合要求");
+			}
+			String teacherId = baseService.isUserBandedTeacher(openId);
+			return isbanded?new AjaxResult(true, "", "", "{teacherId:\""+teacherId+"\"}"):AjaxResult.failure("绑定失败");
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-15
+	 * @todo TODO 请求教练以前的课程信息
+	 * @param teacherId 教练编号
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("findCourseDetailBefore/{teacherId}")
+	@ResponseBody
+	public AjaxResult findCourseDetailBefore(@PathVariable String teacherId,HttpServletRequest request){
+		try {
+			TeacherRoasters tr = teacherJxService.getTeacherRoastBefore(teacherId);
+			return AjaxResult.success(tr);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序发生异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-15
+	 * @todo TODO 请求教练以后的课程信息
+	 * @param teacherId 教练编号
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("findCourseDetailAfter/{teacherId}")
+	@ResponseBody
+	public AjaxResult findCourseDetailAfter(@PathVariable String teacherId,HttpServletRequest request){
+		try {
+			TeacherRoasters tr = teacherJxService.getTeacherRoastAfter(teacherId);
+			return AjaxResult.success(tr);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return AjaxResult.failure("后台程序发生异常");
+		}
+	}
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-15
+	 * @todo TODO 将64位图片字符串保存为图片
+	 * @param picStrBase64 64位图片字符串
+	 * @return
+	 */
 	private String savePic(String picStrBase64){
-		//String base64=request.getParameter("base64");
-		//String filename = request.getParameter("filename");
-		//filename=filename.trim();
 		String fileDir = "file"+File.separator+"img"+File.separator;
 		String realPath=TeacherManagerController.class.getResource("/").getPath();
 		String path = realPath.substring(0,realPath.indexOf("WEB-INF"))+fileDir;//
@@ -187,10 +289,13 @@ public class TeacherManagerController {
 		try{ 
 			File dir = new File(path);
 			if(!dir.exists()){
-				dir.mkdir();
+				dir.mkdirs();
 			}
+			@SuppressWarnings("restriction")
 			byte[] result = new sun.misc.BASE64Decoder().decodeBuffer(picStrBase64.trim()); 
-			fos = new FileOutputStream(path+filename);
+			File file = new File(path+filename);
+			file.createNewFile();
+			fos = new FileOutputStream(file);
 			fos.write(result); 
 			fos.flush();
 			return fileDir + filename;
@@ -205,7 +310,15 @@ public class TeacherManagerController {
 		}
 		return null;
 	}
-	
+
+	private String entryptPassword(String password) {
+		byte[] salt = Digests.generateSalt(Constants.SALT_SIZE);
+
+		// 采用shiro自身的加密算法。
+		Sha1Hash sha1Hash = new Sha1Hash(password.getBytes(), salt, Constants.HASH_INTERATIONS);
+		String passwordEncoder = sha1Hash.toString();
+		return passwordEncoder;
+	}
 	/**
 	 * @author 肖长江
 	 * @date 2015-4-16
@@ -220,5 +333,14 @@ public class TeacherManagerController {
 			return true;
 		}
 		return false;
+	}
+	
+	public static void main(String[] args) {
+		try {
+			System.out.println(URLDecoder.decode("%E6%B5%B7%E7%8F%A0%E5%8C%BA", "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

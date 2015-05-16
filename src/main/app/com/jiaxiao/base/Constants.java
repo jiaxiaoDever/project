@@ -2,6 +2,8 @@ package com.jiaxiao.base;
 
 public class Constants {
 
+	public static final int SALT_SIZE = 8;
+	public static final int HASH_INTERATIONS = 1024;
 	/** 科目二编号*/
 	public static final String subject2Id = "de9581d9-d016-470b-9126-ae297b673e57";
 	/** 科目三编号*/
@@ -19,9 +21,9 @@ public class Constants {
 	/** 教练审核默认状态*/
 	public static final String TEACHE_CHECK_DEF = "待审核";
 	/** 教练在职默认状态编码*/
-	public static final String TEACHE_DUTESTAT_DEF_CODE = "ZBZ";
+	public static final String TEACHE_DUTESTAT_DEF_CODE = "ZB";
 	/** 教练在职默认状态*/
-	public static final String TEACHE_DUTESTAT_DEF = "值班中";
+	public static final String TEACHE_DUTESTAT_DEF = "值班";
 	
 	/** 微信用户教练角色编码*/
 	public static final String WXUSER_ROLE_TEA_CODE = "JXJL";
