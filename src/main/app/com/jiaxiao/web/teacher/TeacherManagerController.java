@@ -3,8 +3,8 @@ package com.jiaxiao.web.teacher;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
+import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -14,7 +14,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.lang.math.RandomUtils;
-import org.apache.shiro.crypto.hash.Sha1Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +33,6 @@ import com.jiaxiao.service.BranchesJxService;
 import com.jiaxiao.service.JxService;
 import com.jiaxiao.service.TeacherJxService;
 import com.yuhui.core.entity.common.AjaxResult;
-import com.yuhui.core.security.utils.Digests;
 import com.yuhui.core.utils.CacheUtils;
 
 /**
@@ -311,13 +309,33 @@ public class TeacherManagerController {
 		return null;
 	}
 
-	private String entryptPassword(String password) {
-		byte[] salt = Digests.generateSalt(Constants.SALT_SIZE);
-
-		// 采用shiro自身的加密算法。
-		Sha1Hash sha1Hash = new Sha1Hash(password.getBytes(), salt, Constants.HASH_INTERATIONS);
-		String passwordEncoder = sha1Hash.toString();
-		return passwordEncoder;
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-18
+	 * @todo TODO 采用md5方式加密密码
+	 * @param password
+	 * @return
+	 */
+	private static String entryptPassword(String password) {
+		char hexDigits[] = {
+		         '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+		     try {
+		         byte[] strTemp = password.getBytes();
+		         MessageDigest mdTemp = MessageDigest.getInstance("MD5");
+		         mdTemp.update(strTemp);
+		         byte[] md = mdTemp.digest();
+		         int j = md.length;
+		         char str[] = new char[j * 2];
+		         int k = 0;
+		         for (int i = 0; i < j; i++) {
+		             byte byte0 = md[i];
+		             str[k++] = hexDigits[byte0 >>> 4 & 0xf];
+		             str[k++] = hexDigits[byte0 & 0xf];
+		         }
+		         return new String(str);
+		     } catch (Exception e) {
+		         return null;
+		     }
 	}
 	/**
 	 * @author 肖长江
@@ -337,9 +355,8 @@ public class TeacherManagerController {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println(URLDecoder.decode("%E6%B5%B7%E7%8F%A0%E5%8C%BA", "UTF-8"));
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
+			System.out.println(entryptPassword("123456"));
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
