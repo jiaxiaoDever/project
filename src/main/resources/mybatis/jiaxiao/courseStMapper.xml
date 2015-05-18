@@ -12,10 +12,10 @@
 		<result property="branchId" column="BRANCH_ID"/>
 		<result property="branchName" column="BRANCH_NAME"/>
 		<result property="canSignNum" column="CAN_SIGN_NUM"/>
-		<result property="common" column="common"/>
+		<result property="common" column="TEA_LOGO"/>
 		<result property="courseHour" column="COURSE_HOUR"/>
 		<result property="courseInNum" column="COURSE_IN_NUM"/>
-		<result property="courseInfo" column="COURSE_INFO"/>
+		<result property="courseInfo" column="SCORE"/>
 		<result property="courseName" column="COURSE_NAME"/>
 		<result property="courseNoticBHour" column="COURSE_NOTIC_B_HOUR"/>
 		<result property="courseStat" column="COURSE_STAT"/>
@@ -81,7 +81,7 @@ where r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{
 	</select>
 	
 	<select id="findStudentBookedCourse" resultMap="studentCourse">
-		select c.*,r.*,r.START_TIME COURSE_START_TIME from ${jdbc.schema}.tb_course_st c left join ${jdbc.schema}.tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID
+		select c.*,r.*,r.START_TIME COURSE_START_TIME,t.TEA_LOGO,t.SCORE from ${jdbc.schema}.tb_course_st c left join ${jdbc.schema}.tb_roaster_jx r on c.COURSE_ID=r.COURSE_ID left join ${jdbc.schema}.tb_teacher_jx t on r.TEACHER_ID=t.TEACHER_ID 
 where c.STUDENT_ID= #{studentId}
 	</select>
 	
