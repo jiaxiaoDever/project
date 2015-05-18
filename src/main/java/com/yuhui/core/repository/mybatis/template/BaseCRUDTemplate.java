@@ -21,26 +21,37 @@ import com.yuhui.core.utils.SqlUtils;
 public class BaseCRUDTemplate {
 
 	public static Map<String, String> entityIdMap = new HashMap<String, String>();
+	public static Map<String, String> entityIdNameMap = new HashMap<String, String>();
 	private static String defaultIdColumn = "id";
-	public static String getEntityIdName(Class<?> clz){
-		if(entityIdMap.containsKey(clz.getName())){
-			return entityIdMap.get(clz.getName());
-		}else{
+	private static String defaultIdName = "id";
+	public static String getEntityIdColumn(Class<?> clz){
+		initEntiryIdColumn(clz);
+		return entityIdMap.get(clz.getName());
+	}
+	
+	public static String getEntityId(Class<?> clz){
+		initEntiryIdColumn(clz);
+		return entityIdNameMap.get(clz.getName());
+	}
+	
+	private static void initEntiryIdColumn(Class<?> clz){
+		if(!entityIdNameMap.containsKey(clz.getName())){
 			String cn = defaultIdColumn;
+			String in = defaultIdName;
 			for(Field field : clz.getDeclaredFields()){
 				if(field.isAnnotationPresent(Id.class)){
+					in = field.getName();
 					if(field.isAnnotationPresent(Column.class)){
 						Column col = field.getAnnotation(Column.class);
 						cn = col.name();
-						break;
 					}
+					break;
 				}
 			}
+			entityIdNameMap.put(clz.getName(), in);
 			entityIdMap.put(clz.getName(), cn);
-			return cn;
 		}
 	}
-	
 	public <T> String insert(final T entity) {
 		String sql = new SQL() {
 			{
@@ -61,8 +72,9 @@ public class BaseCRUDTemplate {
 				List<SqlFieldValueBean> ls = SqlUtils.getFieldValues(entity, true);
 				UPDATE(SqlUtils.getTableName(entity.getClass()));
 				SET(SqlUtils.getUpdateSetCondition(ls));
-				String id = getEntityIdName(entity.getClass());
-				WHERE(id + " = #{id}");
+				String id = getEntityId(entity.getClass());
+				String idc = getEntityIdColumn(entity.getClass());
+				WHERE(idc + " = #{"+id+"}");
 			}
 		}.toString();
 	}
@@ -73,8 +85,9 @@ public class BaseCRUDTemplate {
 				List<SqlFieldValueBean> ls = SqlUtils.getFieldValues(entity, false);
 				UPDATE(SqlUtils.getTableName(entity.getClass()));
 				SET(SqlUtils.getUpdateSetCondition(ls));
-				String id = getEntityIdName(entity.getClass());
-				WHERE(id + " = #{id}");
+				String id = getEntityId(entity.getClass());
+				String idc = getEntityIdColumn(entity.getClass());
+				WHERE(idc + " = #{"+id+"}");
 			}
 		}.toString();
 	}
@@ -83,7 +96,7 @@ public class BaseCRUDTemplate {
 		return new SQL() {
 			{
 				DELETE_FROM(SqlUtils.getTableName(clz));
-				String id = getEntityIdName(clz);
+				String id = getEntityIdColumn(clz);
 				WHERE(id + " = #{id}");
 			}
 		}.toString();
@@ -93,7 +106,7 @@ public class BaseCRUDTemplate {
 		return new SQL() {
 			{
 				DELETE_FROM(SqlUtils.getTableName((Class<?>) para.get("clz")));
-				String id = getEntityIdName((Class<?>) para.get("clz"));
+				String id = getEntityIdColumn((Class<?>) para.get("clz"));
 				WHERE(id + " in (" + para.get("ids") + ")");
 			}
 		}.toString();
@@ -110,7 +123,7 @@ public class BaseCRUDTemplate {
 				if (orderby != null) {
 					ORDER_BY(orderby);
 				}
-				String id = getEntityIdName(clz);
+				String id = getEntityIdColumn(clz);
 				WHERE(id + " = #{id}");
 			}
 		}.toString();
