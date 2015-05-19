@@ -111,29 +111,33 @@ public class TeacherJxServiceImpl extends BaseServiceImpl<TbTeacherJx> implement
 	}
 	
 	@Override
-	public TeacherRoasters getTeacherRoastBefore(String teacherId) throws Exception {
+	public TeacherRoasters getTeacherRoastBefore(String teacherId,String endDate) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String nowDate = sdf.format(new Date());
-		List<RoasterCourses> tcs = roasterJxDAO.getTeacherRoastCoures(teacherId, nowDate, 3, 0);
+		try {
+			if(endDate != null && !"".equals(endDate)) nowDate = sdf.format(sdf.parse(endDate));
+		} catch (Exception e) {
+		}
+		List<RoasterCourses> tcs = roasterJxDAO.getTeacherRoastCoures(teacherId, nowDate, 3, 0,Constants.ORDER_DESC);
 		Date startDay = new Date(sdf.parse(nowDate).getTime() - 3*24*60*60*1000);
 		Date endDay = sdf.parse(nowDate);
-		return conventRoasters(tcs, startDay, endDay);
+		return conventRoasters(tcs, startDay, endDay,Constants.ORDER_DESC);
 	}
 	@Override
 	public TeacherRoasters getTeacherRoastAfter(String teacherId) throws Exception {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String nowDate = sdf.format(new Date());
-		List<RoasterCourses> tcs = roasterJxDAO.getTeacherRoastCoures(teacherId, nowDate, 0, 4);
+		List<RoasterCourses> tcs = roasterJxDAO.getTeacherRoastCoures(teacherId, nowDate, 0, 4,Constants.ORDER_ASC);
 		Date startDay = sdf.parse(nowDate);
 		Date endDay = new Date(sdf.parse(nowDate).getTime() + 4*24*60*60*1000);
-		return conventRoasters(tcs, startDay, endDay);
+		return conventRoasters(tcs, startDay, endDay,Constants.ORDER_ASC);
 	}
 	
-	private TeacherRoasters conventRoasters(List<RoasterCourses> tcs,Date startDay,Date endDay) throws ParseException{
+	private TeacherRoasters conventRoasters(List<RoasterCourses> tcs,Date startDay,Date endDay,String order) throws ParseException{
 		String teacherId = null,teacherName=null,jxId=null,jxName=null,branchId=null,branchName=null;
 		int totolCoures=0,noCoures=0,duteCoures=0;
 		int i=0;
-		Map<Date, RoasterDay> cds = new TreeMap<Date, RoasterDay>();
+		Map<String, RoasterDay> cds = new TreeMap<String, RoasterDay>();
 		for(RoasterCourses rc : tcs){
 			TbRoasterJx trc = rc.getTbRoasterJx();
 			if(i == 0){
@@ -145,11 +149,10 @@ public class TeacherJxServiceImpl extends BaseServiceImpl<TbTeacherJx> implement
 				branchName = trc.getBranchName();
 			}
 
-			if(trc.getStartTime().getTime() <= (new Date()).getTime()) trc.setCanSignNum(0);
 			SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = dFormat.parse(dFormat.format(trc.getStartTime()));
+			String date = dFormat.format(trc.getStartTime());
 			if(!cds.containsKey(date)){
-				cds.put(date, new RoasterDay(dFormat.format(date), trc.getSubjectId(), trc.getSubjectName(), trc.getTeacherId(), trc.getTeacherName(), 
+				cds.put(date, new RoasterDay(date, trc.getSubjectId(), trc.getSubjectName(), trc.getTeacherId(), trc.getTeacherName(), 
 						"0", "0", "0", "0", "0", "0", new ArrayList<Roaster>(), new ArrayList<Roaster>()));
 			}
 			Roaster roaster = new Roaster(trc.getCourseId(), trc.getCanSignNum(), trc.getCourseInNum(), trc.getCourseTimearea(), trc.getCourseTimeareaCode(), trc.getStartTime(), trc.getEndTime(), rc.getTbCourseSts());
@@ -175,6 +178,15 @@ public class TeacherJxServiceImpl extends BaseServiceImpl<TbTeacherJx> implement
 		duteCoures = totolCoures - noCoures;
 		List<RoasterDay> rds = new ArrayList<RoasterDay>();
 		rds.addAll(cds.values());
+		if(order.equals(Constants.ORDER_DESC)){
+			List<RoasterDay> temps = new ArrayList<RoasterDay>();
+			for(int j= cds.size() -1; j>=0; j--){
+				temps.add(rds.get(j));
+			}
+			rds = null;
+			rds = temps;
+			temps = null;
+		}
 		TeacherRoasters tr = new TeacherRoasters(teacherId, teacherName, jxId, jxName, branchId, branchName, startDay, endDay, totolCoures, noCoures, duteCoures, rds);
 		return tr;
 	}

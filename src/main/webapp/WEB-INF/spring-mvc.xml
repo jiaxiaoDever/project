@@ -18,9 +18,16 @@
         <mvc:message-converters>  
             <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">  
                 <property name="objectMapper" ref="customObjectMapper"></property>  
+                <property name="supportedMediaTypes">
+					<list>
+				    	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+						<value>text/html;charset=UTF-8</value>
+					</list>
+				</property>
             </bean>  
         </mvc:message-converters>  
     </mvc:annotation-driven>  
+    
    <bean id="customObjectMapper" class="com.yuhui.core.utils.CustomObjectMapper"></bean>
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 		

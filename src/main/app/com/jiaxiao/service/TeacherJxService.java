@@ -46,5 +46,5 @@ public interface TeacherJxService extends BaseService<TbTeacherJx> {
 	 * @param teacherId 教练编号
 	 * @return
 	 */
-	public TeacherRoasters getTeacherRoastBefore(String teacherId) throws Exception;
+	public TeacherRoasters getTeacherRoastBefore(String teacherId,String endDate) throws Exception;
 }

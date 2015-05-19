@@ -4,6 +4,8 @@ public class Constants {
 
 	public static final int SALT_SIZE = 8;
 	public static final int HASH_INTERATIONS = 1024;
+	public static final String ORDER_ASC="asc";
+	public static final String ORDER_DESC="desc";
 	/** 科目二编号*/
 	public static final String subject2Id = "de9581d9-d016-470b-9126-ae297b673e57";
 	/** 科目三编号*/

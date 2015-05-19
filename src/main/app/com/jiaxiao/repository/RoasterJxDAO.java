@@ -23,7 +23,7 @@ public interface RoasterJxDAO extends BaseRepository<TbRoasterJx> {
 	 * @param teacherId
 	 * @return
 	 */
-	public List<RoasterCourses> getTeacherRoastCoures(@Param(value="teacherId") String teacherId,@Param(value="nowDate") String nowDate,@Param(value="beforeDay") Integer beforeDay,@Param(value="afterDay") Integer afterDay  );
+	public List<RoasterCourses> getTeacherRoastCoures(@Param(value="teacherId") String teacherId,@Param(value="nowDate") String nowDate,@Param(value="beforeDay") Integer beforeDay,@Param(value="afterDay") Integer afterDay,@Param(value="order") String order  );
 	
 	/**
 	 * @author 肖长江

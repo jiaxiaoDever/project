@@ -102,7 +102,7 @@
 		</collection>
 	</resultMap>
 	<select id="getTeacherRoastCoures" resultMap="rcMap">
-		select cs.*,r.*,r.START_TIME COURSE_START_TIME,r.COURSE_ID ROASTER_ID,cs.COURSE_ID CS_ID from ${jdbc.schema}.tb_course_st cs left join ${jdbc.schema}.tb_roaster_jx r on cs.COURSE_ID=r.COURSE_ID where r.START_TIME > DATE_SUB(#{nowDate},INTERVAL #{beforeDay} day) and r.START_TIME &lt; date_add(#{nowDate}, interval #{afterDay} day) and r.TEACHER_ID= #{teacherId} order by r.COURSE_TIMEAREA_CODE,r.START_TIME asc
+		select cs.*,r.*,r.START_TIME COURSE_START_TIME,r.COURSE_ID ROASTER_ID,cs.COURSE_ID CS_ID from ${jdbc.schema}.tb_course_st cs right join ${jdbc.schema}.tb_roaster_jx r on cs.COURSE_ID=r.COURSE_ID where r.START_TIME > DATE_SUB(#{nowDate},INTERVAL #{beforeDay} day) and r.START_TIME &lt; date_add(#{nowDate}, interval #{afterDay} day) and r.TEACHER_ID= #{teacherId} order by r.COURSE_TIMEAREA_CODE asc,r.START_TIME ${order}
 	</select>
 	
 	<select id="getRoasterByStudentCourse" resultMap="defaulfResultMap">

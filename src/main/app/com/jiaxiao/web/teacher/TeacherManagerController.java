@@ -236,14 +236,15 @@ public class TeacherManagerController {
 	 * @date 2015-5-15
 	 * @todo TODO 请求教练以前的课程信息
 	 * @param teacherId 教练编号
+	 * @param endDate 截止日期
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("findCourseDetailBefore/{teacherId}")
+	@RequestMapping("findCourseDetailBefore/{endDate}/{teacherId}")
 	@ResponseBody
-	public AjaxResult findCourseDetailBefore(@PathVariable String teacherId,HttpServletRequest request){
+	public AjaxResult findCourseDetailBefore(@PathVariable String endDate,@PathVariable String teacherId,HttpServletRequest request){
 		try {
-			TeacherRoasters tr = teacherJxService.getTeacherRoastBefore(teacherId);
+			TeacherRoasters tr = teacherJxService.getTeacherRoastBefore(teacherId,endDate);
 			return AjaxResult.success(tr);
 		} catch (Exception e) {
 			e.printStackTrace();
