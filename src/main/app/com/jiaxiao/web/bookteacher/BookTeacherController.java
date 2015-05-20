@@ -319,6 +319,7 @@ public class BookTeacherController {
 			if(isTest(request)){
 				return ti%2 != 0 ?AjaxResult.success():AjaxResult.failure("评论失败");
 			}
+			scoreInfo = URLDecoder.decode(scoreInfo, "UTF-8");
 			int rs = bookTeacherService.scoreCourse(stCourseId, carScore, teacherScore, serviceScore, scoreInfo);
 			if(rs == 1){
 				return AjaxResult.success();
