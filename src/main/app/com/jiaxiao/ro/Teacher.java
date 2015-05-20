@@ -44,6 +44,8 @@ public class Teacher implements Serializable {
 	private String sex;
 	/**教练是否为明星教练*/
 	private boolean isHot;
+	/** 教练简介*/
+	private String common;
 	/**驾校教练未来几天的课程信息*/
 	private List<CourseDay> courseDays = new ArrayList<CourseDay>();
 	
@@ -55,7 +57,7 @@ public class Teacher implements Serializable {
 			String jxName, String branchId, String branchName,
 			String subjectId, String subjectName, String tLogo, String scroe,
 			String scroeNum, String checkNum, String likeNum, String duteAge,
-			String sex, boolean isHot, List<CourseDay> courseDays) {
+			String sex, boolean isHot,String common, List<CourseDay> courseDays) {
 		super();
 		this.teacherId = teacherId;
 		this.teacherName = teacherName;
@@ -73,6 +75,7 @@ public class Teacher implements Serializable {
 		this.duteAge = duteAge;
 		this.sex = sex;
 		this.isHot = isHot;
+		this.common = common;
 		this.courseDays = courseDays;
 	}
 
@@ -180,6 +183,13 @@ public class Teacher implements Serializable {
 	public void setHot(boolean isHot) {
 		this.isHot = isHot;
 	}
-	
+
+	public String getCommon() {
+		return common;
+	}
+
+	public void setCommon(String common) {
+		this.common = common;
+	}
 	
 }

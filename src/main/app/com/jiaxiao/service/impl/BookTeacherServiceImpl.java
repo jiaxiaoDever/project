@@ -162,7 +162,7 @@ public class BookTeacherServiceImpl implements BookTeacherService {
 		for(TbTeacherJx t:tsMap.values()){
 			Teacher tr = new Teacher(t.getTeacherId(), t.getTeacherName(), t.getJxId(), t.getJxName(), t.getBranchId(), t.getBranchName(), 
 					t.getSubjectId(), t.getSubjectName(), t.getTeaLogo(), t.getScore()+"", t.getScoreNum()+"", t.getCheckNum()+"",
-					t.getLikeNum()+"", t.getDuteAge()+"", t.getSex() == 1 ? "男":"女", t.getIsHot() == 1 ? true : false, null);
+					t.getLikeNum()+"", t.getDuteAge()+"", t.getSex() == 1 ? "男":"女", t.getIsHot() == 1 ? true : false,t.getCommon(), null);
 			Map<Date, CourseDay> cds = new TreeMap<Date, CourseDay>();
 			for(TbRoasterJx trc:tcmMap.get(t.getTeacherId())){
 				SimpleDateFormat tFormat = new SimpleDateFormat("HH:mm");
