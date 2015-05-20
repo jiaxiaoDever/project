@@ -89,6 +89,8 @@ public class TeacherJxServiceImpl extends BaseServiceImpl<TbTeacherJx> implement
 		//2.绑定教练到微信用户,如果已经有微信用户则修改，否则插入
 		TbWxUser user = wxUserDAO.getUserByOpenId(openId);
 		int u = 0;
+		//将教练已经绑定的微信号解除绑定
+		wxUserDAO.unbandTeacherUser(tbTeacherJxs.get(0).getTeacherId());
 		if(user != null){
 			user.setTeacherId(tbTeacherJxs.get(0).getTeacherId());
 			user.setRoleCode(Constants.WXUSER_ROLE_TEA_CODE);

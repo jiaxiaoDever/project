@@ -223,8 +223,7 @@ public class TeacherManagerController {
 			}else{
 				return AjaxResult.failure("提交的参数不符合要求");
 			}
-			String teacherId = baseService.isUserBandedTeacher(openId);
-			return isbanded?new AjaxResult(true, "", "", "{teacherId:\""+teacherId+"\"}"):AjaxResult.failure("绑定失败");
+			return isbanded?isBandedToTeacher(openId, request):AjaxResult.failure("绑定失败");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");

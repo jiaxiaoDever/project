@@ -27,7 +27,10 @@
 	</context:component-scan>
 	
 	<aop:aspectj-autoproxy />
-
+	
+	<bean id="schedulerFactoryBean"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
+	
 	<!-- 设置一些系统变量 -->
 	<bean id="sysinfo" class="com.yuhui.core.utils.SystemInfo">
 		<property name="noLogUrlRegx" value="${no_log_url_regx}" />

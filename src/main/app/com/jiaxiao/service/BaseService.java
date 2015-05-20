@@ -32,4 +32,13 @@ public interface BaseService {
 	 * @return 绑定了返回教练编号，否则返回null
 	 */
 	public String isUserBandedTeacher(String openId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-20
+	 * @todo TODO 解除微信用户的绑定
+	 * @param openId 微信openId
+	 * @return
+	 */
+	public int unbandUser(String openId);
 }

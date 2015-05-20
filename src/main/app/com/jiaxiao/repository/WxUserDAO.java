@@ -36,4 +36,30 @@ public interface WxUserDAO extends BaseRepository<TbWxUser> {
 	 * @return
 	 */
 	public int insertBandingUser(TbWxUser user);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-20
+	 * @todo TODO 取消某个学员当前绑定的微信
+	 * @param studentId 学员编号
+	 * @return
+	 */
+	public int unbandStudentUser(String studentId);
+	
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-20
+	 * @todo TODO 取消某个教练当前绑定的微信
+	 * @param teacherId 教练编号
+	 * @return
+	 */
+	public int unbandTeacherUser(String teacherId);
+	/**
+	 * @author 肖长江
+	 * @date 2015-5-20
+	 * @todo TODO 取消某个用户当前的绑定
+	 * @param openId 微信openId
+	 * @return
+	 */
+	public int unbandUser(String openId);
 }

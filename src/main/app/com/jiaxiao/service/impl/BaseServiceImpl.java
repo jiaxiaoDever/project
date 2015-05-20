@@ -49,6 +49,8 @@ public class BaseServiceImpl implements BaseService {
 		//2.绑定学员到微信用户,如果已经有微信用户则修改，否则插入
 		TbWxUser user = wxUserDAO.getUserByOpenId(openId);
 		int u = 0;
+		//解除学员对应其他微信号的绑定
+		wxUserDAO.unbandStudentUser(studentJx.getStudentId());
 		if(user != null){
 			u = wxUserDAO.updateWxUserStudentInfo(openId, studentJx.getStudentId());
 		}else{
@@ -60,6 +62,12 @@ public class BaseServiceImpl implements BaseService {
 		}
 		if(u < 1) return 3;
 		return 1;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public int unbandUser(String openId) {
+		return wxUserDAO.unbandUser(openId);
 	}
 
 	public BaseServiceImpl() {

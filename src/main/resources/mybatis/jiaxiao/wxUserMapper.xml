@@ -7,6 +7,15 @@
 	<select id="getUserByOpenId" resultType="TbWxUser">
 		select t.* from ${jdbc.schema}.tb_wx_user t where t.open_id = #{openId} 
 	</select>
+	<update id="unbandUser">
+		update ${jdbc.schema}.tb_wx_user t set t.is_binded=0 where t.open_id = #{openId}
+	</update>
+	<update id="unbandStudentUser">
+		update ${jdbc.schema}.tb_wx_user t set t.is_binded=0 where t.student_id = #{studentId}
+	</update>
+	<update id="unbandTeacherUser">
+		update ${jdbc.schema}.tb_wx_user t set t.is_binded=0 where t.teacher_id = #{teacherId}
+	</update>
 	<update id="updateWxUserStudentInfo">
 		update ${jdbc.schema}.tb_wx_user t set t.student_id = #{studentId} , t.is_binded=1 where t.open_id = #{openId}
 	</update>
