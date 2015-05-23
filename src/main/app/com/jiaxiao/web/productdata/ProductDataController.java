@@ -74,7 +74,11 @@ public class ProductDataController {
 	@RequestMapping("productCrouse/{addDayNum}")
 	@ResponseBody
 	public String productCrouse(@PathVariable Integer addDayNum) throws ParseException{
-		List<TbTeacherJx> ts = teaBaseService.findAll();
+		TbTeacherJx t = new TbTeacherJx();
+		t.setCheckStatCode("SHTG");
+		t.setIsFullTime(1);
+		t.setIsOnDute(1);
+		List<TbTeacherJx> ts = teaBaseService.query(t);
 		List<TbRoasterJx> trs = roastBaseService.findAll();
 		List<TbCourseSt> cSts = courseBaseService.findAll();
 		String cids = "''";

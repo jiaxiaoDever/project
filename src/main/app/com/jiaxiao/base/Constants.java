@@ -4,7 +4,44 @@ public class Constants {
 
 	public static final int SALT_SIZE = 8;
 	public static final int HASH_INTERATIONS = 1024;
+	/** 初始化N天内的课程*/
+	public static int INIT_ROAST_DAY = 7;
+	/** 默认上午课时数*/
+	public static final int COURSE_NUM_AM_DEF = 4;
+	/** 默认下午课时数*/
+	public static final int COURSE_NUM_PM_DEF = 4;
+	/** 默认上午开始上课时间*/
+	public static final int COURSE_START_H_AM_DEF = 8;
+	/** 默认下午开始上课时间*/
+	public static final int COURSE_START_H_PM_DEF = 14;
+	/** 默认线下预约人数为0*/
+	public static final int COURSE_OFFLINE_NUM_DEF = 0;
+	/** 默认课时数*/
+	public static final int COURSE_HOUR_DEF = 1;
+	/** 每节课能接收人数*/
+	public static final int NUM_PER_COURSE_DEF = 3;
+	/** 默认剩余可报名人数=每节课能接收人数*/
+	public static final int COURSE_CAN_SAIN_NUM_DEF = NUM_PER_COURSE_DEF;
+	/** 最近课程默认提前4小时通知教练*/
+	public static final int COURSE_NOTIC_B_HOUR_DEF = 4;
+	/** 排班后默认延后24小时通知教练*/
+	public static final int ROAST_NOTIC_A_HOUR_DEF = 24;
+	/** 教练默认课程状态编码：PBZ*/
+	public static final String ROAST_STAT_CODE_DEF = "PBZ";
+	/** 教练默认课程状态：排班中*/
+	public static final String ROAST_STAT_DEF = "排班中";
+	/** 上午编码*/
+	public static final String SW_CODE = "SW";
+	/** 下午编码*/
+	public static final String XW_CODE = "XW";
+	/** 上午*/
+	public static final String SW = "上午";
+	/** 下午*/
+	public static final String XW = "下午";
+	
+	/** 顺序*/
 	public static final String ORDER_ASC="asc";
+	/** 倒序*/
 	public static final String ORDER_DESC="desc";
 	/** 科目二编号*/
 	public static final String subject2Id = "de9581d9-d016-470b-9126-ae297b673e57";
@@ -26,6 +63,9 @@ public class Constants {
 	public static final String TEACHE_DUTESTAT_DEF_CODE = "ZB";
 	/** 教练在职默认状态*/
 	public static final String TEACHE_DUTESTAT_DEF = "值班";
+	
+	/** 一般情况下默认状态值(是)*/
+	public static final Integer STAT_DEF = 1;
 	
 	/** 微信用户教练角色编码*/
 	public static final String WXUSER_ROLE_TEA_CODE = "JXJL";

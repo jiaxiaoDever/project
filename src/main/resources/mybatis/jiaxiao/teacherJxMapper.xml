@@ -100,12 +100,12 @@
 	</resultMap>
 	<select id="findTeacherCouresOnBranch" resultMap="tcMap">
 		select j.*,r.* from ${jdbc.schema}.tb_teacher_jx j left join ${jdbc.schema}.tb_roaster_jx r on j.TEACHER_ID=r.TEACHER_ID 
-		where j.BRANCH_ID= #{branchId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB'  
+		where j.BRANCH_ID= #{branchId} and j.CHECK_STAT_CODE='SHTG' and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB'  
 		and r.START_TIME > CURDATE() and r.START_TIME &lt; date_add(now(), interval 3 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
 	</select>
 	<select id="findTeacherCouresDetail" resultMap="tcMap">
 		select j.*,r.* from ${jdbc.schema}.tb_teacher_jx j left join ${jdbc.schema}.tb_roaster_jx r on j.TEACHER_ID=r.TEACHER_ID 
-		where j.TEACHER_ID= #{teacherId} and j.IS_ON_DUTE=1 and j.DUTE_STAT_CODE='ZB' 
+		where j.TEACHER_ID= #{teacherId} and j.IS_ON_DUTE=1 j.CHECK_STAT_CODE='SHTG' and and j.DUTE_STAT_CODE='ZB' 
 		and r.START_TIME > date(#{bookingDate}) and r.START_TIME &lt; date_add(date(#{bookingDate}), interval 1 day) order by r.TEACHER_ID,r.COURSE_TIMEAREA_CODE,r.START_TIME asc
 	</select>
  	<select id="getBandedTeacherJx" resultType="TbTeacherJx">
