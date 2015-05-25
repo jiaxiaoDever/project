@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jiaxiao.entity.TbBranchesJx;
-import com.jiaxiao.entity.TbCourseSt;
-import com.jiaxiao.entity.TbRoasterJx;
 import com.jiaxiao.entity.TbSubject;
 import com.jiaxiao.entity.TbTeacherJx;
 import com.jiaxiao.service.BranchesJxService;
@@ -29,6 +29,7 @@ import com.jiaxiao.service.TeacherJxService;
 @RequestMapping(value = "/productData")
 public class ProductDataController {
 
+	private static Logger log = LoggerFactory.getLogger(ProductDataController.class);
 	@Autowired
 	private BranchesJxService baseService;
 	
@@ -79,45 +80,18 @@ public class ProductDataController {
 		t.setIsFullTime(1);
 		t.setIsOnDute(1);
 		List<TbTeacherJx> ts = teaBaseService.query(t);
-		List<TbRoasterJx> trs = roastBaseService.findAll();
-		List<TbCourseSt> cSts = courseBaseService.findAll();
-		String cids = "''";
-		for(TbCourseSt c:cSts){
-			cids += ",'"+c.getStCourseId()+"'";
-		}
-		int dcrs = courseBaseService.deleteIn(cids);
-		String ids = "''";
-		for(TbRoasterJx trJx : trs){
-			ids +=",'"+trJx.getCourseId()+"'";
-		}
-		int drs = roastBaseService.deleteIn(ids);
-		int rs = 0;
+		int rs = 0 ,total = 0;
 		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
 		for(TbTeacherJx tea : ts){
 			Date tdn = new Date();
 			for(int i=0; i<=addDayNum; i++){
 				Date td = new Date(tdn.getTime() + i*24*60*60*1000);
-				for(int j=0; j<4; j++){
-					Date startDate = new Date(sdFormat.parse(sdFormat.format(td)).getTime() + (j+8)*60*60*1000);
-					Date endDate = new Date(startDate.getTime() + 60*60*1000);
-					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), tea.getBranchId(),
-							tea.getBranchName(), 3, null, 1, 3, null, tea.getJxName()+"-"+tea.getBranchName()+"-"+tea.getTeacherName()+"教练"+"-"+tea.getSubjectName(),
-							4, "报名中", "BMZ", "上午", "SW", tdn, tdn, startDate, endDate, 1, 1, tea.getJxId(), tea.getJxName(), 0, 24,
-							startDate, startDate, tea.getSubjectId(), tea.getSubjectName(), tea.getTeacherId(), tea.getTeacherName());
-					rs += roastBaseService.save(tr);
-				}
-				for(int j=0; j<4; j++){
-					Date startDate = new Date(sdFormat.parse(sdFormat.format(td)).getTime() + (j+14)*60*60*1000);
-					Date endDate = new Date(startDate.getTime() + 60*60*1000);
-					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), tea.getBranchId(),
-							tea.getBranchName(), 3, null, 1, 3, null, tea.getJxName()+"-"+tea.getBranchName()+"-"+tea.getTeacherName()+"教练"+"-"+tea.getSubjectName(),
-							4, "报名中", "BMZ", "下午", "XW", tdn, tdn, startDate, endDate, 1, 1, tea.getJxId(), tea.getJxName(), 0, 24,
-							startDate, startDate, tea.getSubjectId(), tea.getSubjectName(), tea.getTeacherId(), tea.getTeacherName());
-					rs += roastBaseService.save(tr);
-				}
+				rs = roastBaseService.addTeacherDayRoast(tea, td);
+				total += rs;
+				log.info("初始化教练课程：教练（"+tea.getTeacherName() + "）日期("+sdFormat.format(td)+") 初始化课程数："+ rs);
 			}
 		}
-		return "删除学员已约课程数："+dcrs +"		删除教练课程数:"+ drs + "	插入教练课程数:" + rs;
+		return "插入教练课程数:" + total;
 	}
 	
 }
