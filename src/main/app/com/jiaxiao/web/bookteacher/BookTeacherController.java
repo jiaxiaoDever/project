@@ -61,9 +61,9 @@ public class BookTeacherController {
 		try {
 			String studentId = baseService.isUserBandedStudent(openId);
 			if(isTest(request)){
-				return ti%2 != 0 ?new AjaxResult(true, "", "", "{studentId:"+studentId+",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
+				return ti%2 != 0 ?new AjaxResult(true, "", "", "{studentId:\""+studentId+"\",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
 			}
-			return studentId != null ?new AjaxResult(true, "", "", "{studentId:"+studentId+",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
+			return studentId != null ?new AjaxResult(true, "", "", "{studentId:\""+studentId+"\",isbanded:true}"):new AjaxResult(true, "", "", "{studentId:null,isbanded:false}");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
@@ -86,7 +86,7 @@ public class BookTeacherController {
 			@RequestParam String studentPhone,HttpServletRequest request){
 		try {
 			if(isTest(request)){
-				return ti%2 != 0 ?AjaxResult.failure("找不到对应学员"):new AjaxResult(true, "", "", "{studentId:asdfewfasdfawe}");
+				return ti%2 != 0 ?AjaxResult.failure("找不到对应学员"):new AjaxResult(true, "", "", "{studentId:\"asdfewfasdfawe\"}");
 			}
 			boolean isbanded = false;
 			if(openId != null && studentCardId != null && studentName != null && studentPhone != null 
@@ -101,7 +101,7 @@ public class BookTeacherController {
 				return AjaxResult.failure("提交的参数不符合要求");
 			}
 			String studentId = baseService.isUserBandedStudent(openId);
-			return isbanded?new AjaxResult(true, "", "", "{studentId:"+studentId+"}"):AjaxResult.failure("绑定失败");
+			return isbanded?new AjaxResult(true, "", "", "{studentId:\""+studentId+"\"}"):AjaxResult.failure("绑定失败");
 		} catch (Exception e) {
 			e.printStackTrace();
 			return AjaxResult.failure("后台程序异常");
