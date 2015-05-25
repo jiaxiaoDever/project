@@ -30,6 +30,10 @@ public class Constants {
 	public static final String ROAST_STAT_CODE_DEF = "PBZ";
 	/** 教练默认课程状态：排班中*/
 	public static final String ROAST_STAT_DEF = "排班中";
+	/** 教练默认课程状态编码：BMZ*/
+	public static final String ROAST_STAT_CODE_BMZ = "BMZ";
+	/** 教练默认课程状态：报名中*/
+	public static final String ROAST_STAT_BMZ = "报名中";
 	/** 上午编码*/
 	public static final String SW_CODE = "SW";
 	/** 下午编码*/

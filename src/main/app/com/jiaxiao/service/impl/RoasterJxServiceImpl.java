@@ -43,7 +43,7 @@ public class RoasterJxServiceImpl extends BaseServiceImpl<TbRoasterJx> implement
 					Date endDate = new Date(startDate.getTime() + 60*60*1000);
 					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), teacherJx.getBranchId(),
 							teacherJx.getBranchName(), Constants.COURSE_CAN_SAIN_NUM_DEF, null, Constants.COURSE_HOUR_DEF, Constants.NUM_PER_COURSE_DEF, null, teacherJx.getJxName()+"-"+teacherJx.getBranchName()+"-"+teacherJx.getTeacherName()+"教练"+"-"+teacherJx.getSubjectName(),
-							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_DEF, Constants.ROAST_STAT_CODE_DEF, Constants.SW, Constants.SW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
+							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_BMZ, Constants.ROAST_STAT_CODE_BMZ, Constants.SW, Constants.SW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
 							startDate, startDate, teacherJx.getSubjectId(), teacherJx.getSubjectName(), teacherJx.getTeacherId(), teacherJx.getTeacherName());
 					rs += save(tr);
 				}
@@ -52,7 +52,7 @@ public class RoasterJxServiceImpl extends BaseServiceImpl<TbRoasterJx> implement
 					Date endDate = new Date(startDate.getTime() + 60*60*1000);
 					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), teacherJx.getBranchId(),
 							teacherJx.getBranchName(), Constants.COURSE_CAN_SAIN_NUM_DEF, null, Constants.COURSE_HOUR_DEF, Constants.NUM_PER_COURSE_DEF, null, teacherJx.getJxName()+"-"+teacherJx.getBranchName()+"-"+teacherJx.getTeacherName()+"教练"+"-"+teacherJx.getSubjectName(),
-							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_DEF, Constants.ROAST_STAT_CODE_DEF, Constants.XW, Constants.XW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
+							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_BMZ, Constants.ROAST_STAT_CODE_BMZ, Constants.XW, Constants.XW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
 							startDate, startDate, teacherJx.getSubjectId(), teacherJx.getSubjectName(), teacherJx.getTeacherId(), teacherJx.getTeacherName());
 					rs += save(tr);
 				}
