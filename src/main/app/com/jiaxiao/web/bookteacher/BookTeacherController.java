@@ -224,7 +224,7 @@ public class BookTeacherController {
 			}else if(rs == 3){				
 				return AjaxResult.failure("预约失败");
 			}else if(rs == 4){				
-				return AjaxResult.failure("学员已无剩余课时");
+				return AjaxResult.failure("对不起，您的课时已经用完");
 			}else if(rs == 5){				
 				return AjaxResult.failure("学员当日可预约课时已满");
 			}else{				
