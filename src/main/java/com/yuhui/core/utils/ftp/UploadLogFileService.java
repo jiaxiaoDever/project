@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.xml.parsers.*;
@@ -39,10 +40,10 @@ public class UploadLogFileService {
 	 */
 	public UploadLogFileService(){
 		InputStream in = null;
-		String s =UploadLogFileService.class.getResource("/").getPath()+"application.properties";
-		String xml =UploadLogFileService.class.getResource("/").getPath()+"logback.xml";
-		Properties prop = new Properties();
 		try {
+			String s =UploadLogFileService.class.getResource("/").toURI().getPath()+"application.properties";
+			String xml =UploadLogFileService.class.getResource("/").toURI().getPath()+"logback.xml";
+			Properties prop = new Properties();
 			in =  new FileInputStream(s);
 			prop.load(in);
 			 ftpHost = prop.getProperty("ftpHost");
@@ -61,6 +62,8 @@ public class UploadLogFileService {
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
 		

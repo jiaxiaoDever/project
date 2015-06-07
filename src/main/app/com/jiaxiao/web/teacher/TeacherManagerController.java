@@ -3,6 +3,7 @@ package com.jiaxiao.web.teacher;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URLDecoder;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
@@ -279,12 +280,12 @@ public class TeacherManagerController {
 	 * @return
 	 */
 	private String savePic(String picStrBase64){
-		String fileDir = "file"+File.separator+"img"+File.separator;
-		String realPath=TeacherManagerController.class.getResource("/").getPath();
-		String path = realPath.substring(0,realPath.indexOf("WEB-INF"))+fileDir;//
 		FileOutputStream fos = null;
-		String filename=RandomUtils.nextInt()+".png";
 		try{ 
+			String fileDir = "file"+File.separator+"img"+File.separator;
+			String realPath=TeacherManagerController.class.getResource("/").toURI().getPath();
+			String path = realPath.substring(0,realPath.indexOf("WEB-INF"))+fileDir;//
+			String filename=RandomUtils.nextInt()+".png";
 			File dir = new File(path);
 			if(!dir.exists()){
 				dir.mkdirs();

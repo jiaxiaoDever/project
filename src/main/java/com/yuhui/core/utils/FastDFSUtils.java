@@ -3,6 +3,7 @@ package com.yuhui.core.utils;
 
 
 import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 
 import org.csource.fastdfs.ClientGlobal;
 import org.csource.fastdfs.StorageClient;
@@ -81,7 +82,12 @@ public class FastDFSUtils {
 	 * @return 配置文件路径
 	 */
 	private String configPath(){
-		return FastDFSUtils.class.getResource("/").getPath()+"fdfs_client.conf";  
+		try {
+			return FastDFSUtils.class.getResource("/").toURI().getPath()+"fdfs_client.conf";
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+			return "";
+		}  
 	}
 	
 	public static void main(String[] args){

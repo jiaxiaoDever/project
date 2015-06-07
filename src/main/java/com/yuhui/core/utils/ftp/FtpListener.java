@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.util.Properties;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -40,9 +41,9 @@ public class FtpListener {
 	private static String getInterval(){
  		String interval_str ="";
  		InputStream in = null;
-		String s =UploadLogFileService.class.getResource("/").getPath()+"application.properties";
-		Properties prop = new Properties();
 		try {
+			String s =UploadLogFileService.class.getResource("/").toURI().getPath()+"application.properties";
+			Properties prop = new Properties();
 			in =  new FileInputStream(s);
 			prop.load(in);
 			interval_str = prop.getProperty("upload_interval");
@@ -51,6 +52,8 @@ public class FtpListener {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
+		}catch (URISyntaxException e) {
 			e.printStackTrace();
 		}finally{
 			try {
