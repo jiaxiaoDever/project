@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.InetAddress;
+import java.net.URISyntaxException;
 import java.net.UnknownHostException;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -99,7 +100,7 @@ public class SystemVisitorLogInterceptor extends HandlerInterceptorAdapter {
 	 	private boolean checkUrl(String url){
 			//Pattern pattern = Pattern.compile("jsp|asp|aspx|php|html|htm|action|servlet|do");
 	 		if(regx == null||"".equals(regx)){
-	 			regx= "js|css|jpg|jpeg|gif|png|swf";
+	 			regx= "js|css|jpg|jpeg|gif|png|swf|app";
 	 		}
 			Pattern pattern = Pattern.compile("\\.("+regx+")");
 			Matcher matcher = pattern.matcher(url);
@@ -122,13 +123,13 @@ public class SystemVisitorLogInterceptor extends HandlerInterceptorAdapter {
 	        return add;  
 	    }
 	 	
-	 	private static String getRegx(){
+	 	private static String getRegx() {
 	 		String reg ="";
 	 		InputStream in = null;
-			String s =SystemVisitorLogInterceptor.class.getResource("/").getPath()+"application.properties";
-			System.out.println("=====================application.properties:"+s);
-			Properties prop = new Properties();
 			try {
+				String s =SystemVisitorLogInterceptor.class.getResource("/").toURI().getPath()+"application.properties";
+				System.out.println("=====================application.properties:"+s);
+				Properties prop = new Properties();
 				in =  new FileInputStream(s);
 				prop.load(in);
 				reg = prop.getProperty("no_log_url_regx");
@@ -137,6 +138,8 @@ public class SystemVisitorLogInterceptor extends HandlerInterceptorAdapter {
 			} catch (FileNotFoundException e) {
 				//e.printStackTrace();
 			} catch (IOException e) {
+				//e.printStackTrace();
+			} catch (URISyntaxException e) {
 				//e.printStackTrace();
 			}finally{
 				try {
@@ -147,7 +150,7 @@ public class SystemVisitorLogInterceptor extends HandlerInterceptorAdapter {
 				}
 			}
 			if(reg==null ||"".equals(reg)){
-				reg="js|css|jpg|jpeg|gif|png|swf";
+				reg="js|css|jpg|jpeg|gif|png|swf|app";
 			}
 			
 			return reg ;
