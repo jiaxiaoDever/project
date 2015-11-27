@@ -16,13 +16,14 @@ import com.jiaxiao.entity.TbRoasterJx;
 import com.jiaxiao.entity.TbTeacherJx;
 import com.jiaxiao.repository.RoasterJxDAO;
 import com.jiaxiao.service.RoasterJxService;
+import com.jiaxiao.service.impl.system.ImportServiceImpl;
+import com.jiaxiao.service.system.ImportService;
 import com.yuhui.core.repository.mybatis.BaseRepository;
-import com.yuhui.core.service.base.BaseServiceImpl;
 
 @Service(value = "roasterJxService")
 @Transactional(readOnly = true)
-public class RoasterJxServiceImpl extends BaseServiceImpl<TbRoasterJx> implements
-		RoasterJxService {
+public class RoasterJxServiceImpl extends ImportServiceImpl<TbRoasterJx> implements
+		RoasterJxService,ImportService<TbRoasterJx> {
 
 	@Autowired
 	private RoasterJxDAO roasterJxDAO;
@@ -41,7 +42,7 @@ public class RoasterJxServiceImpl extends BaseServiceImpl<TbRoasterJx> implement
 				for(int j=0; j<Constants.COURSE_NUM_AM_DEF; j++){
 					Date startDate = new Date(sdFormat.parse(sdFormat.format(day)).getTime() + (j+Constants.COURSE_START_H_AM_DEF)*60*60*1000);
 					Date endDate = new Date(startDate.getTime() + 60*60*1000);
-					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), teacherJx.getBranchId(),
+					TbRoasterJx tr = new TbRoasterJx(null, teacherJx.getBranchId(),
 							teacherJx.getBranchName(), Constants.COURSE_CAN_SAIN_NUM_DEF, null, Constants.COURSE_HOUR_DEF, Constants.NUM_PER_COURSE_DEF, null, teacherJx.getJxName()+"-"+teacherJx.getBranchName()+"-"+teacherJx.getTeacherName()+"教练"+"-"+teacherJx.getSubjectName(),
 							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_BMZ, Constants.ROAST_STAT_CODE_BMZ, Constants.SW, Constants.SW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
 							startDate, startDate, teacherJx.getSubjectId(), teacherJx.getSubjectName(), teacherJx.getTeacherId(), teacherJx.getTeacherName());
@@ -50,7 +51,7 @@ public class RoasterJxServiceImpl extends BaseServiceImpl<TbRoasterJx> implement
 				for(int j=0; j<Constants.COURSE_NUM_PM_DEF; j++){
 					Date startDate = new Date(sdFormat.parse(sdFormat.format(day)).getTime() + (j+Constants.COURSE_START_H_PM_DEF)*60*60*1000);
 					Date endDate = new Date(startDate.getTime() + 60*60*1000);
-					TbRoasterJx tr = new TbRoasterJx(UUID.randomUUID().toString(), teacherJx.getBranchId(),
+					TbRoasterJx tr = new TbRoasterJx(null, teacherJx.getBranchId(),
 							teacherJx.getBranchName(), Constants.COURSE_CAN_SAIN_NUM_DEF, null, Constants.COURSE_HOUR_DEF, Constants.NUM_PER_COURSE_DEF, null, teacherJx.getJxName()+"-"+teacherJx.getBranchName()+"-"+teacherJx.getTeacherName()+"教练"+"-"+teacherJx.getSubjectName(),
 							Constants.COURSE_NOTIC_B_HOUR_DEF, Constants.ROAST_STAT_BMZ, Constants.ROAST_STAT_CODE_BMZ, Constants.XW, Constants.XW_CODE, new Date(), new Date(), startDate, endDate, Constants.STAT_DEF, Constants.STAT_DEF, teacherJx.getJxId(), teacherJx.getJxName(), Constants.COURSE_OFFLINE_NUM_DEF, Constants.ROAST_NOTIC_A_HOUR_DEF,
 							startDate, startDate, teacherJx.getSubjectId(), teacherJx.getSubjectName(), teacherJx.getTeacherId(), teacherJx.getTeacherName());

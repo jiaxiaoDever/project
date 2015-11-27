@@ -40,11 +40,11 @@ public class InitLoader {
 	private ContentTypeBaseDAO contentTypeBaseDAO;
 	
 	public void init() {
-		/*initResourceTree();
+		initResourceTree();
 		initMenuTree();
 		initOrgTree();
 		initRolePortlets();
-		initContentTypeTree();*/
+		initContentTypeTree();
 	}
 
 	public void reset() {

@@ -1,11 +1,16 @@
 package com.yuhui.core.service.base;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 //import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+
+import javax.persistence.Id;
 //import java.util.UUID;
 
 //import javax.persistence.Id;
@@ -16,6 +21,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.yuhui.core.repository.mybatis.template.BaseCRUDTemplate;
+import com.yuhui.core.utils.BeanUtils;
 import com.yuhui.core.utils.JQGridResponse;
 import com.yuhui.core.utils.SqlUtils;
 import com.yuhui.core.utils.page.Page;
@@ -59,26 +66,28 @@ public abstract class BaseServiceImpl<T extends Serializable> implements BaseSer
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public int save(T entity) {
-		/*try {
-			for(Field field : entity.getClass().getDeclaredFields()){
-				if(field.isAnnotationPresent(Id.class)){
-					if(field.get(entity) == null){
-						if(field.getType().getSimpleName().equals("java.lang.String")){
-							field.set(entity, UUID.randomUUID().toString());
-						}
-					}
-					break;
+		String idname = BaseCRUDTemplate.getEntityId(entity.getClass());
+		int rs = 0;
+		try {
+			Object id = org.apache.commons.beanutils.BeanUtils.getProperty(entity, idname);
+			try {
+				if(id == null || "".equals(id)){					
+					BeanUtils.executeSetMethod(entity, idname, UUID.randomUUID().toString());
+					rs = getMybatisDAO().insert(entity);
+				} else{
+					rs = this.update(entity);
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		return getMybatisDAO().insert(entity);
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -96,15 +105,18 @@ public abstract class BaseServiceImpl<T extends Serializable> implements BaseSer
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void updateAll(List<T> ls) {
+	public int updateAll(List<T> ls) {
+		int rs = 0;
 		for (T entity : ls) {
-			getMybatisDAO().updateNotNullField(entity);
+			int trs = getMybatisDAO().updateNotNullField(entity);
+			if(trs > 0) rs ++;
 		}
+		return rs;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(T entity) {
-		getMybatisDAO().updateNotNullField(entity);
+	public int update(T entity) {
+		 return getMybatisDAO().updateNotNullField(entity);
 	}
 
 	public T get(String id) {

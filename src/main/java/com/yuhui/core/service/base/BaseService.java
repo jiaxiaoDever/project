@@ -123,11 +123,11 @@ public interface BaseService<T extends Serializable> {
 	 * 
 	 * @param ls
 	 */
-	public void updateAll(List<T> ls);
+	public int updateAll(List<T> ls);
 	
 	/**
 	 * 更新一个对象的非空字段
 	 * @param entity
 	 */
-	public void update(T entity);
+	public int update(T entity);
 }

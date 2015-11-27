@@ -35,16 +35,17 @@ public class MenuTreeIniter implements TreeIniter<MenuBase> {
 //		sb.append("localhost:8090");
 		if (resourceBase.getHost() != null && !resourceBase.getHost().equals("")) {
 			//sb.append(resourceBase.getHost());
-			sb.append("192.168.1.197");//此处为自定义访问地址
+			sb.append("localhost");//此处为自定义访问地址
 		}
 		if (resourceBase.getPort() != null && !resourceBase.getPort().equals("")) {
 			//sb.append(":").append(resourceBase.getPort());
-			String port = "8088";
+			String port = "8080";
 			if("saiku".equals(resourceBase.getContext())) port = "8080";
 			sb.append(":").append(port);//此处为自定义访问端口
 		}
 		if (resourceBase.getContext() != null && !resourceBase.getContext().equals("")) {
-			sb.append("/").append(resourceBase.getContext());
+			//sb.append("/").append(resourceBase.getContext());
+			sb.append("/").append("AppServer");
 		}
 		if (resourceBase.getPath() != null && !resourceBase.getPath().equals("")) {
 			sb.append("/").append(resourceBase.getPath());

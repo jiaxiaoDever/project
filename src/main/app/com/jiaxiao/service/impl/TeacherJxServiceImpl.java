@@ -27,13 +27,14 @@ import com.jiaxiao.ro.Roaster;
 import com.jiaxiao.ro.RoasterDay;
 import com.jiaxiao.ro.TeacherRoasters;
 import com.jiaxiao.service.TeacherJxService;
+import com.jiaxiao.service.impl.system.ImportServiceImpl;
+import com.jiaxiao.service.system.ImportService;
 import com.yuhui.core.repository.mybatis.BaseRepository;
-import com.yuhui.core.service.base.BaseServiceImpl;
 
 @Service(value = "teacherJxService")
 @Transactional(readOnly = true)
-public class TeacherJxServiceImpl extends BaseServiceImpl<TbTeacherJx> implements
-		TeacherJxService {
+public class TeacherJxServiceImpl extends ImportServiceImpl<TbTeacherJx> implements
+		TeacherJxService,ImportService<TbTeacherJx> {
 
 	@Autowired
 	private TeacherJxDAO teacherJxDAO;

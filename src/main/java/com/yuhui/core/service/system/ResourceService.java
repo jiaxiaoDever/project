@@ -41,7 +41,7 @@ public interface ResourceService extends BaseService<ResourceBase>  {
 	 * 
 	 * @param ls
 	 */
-	void updateAll(List<ResourceBase> ls);
+	int updateAll(List<ResourceBase> ls);
 
 	/**
 	 * 获取不继承属性的树

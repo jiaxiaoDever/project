@@ -8,12 +8,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jiaxiao.entity.TbBaseJx;
 import com.jiaxiao.repository.JxDAO;
 import com.jiaxiao.service.JxService;
+import com.jiaxiao.service.impl.system.ImportServiceImpl;
+import com.jiaxiao.service.system.ImportService;
 import com.yuhui.core.repository.mybatis.BaseRepository;
-import com.yuhui.core.service.base.BaseServiceImpl;
 
 @Service(value = "jxService")
 @Transactional(readOnly = true)
-public class JxServiceImpl extends BaseServiceImpl<TbBaseJx> implements JxService {
+public class JxServiceImpl extends ImportServiceImpl<TbBaseJx> implements JxService,ImportService<TbBaseJx> {
 
 	@Autowired
 	private JxDAO jxDAO;

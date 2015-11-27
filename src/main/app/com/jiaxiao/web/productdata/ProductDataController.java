@@ -49,7 +49,7 @@ public class ProductDataController {
 	@ResponseBody
 	public String productBranch(@PathVariable String branchName) throws UnsupportedEncodingException{
 		branchName = new String(branchName.getBytes("ISO-8859-1"),"UTF-8");
-		TbBranchesJx branchesJx = new TbBranchesJx(UUID.randomUUID().toString(),"广州市海珠区新港东路","",
+		TbBranchesJx branchesJx = new TbBranchesJx(null,"广州市海珠区新港东路","",
 				"欢迎搭乘程通驾校班车，班车路线接送程通驾校学员，详细路线见下表，程通驾校电话：0791-87836206，地址：进贤县泉岭乡320国道旁。",
 				"广州市",branchName,"广东省",branchName,"正常","ZC","",new Date(),null,new Date(),"9f4d700e-54c4-4843-8ff0-3fcff6661682",
 				"广州程通驾校",null,null);
@@ -64,7 +64,7 @@ public class ProductDataController {
 		teacherName = new String(teacherName.getBytes("ISO-8859-1"),"UTF-8");
 		TbBranchesJx bx = baseService.get(branchId);
 		TbSubject subject = subBaseService.get(subjectId);
-		TbTeacherJx t = new TbTeacherJx(UUID.randomUUID().toString(), null, branchId, bx.getBranchName(), 55, bx.getBranchCity(), "",new Date(), 38,
+		TbTeacherJx t = new TbTeacherJx(null, null, branchId, bx.getBranchName(), 55, bx.getBranchCity(), "",new Date(), 38,
 				new Date(), null, null, null, null, "值班", "ZB", new Date(), 1, 1, 1, 1, 1, bx.getJxId(), bx.getJxName(), 23, null, "", bx.getBranchProvice(), 68, 43, 1, 56, subjectId, subject.getSubjectName(), 
 				bx.getBranchAddress(), null, null, null, null, null, null, null, teacherName);
 		int rs = teaBaseService.save(t);
