@@ -27,6 +27,7 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
+				/**.app = anon
 				/static/** = anon
 				/demo/** = anon
 				/views/login/** =anon

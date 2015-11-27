@@ -18,7 +18,7 @@
 	<bean id="springContextUtil" class="com.yuhui.core.utils.SpringContextUtils" scope="singleton" lazy-init="false" />
 	
 	<!-- 项目初始化和结束释放的类 -->
-	<!--<bean id="initLoader" lazy-init="false" class="com.yuhui.core.base.InitLoader" init-method="init" destroy-method="destory" />  -->
+	<bean id="initLoader2" lazy-init="false" class="com.yuhui.core.base.InitLoader" init-method="init" destroy-method="destory" /> 
 	<bean id="initLoader" lazy-init="false" class="com.jiaxiao.base.JxLoader" init-method="init" destroy-method="destory" />
 	
 	<!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
